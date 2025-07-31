@@ -1,0 +1,224 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\USER1\\Desktop\\eGranjaCAT\\src\\eGranjaCAT.WebAPI\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{D5E8778F-0F4C-49D7-9106-EDA3445BD4EB}|eGranjaCAT.Infrastructure\\eGranjaCAT.Infrastructure.csproj|c:\\users\\user1\\desktop\\egranjacat\\src\\egranjacat.webapi\\egranjacat.infrastructure\\persistence\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D5E8778F-0F4C-49D7-9106-EDA3445BD4EB}|eGranjaCAT.Infrastructure\\eGranjaCAT.Infrastructure.csproj|solutionrelative:egranjacat.infrastructure\\persistence\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5E6CB861-4C00-41EF-8057-F498E16C7806}|eGranjaCAT.WebAPI\\eGranjaCAT.Api.csproj|c:\\users\\user1\\desktop\\egranjacat\\src\\egranjacat.webapi\\egranjacat.webapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5E6CB861-4C00-41EF-8057-F498E16C7806}|eGranjaCAT.WebAPI\\eGranjaCAT.Api.csproj|solutionrelative:egranjacat.webapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7C470769-5D02-4137-9A79-2984C0CE3C0B}|eGranjaCAT.Domain\\eGranjaCAT.Domain.csproj|c:\\users\\user1\\desktop\\egranjacat\\src\\egranjacat.webapi\\egranjacat.domain\\dependencyinjection.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7C470769-5D02-4137-9A79-2984C0CE3C0B}|eGranjaCAT.Domain\\eGranjaCAT.Domain.csproj|solutionrelative:egranjacat.domain\\dependencyinjection.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7C470769-5D02-4137-9A79-2984C0CE3C0B}|eGranjaCAT.Domain\\eGranjaCAT.Domain.csproj|c:\\users\\user1\\desktop\\egranjacat\\src\\egranjacat.webapi\\egranjacat.domain\\entities\\farm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7C470769-5D02-4137-9A79-2984C0CE3C0B}|eGranjaCAT.Domain\\eGranjaCAT.Domain.csproj|solutionrelative:egranjacat.domain\\entities\\farm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D5E8778F-0F4C-49D7-9106-EDA3445BD4EB}|eGranjaCAT.Infrastructure\\eGranjaCAT.Infrastructure.csproj|c:\\users\\user1\\desktop\\egranjacat\\src\\egranjacat.webapi\\egranjacat.infrastructure\\dependencyinjection.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D5E8778F-0F4C-49D7-9106-EDA3445BD4EB}|eGranjaCAT.Infrastructure\\eGranjaCAT.Infrastructure.csproj|solutionrelative:egranjacat.infrastructure\\dependencyinjection.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5E6CB861-4C00-41EF-8057-F498E16C7806}|eGranjaCAT.WebAPI\\eGranjaCAT.Api.csproj|c:\\users\\user1\\desktop\\egranjacat\\src\\egranjacat.webapi\\egranjacat.webapi\\extensions\\mappingextensions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5E6CB861-4C00-41EF-8057-F498E16C7806}|eGranjaCAT.WebAPI\\eGranjaCAT.Api.csproj|solutionrelative:egranjacat.webapi\\extensions\\mappingextensions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D5E8778F-0F4C-49D7-9106-EDA3445BD4EB}|eGranjaCAT.Infrastructure\\eGranjaCAT.Infrastructure.csproj|c:\\users\\user1\\desktop\\egranjacat\\src\\egranjacat.webapi\\egranjacat.infrastructure\\extensions\\cron\\jobs\\backupjob.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D5E8778F-0F4C-49D7-9106-EDA3445BD4EB}|eGranjaCAT.Infrastructure\\eGranjaCAT.Infrastructure.csproj|solutionrelative:egranjacat.infrastructure\\extensions\\cron\\jobs\\backupjob.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D5E8778F-0F4C-49D7-9106-EDA3445BD4EB}|eGranjaCAT.Infrastructure\\eGranjaCAT.Infrastructure.csproj|c:\\users\\user1\\desktop\\egranjacat\\src\\egranjacat.webapi\\egranjacat.infrastructure\\extensions\\cron\\cronbackgroundjob.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D5E8778F-0F4C-49D7-9106-EDA3445BD4EB}|eGranjaCAT.Infrastructure\\eGranjaCAT.Infrastructure.csproj|solutionrelative:egranjacat.infrastructure\\extensions\\cron\\cronbackgroundjob.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D5E8778F-0F4C-49D7-9106-EDA3445BD4EB}|eGranjaCAT.Infrastructure\\eGranjaCAT.Infrastructure.csproj|c:\\users\\user1\\desktop\\egranjacat\\src\\egranjacat.webapi\\egranjacat.infrastructure\\extensions\\cron\\cronbackgroundjobextensions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D5E8778F-0F4C-49D7-9106-EDA3445BD4EB}|eGranjaCAT.Infrastructure\\eGranjaCAT.Infrastructure.csproj|solutionrelative:egranjacat.infrastructure\\extensions\\cron\\cronbackgroundjobextensions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D5E8778F-0F4C-49D7-9106-EDA3445BD4EB}|eGranjaCAT.Infrastructure\\eGranjaCAT.Infrastructure.csproj|c:\\users\\user1\\desktop\\egranjacat\\src\\egranjacat.webapi\\egranjacat.infrastructure\\extensions\\cron\\cronsettings.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D5E8778F-0F4C-49D7-9106-EDA3445BD4EB}|eGranjaCAT.Infrastructure\\eGranjaCAT.Infrastructure.csproj|solutionrelative:egranjacat.infrastructure\\extensions\\cron\\cronsettings.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5E6CB861-4C00-41EF-8057-F498E16C7806}|eGranjaCAT.WebAPI\\eGranjaCAT.Api.csproj|c:\\users\\user1\\desktop\\egranjacat\\src\\egranjacat.webapi\\egranjacat.webapi\\extensions\\swaggerextensions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5E6CB861-4C00-41EF-8057-F498E16C7806}|eGranjaCAT.WebAPI\\eGranjaCAT.Api.csproj|solutionrelative:egranjacat.webapi\\extensions\\swaggerextensions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5E6CB861-4C00-41EF-8057-F498E16C7806}|eGranjaCAT.WebAPI\\eGranjaCAT.Api.csproj|c:\\users\\user1\\desktop\\egranjacat\\src\\egranjacat.webapi\\egranjacat.webapi\\extensions\\authorizationextensions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5E6CB861-4C00-41EF-8057-F498E16C7806}|eGranjaCAT.WebAPI\\eGranjaCAT.Api.csproj|solutionrelative:egranjacat.webapi\\extensions\\authorizationextensions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 4,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "DependencyInjection.cs",
+              "DocumentMoniker": "C:\\Users\\USER1\\Desktop\\eGranjaCAT\\src\\eGranjaCAT.WebAPI\\eGranjaCAT.Domain\\DependencyInjection.cs",
+              "RelativeDocumentMoniker": "eGranjaCAT.Domain\\DependencyInjection.cs",
+              "ToolTip": "C:\\Users\\USER1\\Desktop\\eGranjaCAT\\src\\eGranjaCAT.WebAPI\\eGranjaCAT.Domain\\DependencyInjection.cs",
+              "RelativeToolTip": "eGranjaCAT.Domain\\DependencyInjection.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-31T18:33:54.837Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Farm.cs",
+              "DocumentMoniker": "C:\\Users\\USER1\\Desktop\\eGranjaCAT\\src\\eGranjaCAT.WebAPI\\eGranjaCAT.Domain\\Entities\\Farm.cs",
+              "RelativeDocumentMoniker": "eGranjaCAT.Domain\\Entities\\Farm.cs",
+              "ToolTip": "C:\\Users\\USER1\\Desktop\\eGranjaCAT\\src\\eGranjaCAT.WebAPI\\eGranjaCAT.Domain\\Entities\\Farm.cs",
+              "RelativeToolTip": "eGranjaCAT.Domain\\Entities\\Farm.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-31T18:33:48.553Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "BackupJob.cs",
+              "DocumentMoniker": "C:\\Users\\USER1\\Desktop\\eGranjaCAT\\src\\eGranjaCAT.WebAPI\\eGranjaCAT.Infrastructure\\Extensions\\Cron\\Jobs\\BackupJob.cs",
+              "RelativeDocumentMoniker": "eGranjaCAT.Infrastructure\\Extensions\\Cron\\Jobs\\BackupJob.cs",
+              "ToolTip": "C:\\Users\\USER1\\Desktop\\eGranjaCAT\\src\\eGranjaCAT.WebAPI\\eGranjaCAT.Infrastructure\\Extensions\\Cron\\Jobs\\BackupJob.cs",
+              "RelativeToolTip": "eGranjaCAT.Infrastructure\\Extensions\\Cron\\Jobs\\BackupJob.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-31T18:31:09.193Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "CronBackgroundJob.cs",
+              "DocumentMoniker": "C:\\Users\\USER1\\Desktop\\eGranjaCAT\\src\\eGranjaCAT.WebAPI\\eGranjaCAT.Infrastructure\\Extensions\\Cron\\CronBackgroundJob.cs",
+              "RelativeDocumentMoniker": "eGranjaCAT.Infrastructure\\Extensions\\Cron\\CronBackgroundJob.cs",
+              "ToolTip": "C:\\Users\\USER1\\Desktop\\eGranjaCAT\\src\\eGranjaCAT.WebAPI\\eGranjaCAT.Infrastructure\\Extensions\\Cron\\CronBackgroundJob.cs",
+              "RelativeToolTip": "eGranjaCAT.Infrastructure\\Extensions\\Cron\\CronBackgroundJob.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAA1AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-31T18:30:32.834Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "ApplicationDbContext.cs",
+              "DocumentMoniker": "C:\\Users\\USER1\\Desktop\\eGranjaCAT\\src\\eGranjaCAT.WebAPI\\eGranjaCAT.Infrastructure\\Persistence\\ApplicationDbContext.cs",
+              "RelativeDocumentMoniker": "eGranjaCAT.Infrastructure\\Persistence\\ApplicationDbContext.cs",
+              "ToolTip": "C:\\Users\\USER1\\Desktop\\eGranjaCAT\\src\\eGranjaCAT.WebAPI\\eGranjaCAT.Infrastructure\\Persistence\\ApplicationDbContext.cs",
+              "RelativeToolTip": "eGranjaCAT.Infrastructure\\Persistence\\ApplicationDbContext.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-31T18:22:23.895Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\USER1\\Desktop\\eGranjaCAT\\src\\eGranjaCAT.WebAPI\\eGranjaCAT.WebAPI\\Program.cs",
+              "RelativeDocumentMoniker": "eGranjaCAT.WebAPI\\Program.cs",
+              "ToolTip": "C:\\Users\\USER1\\Desktop\\eGranjaCAT\\src\\eGranjaCAT.WebAPI\\eGranjaCAT.WebAPI\\Program.cs",
+              "RelativeToolTip": "eGranjaCAT.WebAPI\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-31T18:14:39.177Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "CronBackgroundJobExtensions.cs",
+              "DocumentMoniker": "C:\\Users\\USER1\\Desktop\\eGranjaCAT\\src\\eGranjaCAT.WebAPI\\eGranjaCAT.Infrastructure\\Extensions\\Cron\\CronBackgroundJobExtensions.cs",
+              "RelativeDocumentMoniker": "eGranjaCAT.Infrastructure\\Extensions\\Cron\\CronBackgroundJobExtensions.cs",
+              "ToolTip": "C:\\Users\\USER1\\Desktop\\eGranjaCAT\\src\\eGranjaCAT.WebAPI\\eGranjaCAT.Infrastructure\\Extensions\\Cron\\CronBackgroundJobExtensions.cs",
+              "RelativeToolTip": "eGranjaCAT.Infrastructure\\Extensions\\Cron\\CronBackgroundJobExtensions.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAgAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-31T18:30:07.715Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "MappingExtensions.cs",
+              "DocumentMoniker": "C:\\Users\\USER1\\Desktop\\eGranjaCAT\\src\\eGranjaCAT.WebAPI\\eGranjaCAT.WebAPI\\Extensions\\MappingExtensions.cs",
+              "RelativeDocumentMoniker": "eGranjaCAT.WebAPI\\Extensions\\MappingExtensions.cs",
+              "ToolTip": "C:\\Users\\USER1\\Desktop\\eGranjaCAT\\src\\eGranjaCAT.WebAPI\\eGranjaCAT.WebAPI\\Extensions\\MappingExtensions.cs",
+              "RelativeToolTip": "eGranjaCAT.WebAPI\\Extensions\\MappingExtensions.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-31T18:17:45.883Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "DependencyInjection.cs",
+              "DocumentMoniker": "C:\\Users\\USER1\\Desktop\\eGranjaCAT\\src\\eGranjaCAT.WebAPI\\eGranjaCAT.Infrastructure\\DependencyInjection.cs",
+              "RelativeDocumentMoniker": "eGranjaCAT.Infrastructure\\DependencyInjection.cs",
+              "ToolTip": "C:\\Users\\USER1\\Desktop\\eGranjaCAT\\src\\eGranjaCAT.WebAPI\\eGranjaCAT.Infrastructure\\DependencyInjection.cs",
+              "RelativeToolTip": "eGranjaCAT.Infrastructure\\DependencyInjection.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-31T17:58:37.112Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "CronSettings.cs",
+              "DocumentMoniker": "C:\\Users\\USER1\\Desktop\\eGranjaCAT\\src\\eGranjaCAT.WebAPI\\eGranjaCAT.Infrastructure\\Extensions\\Cron\\CronSettings.cs",
+              "RelativeDocumentMoniker": "eGranjaCAT.Infrastructure\\Extensions\\Cron\\CronSettings.cs",
+              "ToolTip": "C:\\Users\\USER1\\Desktop\\eGranjaCAT\\src\\eGranjaCAT.WebAPI\\eGranjaCAT.Infrastructure\\Extensions\\Cron\\CronSettings.cs",
+              "RelativeToolTip": "eGranjaCAT.Infrastructure\\Extensions\\Cron\\CronSettings.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-31T18:29:38.07Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "SwaggerExtensions.cs",
+              "DocumentMoniker": "C:\\Users\\USER1\\Desktop\\eGranjaCAT\\src\\eGranjaCAT.WebAPI\\eGranjaCAT.WebAPI\\Extensions\\SwaggerExtensions.cs",
+              "RelativeDocumentMoniker": "eGranjaCAT.WebAPI\\Extensions\\SwaggerExtensions.cs",
+              "ToolTip": "C:\\Users\\USER1\\Desktop\\eGranjaCAT\\src\\eGranjaCAT.WebAPI\\eGranjaCAT.WebAPI\\Extensions\\SwaggerExtensions.cs",
+              "RelativeToolTip": "eGranjaCAT.WebAPI\\Extensions\\SwaggerExtensions.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-31T18:14:10.571Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "AuthorizationExtensions.cs",
+              "DocumentMoniker": "C:\\Users\\USER1\\Desktop\\eGranjaCAT\\src\\eGranjaCAT.WebAPI\\eGranjaCAT.WebAPI\\Extensions\\AuthorizationExtensions.cs",
+              "RelativeDocumentMoniker": "eGranjaCAT.WebAPI\\Extensions\\AuthorizationExtensions.cs",
+              "ToolTip": "C:\\Users\\USER1\\Desktop\\eGranjaCAT\\src\\eGranjaCAT.WebAPI\\eGranjaCAT.WebAPI\\Extensions\\AuthorizationExtensions.cs",
+              "RelativeToolTip": "eGranjaCAT.WebAPI\\Extensions\\AuthorizationExtensions.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAcAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-31T18:09:34.897Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

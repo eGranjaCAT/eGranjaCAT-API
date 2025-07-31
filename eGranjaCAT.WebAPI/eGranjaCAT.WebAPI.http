@@ -1,0 +1,6 @@
+@eGranjaCAT.WebAPI_HostAddress = http://localhost:5065
+
+GET {{eGranjaCAT.WebAPI_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
