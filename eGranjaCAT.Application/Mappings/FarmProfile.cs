@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using eGranjaCAT.Application.DTOs.Farm;
 using eGranjaCAT.Application.Entities;
 
 namespace eGranjaCAT.Application.Mappings

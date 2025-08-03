@@ -82,6 +82,16 @@
         "runtime": {
           "bin/placeholder/eGranjaCAT.Domain.dll": {}
         }
+      },
+      "eGranjaCAT.Shared/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v8.0",
+        "compile": {
+          "bin/placeholder/eGranjaCAT.Shared.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/eGranjaCAT.Shared.dll": {}
+        }
       }
     }
   },
@@ -212,13 +222,19 @@
       "type": "project",
       "path": "../eGranjaCAT.Domain/eGranjaCAT.Domain.csproj",
       "msbuildProject": "../eGranjaCAT.Domain/eGranjaCAT.Domain.csproj"
+    },
+    "eGranjaCAT.Shared/1.0.0": {
+      "type": "project",
+      "path": "../eGranjaCAT.Shared/eGranjaCAT.Shared.csproj",
+      "msbuildProject": "../eGranjaCAT.Shared/eGranjaCAT.Shared.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net8.0": [
       "AutoMapper >= 14.0.0",
       "Microsoft.Extensions.DependencyInjection.Abstractions >= 9.0.7",
-      "eGranjaCAT.Domain >= 1.0.0"
+      "eGranjaCAT.Domain >= 1.0.0",
+      "eGranjaCAT.Shared >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -256,6 +272,9 @@
           "projectReferences": {
             "C:\\Users\\USER1\\Desktop\\eGranjaCAT\\src\\eGranjaCAT.WebAPI\\eGranjaCAT.Domain\\eGranjaCAT.Domain.csproj": {
               "projectPath": "C:\\Users\\USER1\\Desktop\\eGranjaCAT\\src\\eGranjaCAT.WebAPI\\eGranjaCAT.Domain\\eGranjaCAT.Domain.csproj"
+            },
+            "C:\\Users\\USER1\\Desktop\\eGranjaCAT\\src\\eGranjaCAT.WebAPI\\eGranjaCAT.Shared\\eGranjaCAT.Shared.csproj": {
+              "projectPath": "C:\\Users\\USER1\\Desktop\\eGranjaCAT\\src\\eGranjaCAT.WebAPI\\eGranjaCAT.Shared\\eGranjaCAT.Shared.csproj"
             }
           }
         }

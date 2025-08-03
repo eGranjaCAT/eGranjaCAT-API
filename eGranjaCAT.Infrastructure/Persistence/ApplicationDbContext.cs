@@ -1,4 +1,5 @@
 ﻿using eGranjaCAT.Application.Entities;
+using eGranjaCAT.Domain.Entities;
 using eGranjaCAT.Infrastructure.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
@@ -14,5 +15,44 @@ namespace eGranjaCAT.Infrastructure.Data
         }
 
         public DbSet<Farm> Farms { get; set; }
+        public DbSet<Lot> Lots { get; set; }
+        public DbSet<Entrada> Entrades { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+
+            // LOTS
+            modelBuilder.Entity<Lot>()
+                .HasOne(l => l.User)
+                .WithMany()
+                .HasForeignKey(l => l.UserGuid)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            modelBuilder.Entity<Lot>()
+                .HasOne(l => l.Farm)
+                .WithMany()
+                .HasForeignKey(l => l.FarmId)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            // ENTRADES
+            modelBuilder.Entity<Entrada>()
+                .HasOne(l => l.Farm)
+                .WithMany()
+                .HasForeignKey(l => l.FarmId)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            modelBuilder.Entity<Entrada>()
+                .HasOne(l => l.User)
+                .WithMany()
+                .HasForeignKey(l => l.UserGuid)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            modelBuilder.Entity<Entrada>()
+                .HasOne(e => e.Lot)
+                .WithMany()
+                .HasForeignKey(e => e.LotId)
+                .OnDelete(DeleteBehavior.Restrict);
+        }
     }
 }

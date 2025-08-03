@@ -13,10 +13,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\eGranjaCAT.Domain\eGranjaCAT.Domain.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Interfaces\" />
+    <ProjectReference Include="..\eGranjaCAT.Shared\eGranjaCAT.Shared.csproj" />
   </ItemGroup>
 
 </Project>

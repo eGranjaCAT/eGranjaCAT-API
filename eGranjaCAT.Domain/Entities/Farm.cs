@@ -8,6 +8,8 @@ namespace eGranjaCAT.Application.Entities
         [Key]
         public int Id { get; set; }
         [Required]
+        public required string CodiREGA { get; set; }
+        [Required]
         public required string Name { get; set; }
         [Required]
         public required string Address { get; set; }

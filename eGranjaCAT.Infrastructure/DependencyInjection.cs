@@ -2,6 +2,7 @@
 using eGranjaCAT.Infrastructure.Extensions.Cron;
 using eGranjaCAT.Infrastructure.Extensions.Cron.Jobs;
 using eGranjaCAT.Infrastructure.Identity;
+using eGranjaCAT.Infrastructure.Services;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -31,6 +32,14 @@ namespace eGranjaCAT.Application
                 options.TimeZone = TimeZoneInfo.Local;
                 options.CronExpression = configuration["CronExpressions:BackupJob"]!;
             });
+
+            services.AddScoped<IBackupService, BackupService>();
+            services.AddTransient<IFarmService, FarmService>();
+            services.AddTransient<IUserService, UserService>();
+            services.AddTransient<ILotService, LotService>();
+            services.AddTransient<IEntradaService, EntradaService>();
+            services.AddTransient<IEmailService, EmailService>();
+            services.AddTransient<IExcelService, ExcelService>();
 
             return services;
         }
