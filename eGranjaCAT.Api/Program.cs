@@ -8,6 +8,7 @@ builder.Services.AddHttpContextAccessor();
 builder.Services.AddAutoMapper(typeof(Program));
 
 builder.Services
+    .AddApiVersioningSetup()
     .AddJwtAuthentication(builder.Configuration)
     .AddCustomAuthorization()
     .AddSwaggerDocumentation()
@@ -24,7 +25,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI(c =>
     {
-        c.SwaggerEndpoint("/swagger/v1/swagger.json", "eGranjaCAT - RESTful API v1");
+        c.SwaggerEndpoint("/swagger/v1/swagger.json", "eGranjaCAT - RESTful API");
         c.RoutePrefix = string.Empty;
     });
 }

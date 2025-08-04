@@ -25,37 +25,23 @@ namespace eGranjaCAT.Infrastructure.Services
 
         public async Task<ServiceResult<bool>> ConnectToPresvetAsync(string username, string password)
         {
-            var resultObj = new ServiceResult<bool>();
             try
             {
                 var result = await _presvetClient.PostAsJsonAsync("login/authenticate", new { username, password });
-                if (!result.IsSuccessStatusCode)
-                {
-                    resultObj.Success = false;
-                    resultObj.Errors.Add($"Error HTTP: {result.StatusCode} - {result.ReasonPhrase}");
-                    return resultObj;
-                }
+                if (!result.IsSuccessStatusCode) return ServiceResult<bool>.Fail(new List<string> { $"Error HTTP: {result.StatusCode} - {result.ReasonPhrase}" }, (int)result.StatusCode);
 
                 var token = await result.Content.ReadFromJsonAsync<string>();
-
-                if (string.IsNullOrEmpty(token))
-                {
-                    resultObj.Success = false;
-                    resultObj.Errors.Add("Resposta buida del servei Presvet");
-                    return resultObj;
-                }
+                if (string.IsNullOrEmpty(token)) return ServiceResult<bool>.Fail(new List<string> { "No s'ha obtingut cap token d'autenticació" }, 500);
 
                 _presvetClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
 
-                resultObj.Success = true;
-                return resultObj;
+                return ServiceResult<bool>.Ok(true, 204);
             }
             catch (Exception ex)
             {
                 _logger.LogError(ex, "Error al connectar amb el servei Presvet");
-                resultObj.Success = false;
-                resultObj.Errors.Add("Error inesperat en connectar amb el servei Presvet");
-                return resultObj;
+
+                return ServiceResult<bool>.FromException(ex, 500);
             }
         }
 
@@ -63,36 +49,22 @@ namespace eGranjaCAT.Infrastructure.Services
         // en els docs no s'especifica que retorna !!! 
         public async Task<ServiceResult<bool>> CheckPresvetConnection()
         {
-            var resultObj = new ServiceResult<bool>();
             try
             {
                 var result = await _presvetClient.GetAsync("comunicacionprescripcion/estaactivo");
-
-                if (!result.IsSuccessStatusCode)
-                {
-                    resultObj.Success = false;
-                    resultObj.Errors.Add($"Error HTTP: {result.StatusCode} - {result.ReasonPhrase}");
-                    return resultObj;
-                }
+                if (!result.IsSuccessStatusCode) return ServiceResult<bool>.Fail(new List<string> { $"Error HTTP: {result.StatusCode} - {result.ReasonPhrase}" }, (int)result.StatusCode);
 
                 var isActive = await result.Content.ReadFromJsonAsync<bool>();
-                if (!isActive)
-                {
-                    resultObj.Success = false;
-                    resultObj.Errors.Add("El servei Presvet no està actiu");
-                    return resultObj;
-                }
+                if (!isActive) return ServiceResult<bool>.Fail(new List<string> { "El servei Presvet no està actiu" }, 503);
 
-                resultObj.Success = true;
-                return resultObj;
+                return ServiceResult<bool>.Ok(true, 204);
 
             }
             catch (Exception ex)
             {
                 _logger.LogError(ex, "Error al comprovar la connexió amb el servei Presvet");
-                resultObj.Success = false;
-                resultObj.Errors.Add("Error inesperat en comprovar la connexió amb el servei Presvet");
-                return resultObj;
+
+                return ServiceResult<bool>.FromException(ex, 500);
             }
         }
     }

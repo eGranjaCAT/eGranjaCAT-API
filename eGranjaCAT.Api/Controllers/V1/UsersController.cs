@@ -1,14 +1,16 @@
-﻿using eGranjaCAT.Api.Extensions;
+﻿using Asp.Versioning;
+using eGranjaCAT.Api.Extensions;
 using eGranjaCAT.Application.DTOs.User;
 using eGranjaCAT.Infrastructure.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 
-namespace eGranjaCAT.Api.Controllers
+namespace eGranjaCAT.Api.Controllers.V1
 {
     [ApiController]
-    [Route("api/users")]
+    [ApiVersion("1.0")]
+    [Route("api/v{version:apiVersion}/users")]
     public class UsersController : ControllerBase
     {
         private readonly IUserService _service;

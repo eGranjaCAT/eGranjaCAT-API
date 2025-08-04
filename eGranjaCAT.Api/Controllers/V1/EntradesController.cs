@@ -1,15 +1,17 @@
-﻿using eGranjaCAT.Api.Extensions;
+﻿using Asp.Versioning;
+using eGranjaCAT.Api.Extensions;
 using eGranjaCAT.Application.DTOs.Entrada;
 using eGranjaCAT.Infrastructure.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 
-namespace eGranjaCAT.Api.Controllers
+namespace eGranjaCAT.Api.Controllers.V1
 {
     [Authorize(Policy = "Entrades")]
     [ApiController]
-    [Route("api/{farmId:int}/entrades")]
+    [ApiVersion("1.0")]
+    [Route("api/v{version:apiVersion}/{farmId:int}/entrades")]
     public class EntradesController : ControllerBase
     {
         private readonly IEntradaService _service;

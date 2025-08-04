@@ -1,13 +1,15 @@
-﻿using eGranjaCAT.Application.DTOs.Farm;
+﻿using Asp.Versioning;
+using eGranjaCAT.Application.DTOs.Farm;
 using eGranjaCAT.Infrastructure.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 
-namespace eGranjaCAT.Api.Controllers
+namespace eGranjaCAT.Api.Controllers.V1
 {
     [ApiController]
-    [Route("api/farms")]
+    [ApiVersion("1.0")]
+    [Route("api/v{version:apiVersion}/farms")]
     public class FarmsController : ControllerBase
     {
         private readonly IFarmService _service;
