@@ -6,11 +6,11 @@ namespace eGranjaCAT.Infrastructure.Services
 {
     public class BackupService : IBackupService
     {
-        private readonly ILogger<BackupService> logger;
+        private readonly ILogger<BackupService> _logger;
 
         public BackupService(ILogger<BackupService> logger)
         {
-            this.logger = logger;
+            _logger = logger;
         }
 
         public async Task<ServiceResult<string>> CreateAndSendBackupAsync()

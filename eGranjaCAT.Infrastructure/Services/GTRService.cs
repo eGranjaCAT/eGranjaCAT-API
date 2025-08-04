@@ -8,13 +8,13 @@ namespace eGranjaCAT.Infrastructure.Services
 {
     public class GTRService : IGTRService
     {
-        private readonly ILogger<GTRService> logger;
-        private readonly HttpClient gtrClient;
+        private readonly ILogger<GTRService> _logger;
+        private readonly HttpClient _gtrClient;
 
         public GTRService(ILogger<GTRService> logger)
         {
-            this.logger = logger;
-            gtrClient = new HttpClient
+            _logger = logger;
+            _gtrClient = new HttpClient
             {
                 BaseAddress = new Uri("https://preproduccio.aplicacions.agricultura.gencat.cat/gtr/")
             };
@@ -26,7 +26,7 @@ namespace eGranjaCAT.Infrastructure.Services
 
             try
             {
-                var response = await gtrClient.PostAsJsonAsync("WSMobilitat/AppJava/WSCarregaGuiesMobilitat", requestDTO);
+                var response = await _gtrClient.PostAsJsonAsync("WSMobilitat/AppJava/WSCarregaGuiesMobilitat", requestDTO);
 
                 if (response.IsSuccessStatusCode)
                 {
@@ -51,7 +51,7 @@ namespace eGranjaCAT.Infrastructure.Services
             }
             catch (Exception ex)
             {
-                logger.LogError(ex, "Error al cridar el servei GTR WSCarregaGuiesMobilitat");
+                _logger.LogError(ex, "Error al cridar el servei GTR WSCarregaGuiesMobilitat");
                 resultObj.Success = false;
                 resultObj.Errors.Add("Error inesperat en cridar el servei GTR");
             }
@@ -66,7 +66,7 @@ namespace eGranjaCAT.Infrastructure.Services
 
             try
             {
-                var response = await gtrClient.PostAsJsonAsync("WSMobilitat/AppJava/WSModificarGuiasMovilitat", requestDTO);
+                var response = await _gtrClient.PostAsJsonAsync("WSMobilitat/AppJava/WSModificarGuiasMovilitat", requestDTO);
 
                 if (response.IsSuccessStatusCode)
                 {
@@ -90,7 +90,7 @@ namespace eGranjaCAT.Infrastructure.Services
             }
             catch (Exception ex)
             {
-                logger.LogError(ex, "Error al cridar el servei GTR WSModificarGuiasMovilitat");
+                _logger.LogError(ex, "Error al cridar el servei GTR WSModificarGuiasMovilitat");
                 resultObj.Success = false;
                 resultObj.Errors.Add("Error inesperat en cridar el servei GTR");
             }

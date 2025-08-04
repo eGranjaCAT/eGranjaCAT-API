@@ -1,38 +1,10 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\USER1\\Desktop\\eGranjaCAT\\src\\eGranjaCAT.WebAPI\\",
+  "WorkspaceRootPath": "C:\\Users\\felix.montragull\\source\\repos\\eGranjaCAT\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{EC5AC869-3D04-94D3-0E9B-89967D9D5BC2}|eGranjaCAT.Api\\eGranjaCAT.Api.csproj|c:\\users\\user1\\desktop\\egranjacat\\src\\egranjacat.webapi\\egranjacat.api\\extensions\\swaggerextensions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{EC5AC869-3D04-94D3-0E9B-89967D9D5BC2}|eGranjaCAT.Api\\eGranjaCAT.Api.csproj|solutionrelative:egranjacat.api\\extensions\\swaggerextensions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{EC5AC869-3D04-94D3-0E9B-89967D9D5BC2}|eGranjaCAT.Api\\eGranjaCAT.Api.csproj|c:\\users\\user1\\desktop\\egranjacat\\src\\egranjacat.webapi\\egranjacat.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{EC5AC869-3D04-94D3-0E9B-89967D9D5BC2}|eGranjaCAT.Api\\eGranjaCAT.Api.csproj|solutionrelative:egranjacat.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{EC5AC869-3D04-94D3-0E9B-89967D9D5BC2}|eGranjaCAT.Api\\eGranjaCAT.Api.csproj|c:\\users\\user1\\desktop\\egranjacat\\src\\egranjacat.webapi\\egranjacat.api\\egranjacat.api.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
-      "RelativeMoniker": "D:0:0:{EC5AC869-3D04-94D3-0E9B-89967D9D5BC2}|eGranjaCAT.Api\\eGranjaCAT.Api.csproj|solutionrelative:egranjacat.api\\egranjacat.api.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{EC5AC869-3D04-94D3-0E9B-89967D9D5BC2}|eGranjaCAT.Api\\eGranjaCAT.Api.csproj|c:\\users\\user1\\desktop\\egranjacat\\src\\egranjacat.webapi\\egranjacat.api\\appsettings.development.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{EC5AC869-3D04-94D3-0E9B-89967D9D5BC2}|eGranjaCAT.Api\\eGranjaCAT.Api.csproj|solutionrelative:egranjacat.api\\appsettings.development.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{D5E8778F-0F4C-49D7-9106-EDA3445BD4EB}|eGranjaCAT.Infrastructure\\eGranjaCAT.Infrastructure.csproj|c:\\users\\user1\\desktop\\egranjacat\\src\\egranjacat.webapi\\egranjacat.infrastructure\\dependencyinjection.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D5E8778F-0F4C-49D7-9106-EDA3445BD4EB}|eGranjaCAT.Infrastructure\\eGranjaCAT.Infrastructure.csproj|solutionrelative:egranjacat.infrastructure\\dependencyinjection.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{D5E8778F-0F4C-49D7-9106-EDA3445BD4EB}|eGranjaCAT.Infrastructure\\eGranjaCAT.Infrastructure.csproj|c:\\users\\user1\\desktop\\egranjacat\\src\\egranjacat.webapi\\egranjacat.infrastructure\\services\\userservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D5E8778F-0F4C-49D7-9106-EDA3445BD4EB}|eGranjaCAT.Infrastructure\\eGranjaCAT.Infrastructure.csproj|solutionrelative:egranjacat.infrastructure\\services\\userservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{EC5AC869-3D04-94D3-0E9B-89967D9D5BC2}|eGranjaCAT.Api\\eGranjaCAT.Api.csproj|c:\\users\\user1\\desktop\\egranjacat\\src\\egranjacat.webapi\\egranjacat.api\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{EC5AC869-3D04-94D3-0E9B-89967D9D5BC2}|eGranjaCAT.Api\\eGranjaCAT.Api.csproj|solutionrelative:egranjacat.api\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{EC5AC869-3D04-94D3-0E9B-89967D9D5BC2}|eGranjaCAT.Api\\eGranjaCAT.Api.csproj|c:\\users\\user1\\desktop\\egranjacat\\src\\egranjacat.webapi\\egranjacat.api\\extensions\\authenticationextensions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{EC5AC869-3D04-94D3-0E9B-89967D9D5BC2}|eGranjaCAT.Api\\eGranjaCAT.Api.csproj|solutionrelative:egranjacat.api\\extensions\\authenticationextensions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{D5E8778F-0F4C-49D7-9106-EDA3445BD4EB}|eGranjaCAT.Infrastructure\\eGranjaCAT.Infrastructure.csproj|c:\\users\\felix.montragull\\source\\repos\\egranjacat\\egranjacat.infrastructure\\services\\entradaservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D5E8778F-0F4C-49D7-9106-EDA3445BD4EB}|eGranjaCAT.Infrastructure\\eGranjaCAT.Infrastructure.csproj|solutionrelative:egranjacat.infrastructure\\services\\entradaservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -42,110 +14,23 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 2,
           "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "SwaggerExtensions.cs",
-              "DocumentMoniker": "C:\\Users\\USER1\\Desktop\\eGranjaCAT\\src\\eGranjaCAT.WebAPI\\eGranjaCAT.Api\\Extensions\\SwaggerExtensions.cs",
-              "RelativeDocumentMoniker": "eGranjaCAT.Api\\Extensions\\SwaggerExtensions.cs",
-              "ToolTip": "C:\\Users\\USER1\\Desktop\\eGranjaCAT\\src\\eGranjaCAT.WebAPI\\eGranjaCAT.Api\\Extensions\\SwaggerExtensions.cs",
-              "RelativeToolTip": "eGranjaCAT.Api\\Extensions\\SwaggerExtensions.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABsAAAApAAAAAAAAAA==",
+              "Title": "EntradaService.cs",
+              "DocumentMoniker": "C:\\Users\\felix.montragull\\source\\repos\\eGranjaCAT\\eGranjaCAT.Infrastructure\\Services\\EntradaService.cs",
+              "RelativeDocumentMoniker": "eGranjaCAT.Infrastructure\\Services\\EntradaService.cs",
+              "ToolTip": "C:\\Users\\felix.montragull\\source\\repos\\eGranjaCAT\\eGranjaCAT.Infrastructure\\Services\\EntradaService.cs",
+              "RelativeToolTip": "eGranjaCAT.Infrastructure\\Services\\EntradaService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABsAAAAdAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-03T14:55:15.504Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "eGranjaCAT.Api",
-              "DocumentMoniker": "C:\\Users\\USER1\\Desktop\\eGranjaCAT\\src\\eGranjaCAT.WebAPI\\eGranjaCAT.Api\\eGranjaCAT.Api.csproj",
-              "RelativeDocumentMoniker": "eGranjaCAT.Api\\eGranjaCAT.Api.csproj",
-              "ToolTip": "C:\\Users\\USER1\\Desktop\\eGranjaCAT\\src\\eGranjaCAT.WebAPI\\eGranjaCAT.Api\\eGranjaCAT.Api.csproj",
-              "RelativeToolTip": "eGranjaCAT.Api\\eGranjaCAT.Api.csproj",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAhAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2025-08-03T14:56:13.426Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "UserService.cs",
-              "DocumentMoniker": "C:\\Users\\USER1\\Desktop\\eGranjaCAT\\src\\eGranjaCAT.WebAPI\\eGranjaCAT.Infrastructure\\Services\\UserService.cs",
-              "RelativeDocumentMoniker": "eGranjaCAT.Infrastructure\\Services\\UserService.cs",
-              "ToolTip": "C:\\Users\\USER1\\Desktop\\eGranjaCAT\\src\\eGranjaCAT.WebAPI\\eGranjaCAT.Infrastructure\\Services\\UserService.cs",
-              "RelativeToolTip": "eGranjaCAT.Infrastructure\\Services\\UserService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-03T14:55:02.267Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "DependencyInjection.cs",
-              "DocumentMoniker": "C:\\Users\\USER1\\Desktop\\eGranjaCAT\\src\\eGranjaCAT.WebAPI\\eGranjaCAT.Infrastructure\\DependencyInjection.cs",
-              "RelativeDocumentMoniker": "eGranjaCAT.Infrastructure\\DependencyInjection.cs",
-              "ToolTip": "C:\\Users\\USER1\\Desktop\\eGranjaCAT\\src\\eGranjaCAT.WebAPI\\eGranjaCAT.Infrastructure\\DependencyInjection.cs",
-              "RelativeToolTip": "eGranjaCAT.Infrastructure\\DependencyInjection.cs",
-              "ViewState": "AgIAAAkAAAAAAAAAAAAAACAAAABHAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-03T14:54:29.993Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "appsettings.Development.json",
-              "DocumentMoniker": "C:\\Users\\USER1\\Desktop\\eGranjaCAT\\src\\eGranjaCAT.WebAPI\\eGranjaCAT.Api\\appsettings.Development.json",
-              "RelativeDocumentMoniker": "eGranjaCAT.Api\\appsettings.Development.json",
-              "ToolTip": "C:\\Users\\USER1\\Desktop\\eGranjaCAT\\src\\eGranjaCAT.WebAPI\\eGranjaCAT.Api\\appsettings.Development.json",
-              "RelativeToolTip": "eGranjaCAT.Api\\appsettings.Development.json",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2025-08-03T14:53:52.254Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "appsettings.json",
-              "DocumentMoniker": "C:\\Users\\USER1\\Desktop\\eGranjaCAT\\src\\eGranjaCAT.WebAPI\\eGranjaCAT.Api\\appsettings.json",
-              "RelativeDocumentMoniker": "eGranjaCAT.Api\\appsettings.json",
-              "ToolTip": "C:\\Users\\USER1\\Desktop\\eGranjaCAT\\src\\eGranjaCAT.WebAPI\\eGranjaCAT.Api\\appsettings.json",
-              "RelativeToolTip": "eGranjaCAT.Api\\appsettings.json",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2025-08-03T14:53:49.121Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\USER1\\Desktop\\eGranjaCAT\\src\\eGranjaCAT.WebAPI\\eGranjaCAT.Api\\Program.cs",
-              "RelativeDocumentMoniker": "eGranjaCAT.Api\\Program.cs",
-              "ToolTip": "C:\\Users\\USER1\\Desktop\\eGranjaCAT\\src\\eGranjaCAT.WebAPI\\eGranjaCAT.Api\\Program.cs",
-              "RelativeToolTip": "eGranjaCAT.Api\\Program.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAeAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-03T14:52:43.544Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "AuthenticationExtensions.cs",
-              "DocumentMoniker": "C:\\Users\\USER1\\Desktop\\eGranjaCAT\\src\\eGranjaCAT.WebAPI\\eGranjaCAT.Api\\Extensions\\AuthenticationExtensions.cs",
-              "RelativeDocumentMoniker": "eGranjaCAT.Api\\Extensions\\AuthenticationExtensions.cs",
-              "ToolTip": "C:\\Users\\USER1\\Desktop\\eGranjaCAT\\src\\eGranjaCAT.WebAPI\\eGranjaCAT.Api\\Extensions\\AuthenticationExtensions.cs",
-              "RelativeToolTip": "eGranjaCAT.Api\\Extensions\\AuthenticationExtensions.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAA1AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-03T14:51:07.197Z",
+              "WhenOpened": "2025-08-04T08:20:43.436Z",
               "EditorCaption": ""
             }
           ]

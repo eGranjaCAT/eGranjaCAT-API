@@ -8,18 +8,18 @@ namespace eGranjaCAT.Infrastructure.Services
 {
     public class PresvetService
     {
-        private readonly ILogger<PresvetService> logger;
-        private readonly HttpClient presvetClient;
+        private readonly ILogger<PresvetService> _logger;
+        private readonly HttpClient _presvetClient;
 
         public PresvetService(ILogger<PresvetService> logger)
         {
-            this.logger = logger;
-            presvetClient = new HttpClient
+            _logger = logger;
+
+            _presvetClient = new HttpClient
             {
                 BaseAddress = new Uri("https://integracion-servicio.mapa.gob.es/presvet/api/"),
             };
-
-            presvetClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+            _presvetClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
         }
 
 
@@ -28,7 +28,7 @@ namespace eGranjaCAT.Infrastructure.Services
             var resultObj = new ServiceResult<bool>();
             try
             {
-                var result = await presvetClient.PostAsJsonAsync("login/authenticate", new { username, password });
+                var result = await _presvetClient.PostAsJsonAsync("login/authenticate", new { username, password });
                 if (!result.IsSuccessStatusCode)
                 {
                     resultObj.Success = false;
@@ -45,14 +45,14 @@ namespace eGranjaCAT.Infrastructure.Services
                     return resultObj;
                 }
 
-                presvetClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
+                _presvetClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
 
                 resultObj.Success = true;
                 return resultObj;
             }
             catch (Exception ex)
             {
-                logger.LogError(ex, "Error al connectar amb el servei Presvet");
+                _logger.LogError(ex, "Error al connectar amb el servei Presvet");
                 resultObj.Success = false;
                 resultObj.Errors.Add("Error inesperat en connectar amb el servei Presvet");
                 return resultObj;
@@ -66,7 +66,7 @@ namespace eGranjaCAT.Infrastructure.Services
             var resultObj = new ServiceResult<bool>();
             try
             {
-                var result = await presvetClient.GetAsync("comunicacionprescripcion/estaactivo");
+                var result = await _presvetClient.GetAsync("comunicacionprescripcion/estaactivo");
 
                 if (!result.IsSuccessStatusCode)
                 {
@@ -89,7 +89,7 @@ namespace eGranjaCAT.Infrastructure.Services
             }
             catch (Exception ex)
             {
-                logger.LogError(ex, "Error al comprovar la connexió amb el servei Presvet");
+                _logger.LogError(ex, "Error al comprovar la connexió amb el servei Presvet");
                 resultObj.Success = false;
                 resultObj.Errors.Add("Error inesperat en comprovar la connexió amb el servei Presvet");
                 return resultObj;
