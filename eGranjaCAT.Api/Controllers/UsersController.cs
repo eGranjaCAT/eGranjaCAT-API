@@ -11,36 +11,39 @@ namespace eGranjaCAT.Api.Controllers
     [Route("api/users")]
     public class UsersController : ControllerBase
     {
-        private readonly IUserService userService;
+        private readonly IUserService _service;
 
         public UsersController(IUserService userService)
         {
-            this.userService = userService;
+            _service = userService;
         }
 
         [HttpPost("register")]
         public async Task<IActionResult> CreateUserAsync(CreateUserDTO userDTO)
         {
-            var result = await userService.CreateUserAsync(userDTO);
-            if (!result.Success) return BadRequest(new { result.Errors });
-            return Ok(result.Data);
+            var result = await _service.CreateUserAsync(userDTO);
+            if (!result.Success) return StatusCode(result.StatusCode, new { result.Errors });
+
+            return StatusCode(result.StatusCode, result.Data);
         }
 
         [HttpPost("login")]
         public async Task<IActionResult> LoginUserAsync(LoginUserDTO userDTO)
         {
-            var result = await userService.LoginUserAsync(userDTO);
-            if (!result.Success) return BadRequest(new { result.Errors });
-            return Ok(result.Data);
+            var result = await _service.LoginUserAsync(userDTO);
+            if (!result.Success) return StatusCode(result.StatusCode, new { result.Errors });
+
+            return StatusCode(result.StatusCode, result.Data);
         }
 
         [HttpGet]
         [Authorize(Roles = "Admin")]
         public async Task<IActionResult> GetUsersAsync()
         {
-            var result = await userService.GetUsersAsync();
-            if (!result.Success) return BadRequest(new { result.Errors });
-            return Ok(result.Data);
+            var result = await _service.GetUsersAsync();
+            if (!result.Success) return StatusCode(result.StatusCode, new { result.Errors });
+
+            return StatusCode(result.StatusCode, result.Data);
         }
 
         [HttpGet("{id:int}")]
@@ -48,13 +51,14 @@ namespace eGranjaCAT.Api.Controllers
         public async Task<IActionResult> GetUserByIdAsync(Guid id)
         {
             var userGuid = Guid.Parse(User.GetUserId());
-            bool isAdmin = User.IsInRole("Admin");
 
+            bool isAdmin = User.IsInRole("Admin");
             if (!isAdmin && id != userGuid) return Forbid("No tens permís per veure aquesta informació");
 
-            var result = await userService.GetUserByIdAsync(id);
-            if (!result.Success) return BadRequest(new { result.Errors });
-            return Ok(result.Data);
+            var result = await _service.GetUserByIdAsync(id);
+            if (!result.Success) return StatusCode(result.StatusCode, new { result.Errors });
+
+            return StatusCode(result.StatusCode, result.Data);
         }
 
 
@@ -62,9 +66,10 @@ namespace eGranjaCAT.Api.Controllers
         [Authorize(Roles = "Admin")]
         public async Task<IActionResult> DeleteUserById(Guid id)
         {
-            var result = await userService.DeleteUserById(id);
-            if (!result.Success) return BadRequest(new { result.Errors });
-            return Ok(new { Message = "User deleted successfully" });
+            var result = await _service.DeleteUserById(id);
+            if (!result.Success) return StatusCode(result.StatusCode, new { result.Errors });
+
+            return StatusCode(result.StatusCode, result.Data);
         }
     }
 }

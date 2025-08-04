@@ -28,30 +28,11 @@ namespace eGranjaCAT.Infrastructure.Services
 
         public async Task<ServiceResult<int?>> CreateLotAsync(int farmId, string userId, CreateLotDTO createLotDTO)
         {
-            var resultObj = new ServiceResult<int?>();
-
             var farmExists = await _context.Farms.AnyAsync(f => f.Id == farmId);
-            if (!farmExists)
-            {
-                resultObj.Success = false;
-                resultObj.Errors.Add("La granja no existe.");
-                return resultObj;
-            }
-
-            if (string.IsNullOrWhiteSpace(userId))
-            {
-                resultObj.Success = false;
-                resultObj.Errors.Add("Usuari no vàlid.");
-                return resultObj;
-            }
+            if (!farmExists) return ServiceResult<int?>.Fail($"La granja {farmId} no existeix.");
 
             var user = await _userManager.FindByIdAsync(userId);
-            if (user == null)
-            {
-                resultObj.Success = false;
-                resultObj.Errors.Add("Usuari no trobat.");
-                return resultObj;
-            }
+            if (user == null) return ServiceResult<int?>.Fail($"Usuari amb ID {userId} no trobat.");
 
             var lot = _mapper.Map<Lot>(createLotDTO);
             lot.FarmId = farmId;
@@ -61,109 +42,60 @@ namespace eGranjaCAT.Infrastructure.Services
             await _context.Lots.AddAsync(lot);
             await _context.SaveChangesAsync();
 
-            resultObj.Success = true;
-            resultObj.Data = lot.Id;
-            return resultObj;
+            return ServiceResult<int?>.Ok(lot.Id, 201);
         }
 
 
         public async Task<ServiceResult<List<GetLotDTO>>> GetActiveLotsByFarmAsync(int farmId)
         {
-            var resultObj = new ServiceResult<List<GetLotDTO>>();
             var lots = await _context.Lots.Include(l => l.User).Include(l => l.Farm).Where(l => l.FarmId == farmId && l.Active).ToListAsync();
-
-            if (lots == null || !lots.Any())
-            {
-                resultObj.Success = false;
-                resultObj.Errors.Add("No hi ha lots actius per a aquesta granja.");
-                return resultObj;
-            }
-
             var lotsDTO = _mapper.Map<List<GetLotDTO>>(lots);
 
-            resultObj.Success = true;
-            resultObj.Data = lotsDTO;
-            return resultObj;
+            return ServiceResult<List<GetLotDTO>>.Ok(lotsDTO);
         }
 
-        public async Task<ServiceResult<GetLotDTO>> GetLotByFarmAndIdAsync(int farmId, int lotId)
+        public async Task<ServiceResult<GetLotDTO>> GetLotByIdAsync(int lotId)
         {
-            var resultObj = new ServiceResult<GetLotDTO>();
-            var lot = await _context.Lots.Include(l => l.User).Include(l => l.Farm).FirstOrDefaultAsync(l => l.Id == lotId && l.FarmId == farmId);
-
-            if (lot == null)
-            {
-                resultObj.Success = false;
-                resultObj.Errors.Add("Lot no trobat");
-                return resultObj;
-            }
+            var lot = await _context.Lots.Include(l => l.User).Include(l => l.Farm).FirstOrDefaultAsync(l => l.Id == lotId);
+            if (lot == null) return ServiceResult<GetLotDTO>.Fail($"Lot {lotId} no trobat");
 
             var lotDTO = _mapper.Map<GetLotDTO>(lot);
 
-            resultObj.Success = true;
-            resultObj.Data = lotDTO;
-            return resultObj;
+            return ServiceResult<GetLotDTO>.Ok(lotDTO);
         }
 
         public async Task<ServiceResult<GetLotDTO>> GetLotsByFarmIdAsync(int farmId)
         {
-            var resultObj = new ServiceResult<GetLotDTO>();
             var lot = await _context.Lots.Include(l => l.User).Include(l => l.Farm).FirstOrDefaultAsync(l => l.FarmId == farmId);
-
-            if (lot == null)
-            {
-                resultObj.Success = false;
-                resultObj.Errors.Add("Lots no trobats");
-                return resultObj;
-            }
-
             var lotDTO = _mapper.Map<GetLotDTO>(lot);
 
-            resultObj.Success = true;
-            resultObj.Data = lotDTO;
-            return resultObj;
+            return ServiceResult<GetLotDTO>.Ok(lotDTO);
         }
 
         public async Task<ServiceResult<bool>> UpdateLotAsync(int farmId, int lotId, UpdateLotDTO dto)
         {
             var result = new ServiceResult<bool>();
             var lot = await _context.Lots.FirstOrDefaultAsync(l => l.Id == lotId && l.FarmId == farmId);
-
-            if (lot == null)
-            {
-                result.Success = false;
-                result.Errors.Add("Lot no trobat");
-                return result;
-            }
+            if (lot == null) return ServiceResult<bool>.Fail($"Lot {lotId} no trobat a la granja {farmId}");
 
             _mapper.Map(dto, lot);
             lot.UpdatedAt = DateTime.UtcNow;
 
             await _context.SaveChangesAsync();
 
-            result.Success = true;
-            result.Data = true;
-            return result;
+            return ServiceResult<bool>.Ok(true, 204);
         }
 
         public async Task<ServiceResult<bool>> DeleteLotAsync(int lotId)
         {
             var result = new ServiceResult<bool>();
             var lot = await _context.Lots.FirstOrDefaultAsync(l => l.Id == lotId);
-
-            if (lot == null)
-            {
-                result.Success = false;
-                result.Errors.Add("Lot no trobat");
-                return result;
-            }
+            if (lot == null) return ServiceResult<bool>.Fail($"Lot {lotId} no trobat");
 
             _context.Lots.Remove(lot);
             await _context.SaveChangesAsync();
 
-            result.Success = true;
-            result.Data = true;
-            return result;
+            return ServiceResult<bool>.Ok(true, 204);
         }
 
         public async Task<MemoryStream> ExportLotsAsync()

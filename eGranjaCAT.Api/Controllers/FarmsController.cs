@@ -10,11 +10,11 @@ namespace eGranjaCAT.Api.Controllers
     [Route("api/farms")]
     public class FarmsController : ControllerBase
     {
-        private readonly IFarmService farmService;
+        private readonly IFarmService _service;
 
         public FarmsController(IFarmService farmService)
         {
-            this.farmService = farmService;
+            _service = farmService;
         }
 
 
@@ -22,27 +22,28 @@ namespace eGranjaCAT.Api.Controllers
         [Authorize(Policy = "Farms")]
         public async Task<IActionResult> GetFarmsAsync()
         {
-            var result = await farmService.GetFarmsAsync();
-            if (!result.Success) return BadRequest(new { result.Errors });
-            return Ok(result.Data);
+            var result = await _service.GetFarmsAsync();
+            if (!result.Success) return StatusCode(result.StatusCode, new { result.Errors });
+
+            return StatusCode(result.StatusCode, result.Data);
         }
 
         [HttpGet("{id:int}", Name = "GetFarmById")]
         [Authorize(Policy = "Farms")]
         public async Task<IActionResult> GetFarmByIdAsync(int id)
         {
-            var result = await farmService.GetFarmByIdAsync(id);
-            if (!result.Success) return BadRequest(new { result.Errors });
+            var result = await _service.GetFarmByIdAsync(id);
+            if (!result.Success) return StatusCode(result.StatusCode, new { result.Errors });
 
-            return Ok(result.Data);
+            return StatusCode(result.StatusCode, result.Data);
         }
 
         [HttpPost]
         [Authorize(Roles = "Admin")]
         public async Task<IActionResult> CreateFarmAsync([FromBody] CreateFarmDTO createFarmDTO)
         {
-            var result = await farmService.CreateFarmAsync(createFarmDTO);
-            if (!result.Success) return BadRequest(new { result.Errors });
+            var result = await _service.CreateFarmAsync(createFarmDTO);
+            if (!result.Success) return StatusCode(result.StatusCode, new { result.Errors });
 
             return CreatedAtRoute("GetFarmById", new { id = result.Data }, null);
         }
@@ -52,10 +53,10 @@ namespace eGranjaCAT.Api.Controllers
         [Authorize(Roles = "Admin")]
         public async Task<IActionResult> DeleteFarmAsync(int id)
         {
-            var result = await farmService.DeleteFarmAsync(id);
-            if (!result.Success) return BadRequest(new { result.Errors });
+            var result = await _service.DeleteFarmAsync(id);
+            if (!result.Success) return StatusCode(result.StatusCode, new { result.Errors });
 
-            return NoContent();
+            return StatusCode(result.StatusCode, result.Data);
         }
     }
 }

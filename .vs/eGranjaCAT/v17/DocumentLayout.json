@@ -1,10 +1,10 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\felix.montragull\\source\\repos\\eGranjaCAT\\",
+  "WorkspaceRootPath": "C:\\Users\\USER1\\source\\repos\\eGranjaCAT\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{D5E8778F-0F4C-49D7-9106-EDA3445BD4EB}|eGranjaCAT.Infrastructure\\eGranjaCAT.Infrastructure.csproj|c:\\users\\felix.montragull\\source\\repos\\egranjacat\\egranjacat.infrastructure\\services\\entradaservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D5E8778F-0F4C-49D7-9106-EDA3445BD4EB}|eGranjaCAT.Infrastructure\\eGranjaCAT.Infrastructure.csproj|solutionrelative:egranjacat.infrastructure\\services\\entradaservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\USER1\\source\\repos\\eGranjaCAT\\eGranjaCAT.Infrastructure\\Services\\EntradaService.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:eGranjaCAT.Infrastructure\\Services\\EntradaService.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -14,7 +14,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Bookmark",
@@ -24,14 +24,13 @@
               "$type": "Document",
               "DocumentIndex": 0,
               "Title": "EntradaService.cs",
-              "DocumentMoniker": "C:\\Users\\felix.montragull\\source\\repos\\eGranjaCAT\\eGranjaCAT.Infrastructure\\Services\\EntradaService.cs",
+              "DocumentMoniker": "C:\\Users\\USER1\\source\\repos\\eGranjaCAT\\eGranjaCAT.Infrastructure\\Services\\EntradaService.cs",
               "RelativeDocumentMoniker": "eGranjaCAT.Infrastructure\\Services\\EntradaService.cs",
-              "ToolTip": "C:\\Users\\felix.montragull\\source\\repos\\eGranjaCAT\\eGranjaCAT.Infrastructure\\Services\\EntradaService.cs",
+              "ToolTip": "C:\\Users\\USER1\\source\\repos\\eGranjaCAT\\eGranjaCAT.Infrastructure\\Services\\EntradaService.cs",
               "RelativeToolTip": "eGranjaCAT.Infrastructure\\Services\\EntradaService.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABsAAAAdAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-04T08:20:43.436Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-08-04T08:20:43.436Z"
             }
           ]
         }

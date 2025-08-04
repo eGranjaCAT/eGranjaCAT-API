@@ -22,8 +22,6 @@ namespace eGranjaCAT.Infrastructure.Services
 
         public async Task<ServiceResult<LoadDSTGuidesResponseDTO>> LoadAndGetDSTGuides(LoadDSTGuidesRequestDTO requestDTO)
         {
-            var resultObj = new ServiceResult<LoadDSTGuidesResponseDTO>();
-
             try
             {
                 var response = await _gtrClient.PostAsJsonAsync("WSMobilitat/AppJava/WSCarregaGuiesMobilitat", requestDTO);
@@ -34,36 +32,29 @@ namespace eGranjaCAT.Infrastructure.Services
 
                     if (responseData != null && responseData.Guias != null)
                     {
-                        resultObj.Success = true;
-                        resultObj.Data = responseData;
+                        return ServiceResult<LoadDSTGuidesResponseDTO>.Ok(responseData, 200);
                     }
                     else
                     {
-                        resultObj.Success = false;
-                        resultObj.Errors.Add("Resposta buida o invàlida del servei GTR");
+                        return ServiceResult<LoadDSTGuidesResponseDTO>.Fail("Resposta del servei GTR buida o no vàlida", 500);
                     }
                 }
                 else
                 {
-                    resultObj.Success = false;
-                    resultObj.Errors.Add($"Error HTTP: {response.StatusCode} - {response.ReasonPhrase}");
+                    return ServiceResult<LoadDSTGuidesResponseDTO>.Fail($"Error HTTP: {response.StatusCode} - {response.ReasonPhrase}", (int)response.StatusCode);
                 }
             }
             catch (Exception ex)
             {
                 _logger.LogError(ex, "Error al cridar el servei GTR WSCarregaGuiesMobilitat");
-                resultObj.Success = false;
-                resultObj.Errors.Add("Error inesperat en cridar el servei GTR");
-            }
 
-            return resultObj;
+                return ServiceResult<LoadDSTGuidesResponseDTO>.FromException(ex, 500);
+            }
         }
 
 
         public async Task<ServiceResult<bool>> UpdateDSTGuides(UpdateDSTGuidesRequest requestDTO)
         {
-            var resultObj = new ServiceResult<bool>();
-
             try
             {
                 var response = await _gtrClient.PostAsJsonAsync("WSMobilitat/AppJava/WSModificarGuiasMovilitat", requestDTO);
@@ -72,30 +63,20 @@ namespace eGranjaCAT.Infrastructure.Services
                 {
                     var responseData = await response.Content.ReadFromJsonAsync<GTRSuccessResponseDTO>();
 
-                    if (responseData?.Codi == "OK")
-                    {
-                        resultObj.Success = true;
-                    }
-                    else
-                    {
-                        resultObj.Success = false;
-                        resultObj.Errors.Add($"Resposta del servei GTR: {responseData?.Codi} - {responseData?.Descripcio ?? "Descripció buida"}");
-                    }
+                    if (responseData?.Codi == "OK") return ServiceResult<bool>.Ok(true, 204);
+                    else return ServiceResult<bool>.Fail($"Error en la resposta del servei GTR: {responseData?.Descripcio ?? "Resposta buida"}", 500);
                 }
                 else
                 {
-                    resultObj.Success = false;
-                    resultObj.Errors.Add($"Error HTTP: {response.StatusCode} - {response.ReasonPhrase}");
+                    return ServiceResult<bool>.Fail($"Error HTTP: {response.StatusCode} - {response.ReasonPhrase}", (int)response.StatusCode);
                 }
             }
             catch (Exception ex)
             {
                 _logger.LogError(ex, "Error al cridar el servei GTR WSModificarGuiasMovilitat");
-                resultObj.Success = false;
-                resultObj.Errors.Add("Error inesperat en cridar el servei GTR");
-            }
 
-            return resultObj;
+                return ServiceResult<bool>.FromException(ex, 500);
+            }
         }
     }
 }

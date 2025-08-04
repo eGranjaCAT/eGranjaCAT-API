@@ -1,10 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "pdmxMlfJ464=",
+  "dgSpecHash": "O3Nm5/xp6No=",
   "success": true,
-  "projectFilePath": "C:\\Users\\felix.montragull\\Source\\Repos\\eGranjaCAT\\eGranjaCAT.Domain\\eGranjaCAT.Domain.csproj",
+  "projectFilePath": "C:\\Users\\USER1\\Source\\Repos\\eGranjaCAT\\eGranjaCAT.Domain\\eGranjaCAT.Domain.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\felix.montragull\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\9.0.7\\microsoft.extensions.dependencyinjection.abstractions.9.0.7.nupkg.sha512"
+    "C:\\Users\\USER1\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\9.0.7\\microsoft.extensions.dependencyinjection.abstractions.9.0.7.nupkg.sha512"
   ],
   "logs": []
 }

@@ -1,13 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "W8Tf+n5u8NQ=",
+  "dgSpecHash": "e3cIqpWLVmY=",
   "success": true,
-  "projectFilePath": "C:\\Users\\felix.montragull\\Source\\Repos\\eGranjaCAT\\eGranjaCAT.Application\\eGranjaCAT.Application.csproj",
+  "projectFilePath": "C:\\Users\\USER1\\Source\\Repos\\eGranjaCAT\\eGranjaCAT.Application\\eGranjaCAT.Application.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\felix.montragull\\.nuget\\packages\\automapper\\14.0.0\\automapper.14.0.0.nupkg.sha512",
-    "C:\\Users\\felix.montragull\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\9.0.7\\microsoft.extensions.dependencyinjection.abstractions.9.0.7.nupkg.sha512",
-    "C:\\Users\\felix.montragull\\.nuget\\packages\\microsoft.extensions.options\\8.0.0\\microsoft.extensions.options.8.0.0.nupkg.sha512",
-    "C:\\Users\\felix.montragull\\.nuget\\packages\\microsoft.extensions.primitives\\8.0.0\\microsoft.extensions.primitives.8.0.0.nupkg.sha512"
+    "C:\\Users\\USER1\\.nuget\\packages\\automapper\\14.0.0\\automapper.14.0.0.nupkg.sha512",
+    "C:\\Users\\USER1\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\9.0.7\\microsoft.extensions.dependencyinjection.abstractions.9.0.7.nupkg.sha512",
+    "C:\\Users\\USER1\\.nuget\\packages\\microsoft.extensions.options\\8.0.0\\microsoft.extensions.options.8.0.0.nupkg.sha512",
+    "C:\\Users\\USER1\\.nuget\\packages\\microsoft.extensions.primitives\\8.0.0\\microsoft.extensions.primitives.8.0.0.nupkg.sha512"
   ],
   "logs": []
 }

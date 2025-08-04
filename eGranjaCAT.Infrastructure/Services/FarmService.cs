@@ -21,74 +21,43 @@ namespace eGranjaCAT.Infrastructure.Services
 
         public async Task<ServiceResult<List<GetFarmDTO>>> GetFarmsAsync()
         {
-            var resultObj = new ServiceResult<List<GetFarmDTO>>();
             var farms = await _context.Farms.ToListAsync();
             var farmsDTOs = _mapper.Map<List<GetFarmDTO>>(farms);
 
-            if (farmsDTOs == null || !farmsDTOs.Any())
-            {
-                resultObj.Success = false;
-                resultObj.Errors.Add("No farms found.");
-                return resultObj;
-            }
-
-            resultObj.Data = farmsDTOs;
-            resultObj.Success = true;
-            return resultObj;
+            return ServiceResult<List<GetFarmDTO>>.Ok(farmsDTOs);
         }
 
         public async Task<ServiceResult<int?>> CreateFarmAsync(CreateFarmDTO createFarmDTO)
         {
-            var resultObj = new ServiceResult<int?>();
             var farm = _mapper.Map<Farm>(createFarmDTO);
-
             farm.CreatedAt = DateTime.UtcNow;
             farm.UpdatedAt = DateTime.UtcNow;
 
             await _context.Farms.AddAsync(farm);
             await _context.SaveChangesAsync();
 
-            resultObj.Success = true;
-            resultObj.Data = farm.Id;
-            return resultObj;
+            return ServiceResult<int?>.Ok(farm.Id, 201);
         }
 
         public async Task<ServiceResult<GetFarmDTO?>> GetFarmByIdAsync(int id)
         {
-            var resultObj = new ServiceResult<GetFarmDTO?>();
-
             var farm = await _context.Farms.FindAsync(id);
-            if (farm == null)
-            {
-                resultObj.Success = false;
-                resultObj.Errors.Add($"Farm with ID {id} not found.");
-                return resultObj;
-            }
+            if (farm == null) return ServiceResult<GetFarmDTO?>.Fail($"Granja {id} no trobada");
 
             var farmDto = _mapper.Map<GetFarmDTO>(farm);
-            resultObj.Data = farmDto;
-            resultObj.Success = true;
-            return resultObj;
+
+            return ServiceResult<GetFarmDTO?>.Ok(farmDto);
         }
 
         public async Task<ServiceResult<bool>> DeleteFarmAsync(int id)
         {
-            var resultObj = new ServiceResult<bool>();
-
             var farm = await _context.Farms.FindAsync(id);
-            if (farm == null)
-            {
-                resultObj.Success = false;
-                resultObj.Errors.Add($"Farm with ID {id} not found.");
-                return resultObj;
-            }
+            if (farm == null) return ServiceResult<bool>.Fail($"Granja {id} no trobada", 404);
 
             _context.Farms.Remove(farm);
             await _context.SaveChangesAsync();
 
-            resultObj.Success = true;
-            resultObj.Data = true;
-            return resultObj;
+            return ServiceResult<bool>.Ok(true, 204);
         }
     }
 }
