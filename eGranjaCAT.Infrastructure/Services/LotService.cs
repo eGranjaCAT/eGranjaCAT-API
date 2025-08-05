@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using eGranjaCAT.Application.Common;
 using eGranjaCAT.Application.DTOs.Lot;
+using eGranjaCAT.Application.DTOs.User;
 using eGranjaCAT.Domain.Entities;
 using eGranjaCAT.Infrastructure.Data;
 using eGranjaCAT.Infrastructure.ExportMappings;
@@ -48,29 +49,57 @@ namespace eGranjaCAT.Infrastructure.Services
 
         public async Task<ServiceResult<List<GetLotDTO>>> GetActiveLotsByFarmAsync(int farmId)
         {
-            var lots = await _context.Lots.Include(l => l.User).Include(l => l.Farm).Where(l => l.FarmId == farmId && l.Active).ToListAsync();
-            var lotsDTO = _mapper.Map<List<GetLotDTO>>(lots);
+            var lots = await _context.Lots.Include(l => l.Farm).Where(l => l.FarmId == farmId && l.Active).ToListAsync();
+
+            var userGuids = lots.Select(l => l.UserGuid).Distinct().ToList();
+            var users = await _userManager.Users.Where(u => userGuids.Contains(u.Id)).ToListAsync();
+
+            var userDtos = _mapper.Map<List<GetUserDTO>>(users);
+            var userDict = userDtos.ToDictionary(u => u.Id);
+
+            var lotsDTO = _mapper.Map<List<GetLotDTO>>(lots, opt =>
+            {
+                opt.Items["UserDict"] = userDict;
+            });
 
             return ServiceResult<List<GetLotDTO>>.Ok(lotsDTO);
         }
 
+
         public async Task<ServiceResult<GetLotDTO>> GetLotByIdAsync(int lotId)
         {
-            var lot = await _context.Lots.Include(l => l.User).Include(l => l.Farm).FirstOrDefaultAsync(l => l.Id == lotId);
+            var lot = await _context.Lots.Include(l => l.Farm).FirstOrDefaultAsync(l => l.Id == lotId);
+
+            var user = await _userManager.FindByIdAsync(lot!.UserGuid);
+            var userDTO = _mapper.Map<GetUserDTO>(user);
+
             if (lot == null) return ServiceResult<GetLotDTO>.Fail($"Lot {lotId} no trobat");
 
             var lotDTO = _mapper.Map<GetLotDTO>(lot);
+            lotDTO.User = userDTO;
 
             return ServiceResult<GetLotDTO>.Ok(lotDTO);
         }
 
         public async Task<ServiceResult<GetLotDTO>> GetLotsByFarmIdAsync(int farmId)
         {
-            var lot = await _context.Lots.Include(l => l.User).Include(l => l.Farm).FirstOrDefaultAsync(l => l.FarmId == farmId);
+            var lot = await _context.Lots.Include(l => l.Farm).FirstOrDefaultAsync(l => l.FarmId == farmId);
+            if (lot == null) return ServiceResult<GetLotDTO>.Fail($"No s'ha trobat cap lot a la granja {farmId}");
+
+            var user = await _userManager.FindByIdAsync(lot.UserGuid);
+            var userDTO = user != null ? _mapper.Map<GetUserDTO>(user) : new GetUserDTO
+            {
+                Id = lot.UserGuid,
+                Name = "Usuari no trobat",
+                Email = ""
+            };
+
             var lotDTO = _mapper.Map<GetLotDTO>(lot);
+            lotDTO.User = userDTO;
 
             return ServiceResult<GetLotDTO>.Ok(lotDTO);
         }
+
 
         public async Task<ServiceResult<bool>> UpdateLotAsync(int farmId, int lotId, UpdateLotDTO dto)
         {
@@ -100,19 +129,22 @@ namespace eGranjaCAT.Infrastructure.Services
 
         public async Task<MemoryStream> ExportLotsAsync()
         {
-            var lots = await _context.Lots.Include(l => l.User).Include(l => l.Farm).ToListAsync();
+            var lots = await _context.Lots.Include(l => l.Farm).ToListAsync();
+
             return await _excelService.GenerateExcelAsync(lots, ExcelColumnMappings.LotExcelColumnMappings, $"Lots - {DateTime.Today:yyyyMMdd}");
         }
 
         public async Task<MemoryStream> ExportLotsByFarmAsync(int farmId)
         {
-            var lots = await _context.Lots.Include(l => l.User).Include(l => l.Farm).Where(l => l.FarmId == farmId).ToListAsync();
+            var lots = await _context.Lots.Include(l => l.Farm).Where(l => l.FarmId == farmId).ToListAsync();
+
             return await _excelService.GenerateExcelAsync(lots, ExcelColumnMappings.LotExcelColumnMappings, $"Lots (Granja {farmId}) - {DateTime.Today:yyyyMMdd}");
         }
 
         public async Task<MemoryStream> ExportLotByIdAsync(int lotId)
         {
-            var lots = await _context.Lots.Include(l => l.User).Include(l => l.Farm).Where(l => l.Id == lotId).ToListAsync();
+            var lots = await _context.Lots.Include(l => l.Farm).Where(l => l.Id == lotId).ToListAsync();
+
             return await _excelService.GenerateExcelAsync(lots, ExcelColumnMappings.LotExcelColumnMappings, $"Lot {lotId} - {DateTime.Today:yyyyMMdd}");
         }
     }

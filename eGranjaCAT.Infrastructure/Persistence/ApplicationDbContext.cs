@@ -1,4 +1,4 @@
-﻿using eGranjaCAT.Application.Entities;
+﻿ using eGranjaCAT.Application.Entities;
 using eGranjaCAT.Domain.Entities;
 using eGranjaCAT.Infrastructure.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
@@ -22,30 +22,17 @@ namespace eGranjaCAT.Infrastructure.Data
         {
             base.OnModelCreating(modelBuilder);
 
-            // LOTS
-            modelBuilder.Entity<Lot>()
-                .HasOne(l => l.User)
-                .WithMany()
-                .HasForeignKey(l => l.UserGuid)
-                .OnDelete(DeleteBehavior.Restrict);
-
             modelBuilder.Entity<Lot>()
                 .HasOne(l => l.Farm)
                 .WithMany()
                 .HasForeignKey(l => l.FarmId)
                 .OnDelete(DeleteBehavior.Restrict);
 
-            // ENTRADES
+
             modelBuilder.Entity<Entrada>()
                 .HasOne(l => l.Farm)
                 .WithMany()
                 .HasForeignKey(l => l.FarmId)
-                .OnDelete(DeleteBehavior.Restrict);
-
-            modelBuilder.Entity<Entrada>()
-                .HasOne(l => l.User)
-                .WithMany()
-                .HasForeignKey(l => l.UserGuid)
                 .OnDelete(DeleteBehavior.Restrict);
 
             modelBuilder.Entity<Entrada>()

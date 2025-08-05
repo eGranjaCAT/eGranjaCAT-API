@@ -1,5 +1,5 @@
 ﻿using eGranjaCAT.Application.Entities;
-using eGranjaCAT.Domain.Common;
+
 
 namespace eGranjaCAT.Domain.Entities
 {
@@ -13,7 +13,6 @@ namespace eGranjaCAT.Domain.Entities
         public Farm Farm { get; set; } = null!;
 
         public string UserGuid { get; set; }
-        public IUserBase User { get; set; }
 
         public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
         public DateTime? UpdatedAt { get; set; }

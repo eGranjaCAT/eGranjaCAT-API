@@ -1,10 +1,9 @@
-﻿using eGranjaCAT.Domain.Common;
-using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Identity;
 
 
 namespace eGranjaCAT.Infrastructure.Identity
 {
-    public class User : IdentityUser, IUserBase
+    public class User : IdentityUser
     {
         public required string Name { get; set; }
         public required string Lastname { get; set; }

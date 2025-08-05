@@ -1,5 +1,4 @@
 ﻿using eGranjaCAT.Application.Entities;
-using eGranjaCAT.Domain.Common;
 using eGranjaCAT.Domain.Enums;
 
 
@@ -28,7 +27,6 @@ namespace eGranjaCAT.Domain.Entities
         public string? Observacions { get; set; }
 
         public string UserGuid { get; set; }
-        public IUserBase User { get; set; } = null!;
 
         public int FarmId { get; set; }
         public Farm Farm { get; set; } = null!;
