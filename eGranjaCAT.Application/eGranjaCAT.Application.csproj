@@ -16,4 +16,9 @@
     <ProjectReference Include="..\eGranjaCAT.Shared\eGranjaCAT.Shared.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="DTOs\GTR\Pinsos\" />
+    <Folder Include="DTOs\Sortida\" />
+  </ItemGroup>
+
 </Project>

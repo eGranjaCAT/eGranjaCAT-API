@@ -10,7 +10,7 @@ namespace eGranjaCAT.Application.Mappings
     {
         public UserProfile()
         {
-            CreateMap<CreateUserDTO, UserBase>().ForMember(dest => dest.Email, opt => opt.MapFrom(src => src.Email));
+            CreateMap<CreateUserDTO, User>().ForMember(dest => dest.Email, opt => opt.MapFrom(src => src.Email));
 
             CreateMap<UserBase, TokenUserDTO>().ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.Id));
             CreateMap<UserBase, GetUserDTO>();
