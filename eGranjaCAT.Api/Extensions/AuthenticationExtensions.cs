@@ -20,10 +20,12 @@ namespace eGranjaCAT.Api.Extensions
                 options.TokenValidationParameters = new TokenValidationParameters
                 {
                     ValidateIssuerSigningKey = true,
-                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(config["JwtKey"]!)),
-                    ValidateIssuer = false,
-                    ValidateAudience = false,
+                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(config["JwtSettings:Key"]!)),
+                    ValidateIssuer = true,
+                    ValidateAudience = true,
                     ValidateLifetime = true,
+                    ValidAudience = config["JwtSettings:Audience"],
+                    ValidIssuer = config["JwtSettings:Issuer"],
                     ClockSkew = TimeSpan.Zero,
                     NameClaimType = ClaimTypes.Name,
                     RoleClaimType = ClaimTypes.Role

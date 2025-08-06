@@ -192,14 +192,13 @@ namespace eGranjaCAT.Infrastructure.Services
             {
                 new Claim(ClaimTypes.NameIdentifier, userDTO.Id ?? throw new ArgumentNullException(nameof(userDTO.Id))),
                 new Claim(ClaimTypes.Email, userDTO.Email ?? throw new ArgumentNullException(nameof(userDTO.Email))),
-                new Claim(ClaimTypes.Role, userDTO.Role.ToString() ?? throw new ArgumentNullException(nameof(userDTO.Role)))
+                new Claim(ClaimTypes.Role, userDTO.Role ?? throw new ArgumentNullException(nameof(userDTO.Role)))
             };
 
             string fullName;
             if (!string.IsNullOrWhiteSpace(userDTO.Name) || !string.IsNullOrWhiteSpace(userDTO.Lastname))
             {
-                var parts = new[] { userDTO.Name, userDTO.Lastname }
-                                .Where(s => !string.IsNullOrWhiteSpace(s));
+                var parts = new[] { userDTO.Name, userDTO.Lastname }.Where(s => !string.IsNullOrWhiteSpace(s));
                 fullName = string.Join(" ", parts);
             }
             else
@@ -216,11 +215,13 @@ namespace eGranjaCAT.Infrastructure.Services
                 claims.AddRange(userClaims);
             }
 
-            var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["JwtKey"]!));
+            var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["JwtSettings:Key"]!));
             var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
             var expires = DateTime.UtcNow.AddDays(1);
 
             var secToken = new JwtSecurityToken(
+                issuer: _configuration["JwtSettings:Issuer"],
+                audience: _configuration["JwtSettings:Audience"],
                 claims: claims,
                 expires: expires,
                 signingCredentials: creds
