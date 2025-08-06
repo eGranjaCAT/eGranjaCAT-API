@@ -1,6 +1,6 @@
 ﻿namespace eGranjaCAT.Domain.Enums
 {
-    public enum TipusCategories
+    public enum CategoriesEnum
     {
         Cria,
         Transicio,

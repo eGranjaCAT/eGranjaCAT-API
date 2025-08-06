@@ -5,7 +5,6 @@ namespace eGranjaCAT.Application.Entities
 {
     public class Farm
     {
-        [Key]
         public int Id { get; set; }
 
         [Required]

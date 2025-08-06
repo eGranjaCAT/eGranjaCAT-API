@@ -12,5 +12,13 @@ namespace eGranjaCAT.Api.Extensions
 
             return userIdClaim.Value;
         }
+
+        public static string GetUserRole(this ClaimsPrincipal user)
+        {
+            var userIdClaim = user.FindFirst(ClaimTypes.Role);
+            if (userIdClaim == null) throw new Exception("User role claim not found.");
+
+            return userIdClaim.Value;
+        }
     }
 }

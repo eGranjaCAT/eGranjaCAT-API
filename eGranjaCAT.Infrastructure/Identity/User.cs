@@ -8,6 +8,5 @@ namespace eGranjaCAT.Infrastructure.Identity
         public required string Name { get; set; }
         public required string Lastname { get; set; }
         public required string Role { get; set; }
-        public override string? Email { get; set; }
     }
 }

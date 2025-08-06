@@ -1,6 +1,6 @@
 ﻿namespace eGranjaCAT.Domain.Enums
 {
-    public enum UserRoles
+    public enum RolesEnum
     {
         Admin,
         User,

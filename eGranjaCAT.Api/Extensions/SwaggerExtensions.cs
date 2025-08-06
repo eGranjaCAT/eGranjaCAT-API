@@ -1,5 +1,6 @@
 ﻿using Microsoft.OpenApi.Models;
 
+
 namespace eGranjaCAT.Api.Extensions
 {
     public static class SwaggerExtensions

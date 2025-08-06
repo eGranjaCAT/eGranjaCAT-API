@@ -12,7 +12,7 @@ namespace eGranjaCAT.Application.DTOs.Entrada
 
         [Required]
         [JsonConverter(typeof(JsonStringEnumConverter))]
-        public TipusCategories Categoria { get; set; }
+        public CategoriesEnum Categoria { get; set; }
 
         [Required]
         [DataType(DataType.Date)]
@@ -32,7 +32,7 @@ namespace eGranjaCAT.Application.DTOs.Entrada
 
         [Required]
         [JsonConverter(typeof(JsonStringEnumConverter))]
-        public TipusOrigen Origen { get; set; }
+        public OrigensEnum Origen { get; set; }
 
         public string? MarcaOficial { get; set; }
 
@@ -47,7 +47,7 @@ namespace eGranjaCAT.Application.DTOs.Entrada
         {
             switch (Origen)
             {
-                case TipusOrigen.MarcaOficial:
+                case OrigensEnum.MarcaOficial:
                     if (string.IsNullOrWhiteSpace(MarcaOficial))
                     {
                         yield return new ValidationResult(
@@ -62,7 +62,7 @@ namespace eGranjaCAT.Application.DTOs.Entrada
                     }
                     break;
 
-                case TipusOrigen.CodiREGA:
+                case OrigensEnum.CodiREGA:
                     if (string.IsNullOrWhiteSpace(CodiREGA))
                     {
                         yield return new ValidationResult(

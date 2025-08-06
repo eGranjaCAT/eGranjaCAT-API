@@ -12,7 +12,7 @@ namespace eGranjaCAT.Application.DTOs.Entrada
         public int Id { get; set; }
 
         [JsonConverter(typeof(JsonStringEnumConverter))]
-        public TipusCategories Categoria { get; set; }
+        public CategoriesEnum Categoria { get; set; }
 
         public DateTime Data { get; set; }
 
@@ -23,7 +23,7 @@ namespace eGranjaCAT.Application.DTOs.Entrada
         public double PesIndividual { get; set; }
 
         [JsonConverter(typeof(JsonStringEnumConverter))]
-        public TipusOrigen Origen { get; set; }
+        public OrigensEnum Origen { get; set; }
 
         public string? MarcaOficial { get; set; }
 

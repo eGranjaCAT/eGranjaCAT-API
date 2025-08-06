@@ -40,23 +40,12 @@ namespace eGranjaCAT.Infrastructure.Services
 
         public async Task<ServiceResult<AuthResponseDTO>> CreateUserAsync(CreateUserDTO userDTO)
         {
-            var resultObj = new ServiceResult<AuthResponseDTO>();
-
             try
             {
                 var user = _mapper.Map<User>(userDTO);
                 var result = await _userManager.CreateAsync(user, userDTO.Password);
 
-                if (!result.Succeeded)
-                {
-                    foreach (var error in result.Errors)
-                    {
-                        _logger.LogError($"Error creant usuari: {error.Description}");
-                        resultObj.Errors.Add(error.Description);
-                    }
-                    resultObj.Success = false;
-                    return resultObj;
-                }
+                if (!result.Succeeded) return ServiceResult<AuthResponseDTO>.Fail("Error creant l'usuari: " + string.Join(", ", result.Errors.Select(e => e.Description)));
 
                 var roleName = userDTO.Role.ToString();
                 var roleExists = await _roleManager.RoleExistsAsync(roleName);
@@ -64,47 +53,24 @@ namespace eGranjaCAT.Infrastructure.Services
                 if (!roleExists)
                 {
                     var roleResult = await _roleManager.CreateAsync(new IdentityRole(roleName));
-                    if (!roleResult.Succeeded)
-                    {
-                        foreach (var error in roleResult.Errors)
-                        {
-                            _logger.LogError($"Error creant el rol: {error.Description}");
-                            resultObj.Errors.Add(error.Description);
-                        }
-                        resultObj.Success = false;
-                        return resultObj;
-                    }
+                    if (!roleResult.Succeeded) return ServiceResult<AuthResponseDTO>.Fail("Error creant el rol: " + string.Join(", ", roleResult.Errors.Select(e => e.Description)));
                 }
 
                 var addToRoleResult = await _userManager.AddToRoleAsync(user, roleName);
-                if (!addToRoleResult.Succeeded)
-                {
-                    foreach (var error in addToRoleResult.Errors)
-                    {
-                        _logger.LogError($"Error asignant el rol: {error.Description}");
-                        resultObj.Errors.Add(error.Description);
-                    }
-                    resultObj.Success = false;
-                    return resultObj;
-                }
+                if (!addToRoleResult.Succeeded) return ServiceResult<AuthResponseDTO>.Fail("Error afegint l'usuari al rol: " + string.Join(", ", addToRoleResult.Errors.Select(e => e.Description)));
 
                 foreach (var perm in userDTO.Permissions)
                 {
-                    var claim = new Claim("Access", perm);
+                    var claim = new Claim("Access", perm.ToString());
                     var claimResult = await _userManager.AddClaimAsync(user, claim);
-                    if (!claimResult.Succeeded)
-                    {
-                        foreach (var error in claimResult.Errors)
-                            _logger.LogError($"Error adding claim {perm}: {error.Description}");
-                    }
+                    if (!claimResult.Succeeded) return ServiceResult<AuthResponseDTO>.Fail("Error afegint permís a l'usuari: " + string.Join(", ", claimResult.Errors.Select(e => e.Description)));
                 }
-
 
                 await _context.SaveChangesAsync();
 
                 var variables = new Dictionary<string, string>
                 {
-                    { "Name", userDTO.Name },
+                    { "Name", $"{userDTO.Name} {userDTO.Lastname}" },
                     { "Email", userDTO.Email },
                     { "Role", userDTO.Role.ToString() },
                     { "RegistrationDate", DateTime.Now.ToString("dd/MM/yyyy") }
@@ -117,18 +83,17 @@ namespace eGranjaCAT.Infrastructure.Services
                 }
 
                 var tokenDTO = _mapper.Map<TokenUserDTO>(user);
+                tokenDTO.Role = roleName;
+
                 var token = await BuildJwtToken(tokenDTO);
 
-                resultObj.Data = token;
-                resultObj.Success = true;
-                return resultObj;
+                return ServiceResult<AuthResponseDTO>.Ok(token, 201);
             }
             catch (Exception ex)
             {
                 _logger.LogError(ex, "Excepción al crear el usuario.");
-                resultObj.Success = false;
-                resultObj.Errors.Add("Error inesperado al crear el usuario.");
-                return resultObj;
+
+                return ServiceResult<AuthResponseDTO>.FromException(ex);
             }
         }
 
@@ -136,147 +101,86 @@ namespace eGranjaCAT.Infrastructure.Services
 
         public async Task<ServiceResult<AuthResponseDTO>> LoginUserAsync(LoginUserDTO loginDTO)
         {
-            var resultObj = new ServiceResult<AuthResponseDTO>();
-
             try
             {
                 var user = await _userManager.FindByEmailAsync(loginDTO.Email);
-                if (user == null)
-                {
-                    _logger.LogWarning("Inici de sessió fallit: usuari no trobat amb el correu {Email}", loginDTO.Email);
-                    resultObj.Errors.Add("Correu o contrasenya invàlids.");
-                    resultObj.Success = false;
-                    return resultObj;
-                }
+                if (user == null) return ServiceResult<AuthResponseDTO>.Fail("Usuari no trobat.");
 
                 var passwordCheck = await _userManager.CheckPasswordAsync(user, loginDTO.Password);
-                if (!passwordCheck)
-                {
-                    _logger.LogWarning("Inici de sessió fallit: contrasenya incorrecta per a l'usuari {Email}", loginDTO.Email);
-                    resultObj.Errors.Add("Correu o contrasenya invàlids.");
-                    resultObj.Success = false;
-                    return resultObj;
-                }
+                if (!passwordCheck) return ServiceResult<AuthResponseDTO>.Fail("Contrasenya incorrecta.");
 
                 var tokenDTO = _mapper.Map<TokenUserDTO>(user);
 
                 var roles = await _userManager.GetRolesAsync(user);
-                tokenDTO.Role = roles.Any() && Enum.TryParse<UserRoles>(roles.First(), out var role) ? role.ToString() : UserRoles.User.ToString();
+                tokenDTO.Role = roles.Any() && Enum.TryParse<RolesEnum>(roles.First(), out var role) ? role.ToString() : RolesEnum.User.ToString();
 
                 var token = await BuildJwtToken(tokenDTO);
-                resultObj.Data = token;
-                resultObj.Success = true;
-                return resultObj;
+
+                return ServiceResult<AuthResponseDTO>.Ok(token, 200);
             }
             catch (Exception ex)
             {
                 _logger.LogError(ex, "Error inesperat en iniciar sessió per a l'usuari {Email}", loginDTO.Email);
-                resultObj.Errors.Add("S'ha produït un error inesperat en iniciar sessió. Torna-ho a intentar més tard.");
-                resultObj.Success = false;
-                return resultObj;
+
+                return ServiceResult<AuthResponseDTO>.FromException(ex);
             }
         }
 
 
-
         public async Task<ServiceResult<bool>> DeleteUserById(Guid id)
         {
-            var resultObj = new ServiceResult<bool>();
-
             try
             {
                 var user = await _userManager.FindByIdAsync(id.ToString());
-                if (user == null)
-                {
-                    _logger.LogWarning("Usuari amb ID {Id} no trobat.", id);
-                    resultObj.Errors.Add($"L'usuari amb ID {id} no s'ha trobat.");
-                    resultObj.Success = false;
-                    return resultObj;
-                }
+                if (user == null) return ServiceResult<bool>.Fail($"Usuari amb ID {id} no trobat.");
 
                 var deleteResult = await _userManager.DeleteAsync(user);
-                if (!deleteResult.Succeeded)
-                {
-                    foreach (var error in deleteResult.Errors)
-                    {
-                        _logger.LogError("Error en eliminar l'usuari amb ID {Id}: {Error}", id, error.Description);
-                        resultObj.Errors.Add(error.Description);
-                    }
-                    resultObj.Success = false;
-                    return resultObj;
-                }
+                if (!deleteResult.Succeeded) return ServiceResult<bool>.Fail("Error eliminant l'usuari: " + string.Join(", ", deleteResult.Errors.Select(e => e.Description)));
 
-                resultObj.Data = true;
-                resultObj.Success = true;
-                return resultObj;
+                return ServiceResult<bool>.Ok(true, 204);
             }
             catch (Exception ex)
             {
                 _logger.LogError(ex, "Excepció inesperada en intentar eliminar l'usuari amb ID {Id}", id);
-                resultObj.Errors.Add("S'ha produït un error inesperat en eliminar l'usuari.");
-                resultObj.Success = false;
-                return resultObj;
+
+                return ServiceResult<bool>.FromException(ex);
             }
         }
 
 
         public async Task<ServiceResult<List<GetUserDTO>>> GetUsersAsync()
         {
-            var resultObj = new ServiceResult<List<GetUserDTO>>();
-
             try
             {
                 var users = await _userManager.Users.ToListAsync();
                 var userDTOs = _mapper.Map<List<GetUserDTO>>(users);
 
-                if (userDTOs == null || !userDTOs.Any())
-                {
-                    _logger.LogInformation("No s'han trobat usuaris.");
-                    resultObj.Data = new List<GetUserDTO>();
-                    resultObj.Success = true;
-                    return resultObj;
-                }
-
-                resultObj.Data = userDTOs;
-                resultObj.Success = true;
-                return resultObj;
+                return ServiceResult<List<GetUserDTO>>.Ok(userDTOs, 200);
             }
             catch (Exception ex)
             {
                 _logger.LogError(ex, "Error inesperat en obtenir la llista d'usuaris.");
-                resultObj.Errors.Add("S'ha produït un error inesperat en obtenir els usuaris.");
-                resultObj.Success = false;
-                return resultObj;
+
+                return ServiceResult<List<GetUserDTO>>.FromException(ex);
             }
         }
 
         public async Task<ServiceResult<GetUserDTO?>> GetUserByIdAsync(Guid id)
         {
-            var resultObj = new ServiceResult<GetUserDTO?>();
-
             try
             {
                 var user = await _userManager.FindByIdAsync(id.ToString());
                 var userDTO = _mapper.Map<GetUserDTO>(user);
 
-                if (userDTO == null)
-                {
-                    _logger.LogWarning("Usuari amb ID {Id} no trobat.", id);
-                    resultObj.Errors.Add($"L'usuari amb ID {id} no s'ha trobat.");
-                    resultObj.Success = false;
-                    return resultObj;
-                }
+                if (userDTO == null) return ServiceResult<GetUserDTO?>.Fail($"Usuari amb ID {id} no trobat.");
 
-                resultObj.Data = userDTO;
-                resultObj.Success = true;
-                return resultObj;
+                return ServiceResult<GetUserDTO?>.Ok(userDTO, 200);
             }
             catch (Exception ex)
             {
                 _logger.LogError(ex, "Error inesperat en obtenir l'usuari amb ID {Id}", id);
-                resultObj.Errors.Add("S'ha produït un error inesperat en obtenir l'usuari.");
-                resultObj.Success = false;
-                return resultObj;
+
+                return ServiceResult<GetUserDTO?>.FromException(ex);
             }
         }
 
@@ -286,14 +190,31 @@ namespace eGranjaCAT.Infrastructure.Services
         {
             var claims = new List<Claim>
             {
-                new Claim(ClaimTypes.NameIdentifier, userDTO.Id),
-                new Claim(ClaimTypes.Name, userDTO.Email),
-                new Claim(ClaimTypes.Role, userDTO.Role.ToString())
+                new Claim(ClaimTypes.NameIdentifier, userDTO.Id ?? throw new ArgumentNullException(nameof(userDTO.Id))),
+                new Claim(ClaimTypes.Email, userDTO.Email ?? throw new ArgumentNullException(nameof(userDTO.Email))),
+                new Claim(ClaimTypes.Role, userDTO.Role.ToString() ?? throw new ArgumentNullException(nameof(userDTO.Role)))
             };
 
-            var user = await _userManager.FindByEmailAsync(userDTO.Email);
-            var userClaims = await _userManager.GetClaimsAsync(user!);
-            claims.AddRange(userClaims);
+            string fullName;
+            if (!string.IsNullOrWhiteSpace(userDTO.Name) || !string.IsNullOrWhiteSpace(userDTO.Lastname))
+            {
+                var parts = new[] { userDTO.Name, userDTO.Lastname }
+                                .Where(s => !string.IsNullOrWhiteSpace(s));
+                fullName = string.Join(" ", parts);
+            }
+            else
+            {
+                fullName = userDTO.Email!;
+            }
+
+            claims.Add(new Claim(ClaimTypes.Name, fullName));
+
+            var userEntity = await _userManager.FindByEmailAsync(userDTO.Email);
+            if (userEntity != null)
+            {
+                var userClaims = await _userManager.GetClaimsAsync(userEntity);
+                claims.AddRange(userClaims);
+            }
 
             var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["JwtKey"]!));
             var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);

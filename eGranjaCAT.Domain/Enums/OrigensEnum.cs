@@ -1,6 +1,6 @@
 ﻿namespace eGranjaCAT.Domain.Enums
 {
-    public enum TipusOrigen
+    public enum OrigensEnum
     {
         MarcaOficial,
         CodiREGA

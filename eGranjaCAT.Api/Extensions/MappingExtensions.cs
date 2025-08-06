@@ -1,4 +1,5 @@
 ﻿using eGranjaCAT.Application.Mappings;
+using eGranjaCAT.Infrastructure.Identity;
 using System.Reflection;
 
 
@@ -10,8 +11,9 @@ namespace eGranjaCAT.Api.Extensions
         {
             services.AddAutoMapper(Assembly.GetExecutingAssembly(),
                 Assembly.GetAssembly(typeof(FarmProfile)),
-                Assembly.GetAssembly(typeof(UserProfile)),
-                Assembly.GetAssembly(typeof(EntradaProfile))
+                Assembly.GetAssembly(typeof(LotProfile)),
+                Assembly.GetAssembly(typeof(EntradaProfile)),
+                Assembly.GetAssembly(typeof(UserProfile))
             );
 
             return services;

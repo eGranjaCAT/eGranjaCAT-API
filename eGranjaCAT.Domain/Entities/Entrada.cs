@@ -8,7 +8,7 @@ namespace eGranjaCAT.Domain.Entities
     {
         public int Id { get; set; }
 
-        public TipusCategories Categories { get; set; }
+        public CategoriesEnum Categories { get; set; }
 
         public DateTime Data { get; set; }
         public int NombreAnimals { get; set; }
@@ -18,7 +18,7 @@ namespace eGranjaCAT.Domain.Entities
         public int LotId { get; set; }
         public Lot Lot { get; set; } = null!;
 
-        public TipusOrigen Origen { get; set; }
+        public OrigensEnum Origen { get; set; }
 
         public string? MarcaOficial { get; set; }
         public string? CodiREGA { get; set; }
