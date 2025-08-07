@@ -20,7 +20,6 @@
 		</PackageReference>
 		<PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="9.0.7" />
 		<PackageReference Include="Microsoft.Extensions.Identity.Core" Version="9.0.7" />
-		<PackageReference Include="Microsoft.IdentityModel.Tokens" Version="8.13.0" />
 	</ItemGroup>
 
 	<ItemGroup>
