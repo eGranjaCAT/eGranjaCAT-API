@@ -8,18 +8,17 @@ Additional capabilities include secure JWT authentication with role- and policy-
 
 
 ## License
-© 2025 Felix Montragull Kruse. All rights reserved.
+**© 2025 Felix Montragull Kruse.All rights reserved.**
 
 This project and its source code are the exclusive property of Felix Montragull Kruse. No part of this software may be copied, modified, distributed, or used without explicit permission.
  
- 
+
  
 
-Personal Notes:
+### Notes:
 
 Add Migration:
 ```dotnet ef migrations add {Migration Name} --project eGranjaCAT.Infrastructure --startup-project eGranjaCAT.API --context ApplicationDbContext --output-dir Persistence/Migrations```
 
 Update Database:
 ```dotnet ef database update --project eGranjaCAT.Infrastructure --startup-project eGranjaCAT.API --context ApplicationDbContext```
-
