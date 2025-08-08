@@ -38,7 +38,7 @@ namespace eGranjaCAT.Api.Extensions
 
                 var securityScheme = new OpenApiSecurityScheme()
                 {
-                    Description = "JWT Authorization header using the Bearer scheme. Example: \"Authorization: Bearer {token}\"",
+                    Description = "JWT d'autentificació",
                     Name = "Authorization",
                     In = ParameterLocation.Header,
                     Type = SecuritySchemeType.Http,
