@@ -18,6 +18,6 @@ namespace eGranjaCAT.Application.DTOs.User
         [EnumDataType(typeof(RolesEnum))]
         public required string Role { get; set; }
         [Required]
-        public required List<PermissionsEnum> Permissions { get; set; }
+        public required List<AccessesEnum> Permissions { get; set; }
     }
 }

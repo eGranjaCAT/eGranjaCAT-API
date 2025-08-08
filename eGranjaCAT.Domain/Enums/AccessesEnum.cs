@@ -1,6 +1,6 @@
 ﻿namespace eGranjaCAT.Domain.Enums
 {
-    public enum PermissionsEnum
+    public enum AccessesEnum
     {
         Lots,
         Entrades

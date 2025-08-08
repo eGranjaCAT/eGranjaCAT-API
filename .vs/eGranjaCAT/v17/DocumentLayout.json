@@ -3,12 +3,16 @@
   "WorkspaceRootPath": "C:\\Users\\USER1\\source\\repos\\eGranjaCAT\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{FD3E1F1E-4565-45A7-91C3-0FF4C6901635}|eGranjaCAT.Application\\eGranjaCAT.Application.csproj|c:\\users\\user1\\source\\repos\\egranjacat\\egranjacat.application\\dtos\\farm\\createfarmdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{FD3E1F1E-4565-45A7-91C3-0FF4C6901635}|eGranjaCAT.Application\\eGranjaCAT.Application.csproj|solutionrelative:egranjacat.application\\dtos\\farm\\createfarmdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{EC5AC869-3D04-94D3-0E9B-89967D9D5BC2}|eGranjaCAT.Api\\eGranjaCAT.Api.csproj|c:\\users\\user1\\source\\repos\\egranjacat\\egranjacat.api\\extensions\\authorizationextensions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EC5AC869-3D04-94D3-0E9B-89967D9D5BC2}|eGranjaCAT.Api\\eGranjaCAT.Api.csproj|solutionrelative:egranjacat.api\\extensions\\authorizationextensions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{EC5AC869-3D04-94D3-0E9B-89967D9D5BC2}|eGranjaCAT.Api\\eGranjaCAT.Api.csproj|c:\\users\\user1\\source\\repos\\egranjacat\\egranjacat.api\\extensions\\swaggerextensions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{EC5AC869-3D04-94D3-0E9B-89967D9D5BC2}|eGranjaCAT.Api\\eGranjaCAT.Api.csproj|solutionrelative:egranjacat.api\\extensions\\swaggerextensions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{EC5AC869-3D04-94D3-0E9B-89967D9D5BC2}|eGranjaCAT.Api\\eGranjaCAT.Api.csproj|c:\\users\\user1\\source\\repos\\egranjacat\\egranjacat.api\\extensions\\authenticationextensions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EC5AC869-3D04-94D3-0E9B-89967D9D5BC2}|eGranjaCAT.Api\\eGranjaCAT.Api.csproj|solutionrelative:egranjacat.api\\extensions\\authenticationextensions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7C470769-5D02-4137-9A79-2984C0CE3C0B}|eGranjaCAT.Domain\\eGranjaCAT.Domain.csproj|c:\\users\\user1\\source\\repos\\egranjacat\\egranjacat.domain\\enums\\accessesenum.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7C470769-5D02-4137-9A79-2984C0CE3C0B}|eGranjaCAT.Domain\\eGranjaCAT.Domain.csproj|solutionrelative:egranjacat.domain\\enums\\accessesenum.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -18,32 +22,45 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "CreateFarmDTO.cs",
-              "DocumentMoniker": "C:\\Users\\USER1\\source\\repos\\eGranjaCAT\\eGranjaCAT.Application\\DTOs\\Farm\\CreateFarmDTO.cs",
-              "RelativeDocumentMoniker": "eGranjaCAT.Application\\DTOs\\Farm\\CreateFarmDTO.cs",
-              "ToolTip": "C:\\Users\\USER1\\source\\repos\\eGranjaCAT\\eGranjaCAT.Application\\DTOs\\Farm\\CreateFarmDTO.cs",
-              "RelativeToolTip": "eGranjaCAT.Application\\DTOs\\Farm\\CreateFarmDTO.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAABAAAAAAAAAA==",
+              "DocumentIndex": 2,
+              "Title": "AccessesEnum.cs",
+              "DocumentMoniker": "C:\\Users\\USER1\\Source\\Repos\\eGranjaCAT\\eGranjaCAT.Domain\\Enums\\AccessesEnum.cs",
+              "RelativeDocumentMoniker": "eGranjaCAT.Domain\\Enums\\AccessesEnum.cs",
+              "ToolTip": "C:\\Users\\USER1\\Source\\Repos\\eGranjaCAT\\eGranjaCAT.Domain\\Enums\\AccessesEnum.cs",
+              "RelativeToolTip": "eGranjaCAT.Domain\\Enums\\AccessesEnum.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAQAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-08T14:05:59.618Z",
+              "WhenOpened": "2025-08-08T15:21:38.186Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "AuthorizationExtensions.cs",
+              "DocumentMoniker": "C:\\Users\\USER1\\source\\repos\\eGranjaCAT\\eGranjaCAT.Api\\Extensions\\AuthorizationExtensions.cs",
+              "RelativeDocumentMoniker": "eGranjaCAT.Api\\Extensions\\AuthorizationExtensions.cs",
+              "ToolTip": "C:\\Users\\USER1\\source\\repos\\eGranjaCAT\\eGranjaCAT.Api\\Extensions\\AuthorizationExtensions.cs",
+              "RelativeToolTip": "eGranjaCAT.Api\\Extensions\\AuthorizationExtensions.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAACDAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-08T15:20:52.144Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "SwaggerExtensions.cs",
-              "DocumentMoniker": "C:\\Users\\USER1\\source\\repos\\eGranjaCAT\\eGranjaCAT.Api\\Extensions\\SwaggerExtensions.cs",
-              "RelativeDocumentMoniker": "eGranjaCAT.Api\\Extensions\\SwaggerExtensions.cs",
-              "ToolTip": "C:\\Users\\USER1\\source\\repos\\eGranjaCAT\\eGranjaCAT.Api\\Extensions\\SwaggerExtensions.cs",
-              "RelativeToolTip": "eGranjaCAT.Api\\Extensions\\SwaggerExtensions.cs",
-              "ViewState": "AgIAACEAAAAAAAAAAAAAADgAAAAyAAAAAAAAAA==",
+              "Title": "AuthenticationExtensions.cs",
+              "DocumentMoniker": "C:\\Users\\USER1\\source\\repos\\eGranjaCAT\\eGranjaCAT.Api\\Extensions\\AuthenticationExtensions.cs",
+              "RelativeDocumentMoniker": "eGranjaCAT.Api\\Extensions\\AuthenticationExtensions.cs",
+              "ToolTip": "C:\\Users\\USER1\\source\\repos\\eGranjaCAT\\eGranjaCAT.Api\\Extensions\\AuthenticationExtensions.cs",
+              "RelativeToolTip": "eGranjaCAT.Api\\Extensions\\AuthenticationExtensions.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-08T13:58:35.723Z",
+              "WhenOpened": "2025-08-08T15:20:51.158Z",
               "EditorCaption": ""
             }
           ]

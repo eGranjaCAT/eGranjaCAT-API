@@ -3,6 +3,7 @@ using Microsoft.IdentityModel.Tokens;
 using System.Security.Claims;
 using System.Text;
 
+
 namespace eGranjaCAT.Api.Extensions
 {
     public static class AuthenticationExtensions
