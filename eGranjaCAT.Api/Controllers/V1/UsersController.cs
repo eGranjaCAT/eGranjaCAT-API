@@ -48,7 +48,7 @@ namespace eGranjaCAT.Api.Controllers.V1
             return StatusCode(result.StatusCode, result.Data);
         }
 
-        [HttpGet("{id:int}")]
+        [HttpGet("{id:guid}")]
         [Authorize]
         public async Task<IActionResult> GetUserByIdAsync(Guid id)
         {

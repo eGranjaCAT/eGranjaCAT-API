@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace eGranjaCAT.Api.Controllers.V1
 {
+    [Authorize]
     [ApiController]
     [ApiVersion("1.0")]
     [Route("api/v{version:apiVersion}/farms")]
@@ -21,7 +22,6 @@ namespace eGranjaCAT.Api.Controllers.V1
 
 
         [HttpGet]
-        [Authorize(Policy = "Farms")]
         public async Task<IActionResult> GetFarmsAsync()
         {
             var result = await _service.GetFarmsAsync();
@@ -31,7 +31,6 @@ namespace eGranjaCAT.Api.Controllers.V1
         }
 
         [HttpGet("{id:int}", Name = "GetFarmById")]
-        [Authorize(Policy = "Farms")]
         public async Task<IActionResult> GetFarmByIdAsync(int id)
         {
             var result = await _service.GetFarmByIdAsync(id);
@@ -41,7 +40,6 @@ namespace eGranjaCAT.Api.Controllers.V1
         }
 
         [HttpPost]
-        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> CreateFarmAsync([FromBody] CreateFarmDTO createFarmDTO)
         {
             var result = await _service.CreateFarmAsync(createFarmDTO);
@@ -52,7 +50,6 @@ namespace eGranjaCAT.Api.Controllers.V1
 
 
         [HttpDelete("{id:int}")]
-        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> DeleteFarmAsync(int id)
         {
             var result = await _service.DeleteFarmAsync(id);
