@@ -12,9 +12,10 @@ namespace eGranjaCAT.Domain.Entities
         public int FarmId { get; set; }
         public Farm Farm { get; set; } = null!;
 
-        public string UserGuid { get; set; }
+        public required string UserGuid { get; set; }
 
         public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
         public DateTime? UpdatedAt { get; set; }
+        public bool Updated { get; set; } = false;
     }
 }
