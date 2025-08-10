@@ -18,7 +18,7 @@
 
   <ItemGroup>
     <Folder Include="DTOs\GTR\Pinsos\" />
-    <Folder Include="DTOs\Sortida\" />
+    <Folder Include="DTOs\Sortides\" />
   </ItemGroup>
 
 </Project>

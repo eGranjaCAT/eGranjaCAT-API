@@ -108,6 +108,7 @@ namespace eGranjaCAT.Infrastructure.Services
 
                 _mapper.Map(updateEntradaDTO, entrada);
                 entrada.UpdatedAt = DateTime.UtcNow;
+                entrada.Updated = true;
 
                 _context.Entrades.Update(entrada);
                 await _context.SaveChangesAsync();

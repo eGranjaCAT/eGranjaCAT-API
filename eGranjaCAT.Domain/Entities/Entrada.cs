@@ -26,7 +26,7 @@ namespace eGranjaCAT.Domain.Entities
         public string NumeroDocumentTrasllat { get; set; } = null!;
         public string? Observacions { get; set; }
 
-        public string UserGuid { get; set; }
+        public string UserGuid { get; set; } = null!;
 
         public int FarmId { get; set; }
         public Farm Farm { get; set; } = null!;

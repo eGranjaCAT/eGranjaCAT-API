@@ -3,6 +3,7 @@
     public enum AccessesEnum
     {
         Lots,
-        Entrades
+        Entrades,
+        Visites
     }
 }
