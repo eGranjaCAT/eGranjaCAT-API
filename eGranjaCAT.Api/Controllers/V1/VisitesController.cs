@@ -1,6 +1,5 @@
 ﻿using Asp.Versioning;
 using eGranjaCAT.Api.Extensions;
-using eGranjaCAT.Application.DTOs.Entrada;
 using eGranjaCAT.Application.DTOs.Visites;
 using eGranjaCAT.Infrastructure.Services;
 using Microsoft.AspNetCore.Authorization;

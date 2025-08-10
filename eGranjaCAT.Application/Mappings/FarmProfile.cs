@@ -2,6 +2,7 @@
 using eGranjaCAT.Application.DTOs.Farm;
 using eGranjaCAT.Application.Entities;
 
+
 namespace eGranjaCAT.Application.Mappings
 {
     public class FarmProfile : Profile
@@ -9,6 +10,7 @@ namespace eGranjaCAT.Application.Mappings
         public FarmProfile()
         {
             CreateMap<CreateFarmDTO, Farm>();
+
             CreateMap<Farm, GetFarmDTO>();
         }
     }

@@ -3,20 +3,24 @@
   "WorkspaceRootPath": "C:\\Users\\USER1\\source\\repos\\eGranjaCAT\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{EC5AC869-3D04-94D3-0E9B-89967D9D5BC2}|eGranjaCAT.Api\\eGranjaCAT.Api.csproj|c:\\users\\user1\\source\\repos\\egranjacat\\egranjacat.api\\controllers\\v1\\visitescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{EC5AC869-3D04-94D3-0E9B-89967D9D5BC2}|eGranjaCAT.Api\\eGranjaCAT.Api.csproj|solutionrelative:egranjacat.api\\controllers\\v1\\visitescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{FD3E1F1E-4565-45A7-91C3-0FF4C6901635}|eGranjaCAT.Application\\eGranjaCAT.Application.csproj|c:\\users\\user1\\source\\repos\\egranjacat\\egranjacat.application\\dtos\\farms\\getfarmdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FD3E1F1E-4565-45A7-91C3-0FF4C6901635}|eGranjaCAT.Application\\eGranjaCAT.Application.csproj|solutionrelative:egranjacat.application\\dtos\\farms\\getfarmdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{EC5AC869-3D04-94D3-0E9B-89967D9D5BC2}|eGranjaCAT.Api\\eGranjaCAT.Api.csproj|c:\\users\\user1\\source\\repos\\egranjacat\\egranjacat.api\\controllers\\v1\\userscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{EC5AC869-3D04-94D3-0E9B-89967D9D5BC2}|eGranjaCAT.Api\\eGranjaCAT.Api.csproj|solutionrelative:egranjacat.api\\controllers\\v1\\userscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{D5E8778F-0F4C-49D7-9106-EDA3445BD4EB}|eGranjaCAT.Infrastructure\\eGranjaCAT.Infrastructure.csproj|c:\\users\\user1\\source\\repos\\egranjacat\\egranjacat.infrastructure\\services\\lotservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D5E8778F-0F4C-49D7-9106-EDA3445BD4EB}|eGranjaCAT.Infrastructure\\eGranjaCAT.Infrastructure.csproj|solutionrelative:egranjacat.infrastructure\\services\\lotservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{EC5AC869-3D04-94D3-0E9B-89967D9D5BC2}|eGranjaCAT.Api\\eGranjaCAT.Api.csproj|c:\\users\\user1\\source\\repos\\egranjacat\\egranjacat.api\\controllers\\v1\\entradescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{EC5AC869-3D04-94D3-0E9B-89967D9D5BC2}|eGranjaCAT.Api\\eGranjaCAT.Api.csproj|solutionrelative:egranjacat.api\\controllers\\v1\\entradescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{FD3E1F1E-4565-45A7-91C3-0FF4C6901635}|eGranjaCAT.Application\\eGranjaCAT.Application.csproj|c:\\users\\user1\\source\\repos\\egranjacat\\egranjacat.application\\mappings\\farmprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FD3E1F1E-4565-45A7-91C3-0FF4C6901635}|eGranjaCAT.Application\\eGranjaCAT.Application.csproj|solutionrelative:egranjacat.application\\mappings\\farmprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{FD3E1F1E-4565-45A7-91C3-0FF4C6901635}|eGranjaCAT.Application\\eGranjaCAT.Application.csproj|c:\\users\\user1\\source\\repos\\egranjacat\\egranjacat.application\\interfaces\\ilotservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{FD3E1F1E-4565-45A7-91C3-0FF4C6901635}|eGranjaCAT.Application\\eGranjaCAT.Application.csproj|solutionrelative:egranjacat.application\\interfaces\\ilotservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{D5E8778F-0F4C-49D7-9106-EDA3445BD4EB}|eGranjaCAT.Infrastructure\\eGranjaCAT.Infrastructure.csproj|c:\\users\\user1\\source\\repos\\egranjacat\\egranjacat.infrastructure\\services\\farmservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D5E8778F-0F4C-49D7-9106-EDA3445BD4EB}|eGranjaCAT.Infrastructure\\eGranjaCAT.Infrastructure.csproj|solutionrelative:egranjacat.infrastructure\\services\\farmservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FD3E1F1E-4565-45A7-91C3-0FF4C6901635}|eGranjaCAT.Application\\eGranjaCAT.Application.csproj|c:\\users\\user1\\source\\repos\\egranjacat\\egranjacat.application\\mappings\\visitaprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FD3E1F1E-4565-45A7-91C3-0FF4C6901635}|eGranjaCAT.Application\\eGranjaCAT.Application.csproj|solutionrelative:egranjacat.application\\mappings\\visitaprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -31,53 +35,66 @@
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "EntradesController.cs",
-              "DocumentMoniker": "C:\\Users\\USER1\\source\\repos\\eGranjaCAT\\eGranjaCAT.Api\\Controllers\\V1\\EntradesController.cs",
-              "RelativeDocumentMoniker": "eGranjaCAT.Api\\Controllers\\V1\\EntradesController.cs",
-              "ToolTip": "C:\\Users\\USER1\\source\\repos\\eGranjaCAT\\eGranjaCAT.Api\\Controllers\\V1\\EntradesController.cs",
-              "RelativeToolTip": "eGranjaCAT.Api\\Controllers\\V1\\EntradesController.cs",
-              "ViewState": "AgIAABsAAAAAAAAAAAAAAC8AAAAAAAAAAAAAAA==",
+              "Title": "FarmProfile.cs",
+              "DocumentMoniker": "C:\\Users\\USER1\\source\\repos\\eGranjaCAT\\eGranjaCAT.Application\\Mappings\\FarmProfile.cs",
+              "RelativeDocumentMoniker": "eGranjaCAT.Application\\Mappings\\FarmProfile.cs",
+              "ToolTip": "C:\\Users\\USER1\\source\\repos\\eGranjaCAT\\eGranjaCAT.Application\\Mappings\\FarmProfile.cs",
+              "RelativeToolTip": "eGranjaCAT.Application\\Mappings\\FarmProfile.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-10T11:53:40.17Z",
+              "WhenOpened": "2025-08-10T16:24:10.849Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "VisitaProfile.cs",
+              "DocumentMoniker": "C:\\Users\\USER1\\source\\repos\\eGranjaCAT\\eGranjaCAT.Application\\Mappings\\VisitaProfile.cs",
+              "RelativeDocumentMoniker": "eGranjaCAT.Application\\Mappings\\VisitaProfile.cs",
+              "ToolTip": "C:\\Users\\USER1\\source\\repos\\eGranjaCAT\\eGranjaCAT.Application\\Mappings\\VisitaProfile.cs",
+              "RelativeToolTip": "eGranjaCAT.Application\\Mappings\\VisitaProfile.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAWAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-10T16:22:26.657Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "UsersController.cs",
-              "DocumentMoniker": "C:\\Users\\USER1\\source\\repos\\eGranjaCAT\\eGranjaCAT.Api\\Controllers\\V1\\UsersController.cs",
-              "RelativeDocumentMoniker": "eGranjaCAT.Api\\Controllers\\V1\\UsersController.cs",
-              "ToolTip": "C:\\Users\\USER1\\source\\repos\\eGranjaCAT\\eGranjaCAT.Api\\Controllers\\V1\\UsersController.cs",
-              "RelativeToolTip": "eGranjaCAT.Api\\Controllers\\V1\\UsersController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Title": "LotService.cs",
+              "DocumentMoniker": "C:\\Users\\USER1\\source\\repos\\eGranjaCAT\\eGranjaCAT.Infrastructure\\Services\\LotService.cs",
+              "RelativeDocumentMoniker": "eGranjaCAT.Infrastructure\\Services\\LotService.cs",
+              "ToolTip": "C:\\Users\\USER1\\source\\repos\\eGranjaCAT\\eGranjaCAT.Infrastructure\\Services\\LotService.cs",
+              "RelativeToolTip": "eGranjaCAT.Infrastructure\\Services\\LotService.cs",
+              "ViewState": "AgIAADwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-10T11:53:38.993Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "ILotService.cs",
-              "DocumentMoniker": "C:\\Users\\USER1\\source\\repos\\eGranjaCAT\\eGranjaCAT.Application\\Interfaces\\ILotService.cs",
-              "RelativeDocumentMoniker": "eGranjaCAT.Application\\Interfaces\\ILotService.cs",
-              "ToolTip": "C:\\Users\\USER1\\source\\repos\\eGranjaCAT\\eGranjaCAT.Application\\Interfaces\\ILotService.cs",
-              "RelativeToolTip": "eGranjaCAT.Application\\Interfaces\\ILotService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAFAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-10T11:53:26.573Z",
+              "WhenOpened": "2025-08-10T16:17:52.853Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "VisitesController.cs",
-              "DocumentMoniker": "C:\\Users\\USER1\\source\\repos\\eGranjaCAT\\eGranjaCAT.Api\\Controllers\\V1\\VisitesController.cs",
-              "RelativeDocumentMoniker": "eGranjaCAT.Api\\Controllers\\V1\\VisitesController.cs",
-              "ToolTip": "C:\\Users\\USER1\\source\\repos\\eGranjaCAT\\eGranjaCAT.Api\\Controllers\\V1\\VisitesController.cs",
-              "RelativeToolTip": "eGranjaCAT.Api\\Controllers\\V1\\VisitesController.cs",
-              "ViewState": "AgIAAEAAAAAAAAAAAAAAAFwAAAAJAAAAAAAAAA==",
+              "Title": "GetFarmDTO.cs",
+              "DocumentMoniker": "C:\\Users\\USER1\\source\\repos\\eGranjaCAT\\eGranjaCAT.Application\\DTOs\\Farms\\GetFarmDTO.cs",
+              "RelativeDocumentMoniker": "eGranjaCAT.Application\\DTOs\\Farms\\GetFarmDTO.cs",
+              "ToolTip": "C:\\Users\\USER1\\source\\repos\\eGranjaCAT\\eGranjaCAT.Application\\DTOs\\Farms\\GetFarmDTO.cs",
+              "RelativeToolTip": "eGranjaCAT.Application\\DTOs\\Farms\\GetFarmDTO.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAoAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-10T11:53:09.367Z",
+              "WhenOpened": "2025-08-10T16:12:14.072Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "FarmService.cs",
+              "DocumentMoniker": "C:\\Users\\USER1\\source\\repos\\eGranjaCAT\\eGranjaCAT.Infrastructure\\Services\\FarmService.cs",
+              "RelativeDocumentMoniker": "eGranjaCAT.Infrastructure\\Services\\FarmService.cs",
+              "ToolTip": "C:\\Users\\USER1\\source\\repos\\eGranjaCAT\\eGranjaCAT.Infrastructure\\Services\\FarmService.cs",
+              "RelativeToolTip": "eGranjaCAT.Infrastructure\\Services\\FarmService.cs",
+              "ViewState": "AgIAABsAAAAAAAAAAAAAAC4AAAAyAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-10T16:06:04.934Z",
               "EditorCaption": ""
             }
           ]

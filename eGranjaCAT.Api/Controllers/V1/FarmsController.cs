@@ -1,4 +1,5 @@
 ﻿using Asp.Versioning;
+using eGranjaCAT.Api.Extensions;
 using eGranjaCAT.Application.DTOs.Farm;
 using eGranjaCAT.Infrastructure.Services;
 using Microsoft.AspNetCore.Authorization;
@@ -42,7 +43,8 @@ namespace eGranjaCAT.Api.Controllers.V1
         [HttpPost]
         public async Task<IActionResult> CreateFarmAsync([FromBody] CreateFarmDTO createFarmDTO)
         {
-            var result = await _service.CreateFarmAsync(createFarmDTO);
+            var userGuid = User.GetUserId();
+            var result = await _service.CreateFarmAsync(createFarmDTO, userGuid);
             if (!result.Success) return StatusCode(result.StatusCode, new { result.Errors });
 
             return CreatedAtRoute("GetFarmById", new { id = result.Data }, null);
