@@ -46,8 +46,7 @@
               "RelativeToolTip": "eGranjaCAT.Api\\Controllers\\V1\\LotsController.cs",
               "ViewState": "AgIAAAMAAAAAAAAAAAAAACMAAAB/AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-12T18:07:37.114Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-08-12T18:07:37.114Z"
             },
             {
               "$type": "Document",
@@ -59,8 +58,7 @@
               "RelativeToolTip": "eGranjaCAT.Api\\Controllers\\V1\\EntradesController.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABoAAAA4AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-12T18:07:24.087Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-08-12T18:07:24.087Z"
             },
             {
               "$type": "Document",
@@ -72,8 +70,7 @@
               "RelativeToolTip": "eGranjaCAT.Api\\Controllers\\V1\\FarmsController.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-12T18:07:22.048Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-08-12T18:07:22.048Z"
             },
             {
               "$type": "Document",
@@ -85,8 +82,7 @@
               "RelativeToolTip": "eGranjaCAT.Application\\Mappings\\LotProfile.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAACUAAAAUAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-12T18:06:55Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-08-12T18:06:55Z"
             },
             {
               "$type": "Document",
@@ -96,7 +92,7 @@
               "RelativeDocumentMoniker": "eGranjaCAT.Infrastructure\\Services\\EntradaService.cs",
               "ToolTip": "C:\\Users\\USER1\\source\\repos\\eGranjaCAT\\eGranjaCAT.Infrastructure\\Services\\EntradaService.cs",
               "RelativeToolTip": "eGranjaCAT.Infrastructure\\Services\\EntradaService.cs",
-              "ViewState": "AgIAADgAAAAAAAAAAAAvwGEAAAANAAAAAAAAAA==",
+              "ViewState": "AgIAAEAAAAAAAAAAAAAwwEwAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-08-12T17:54:45.057Z",
               "EditorCaption": ""
@@ -111,8 +107,7 @@
               "RelativeToolTip": "eGranjaCAT.Infrastructure\\Services\\LotService.cs",
               "ViewState": "AgIAAC0AAAAAAAAAAAAAAEsAAAAkAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-12T12:37:44.832Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-08-12T12:37:44.832Z"
             }
           ]
         }

@@ -70,7 +70,7 @@ namespace eGranjaCAT.Infrastructure.Services
                 var farmExists = await _context.Farms.AnyAsync(f => f.Id == farmId);
                 if (!farmExists) return ServiceResult<PagedResult<GetEntradaDTO>>.Fail($"La granja {farmId} no existeix");
 
-                var query = _context.Entrades.Include(e => e.Farm).Where(e => e.FarmId == farmId);
+                var query = _context.Entrades.Include(e => e.Farm).Include(e => e.Lot).Where(e => e.FarmId == farmId);
                 var totalCount = await query.CountAsync();
 
                 var entrades = await query.OrderBy(e => e.Id).Skip((pageIndex - 1) * pageSize).Take(pageSize).ToListAsync();
