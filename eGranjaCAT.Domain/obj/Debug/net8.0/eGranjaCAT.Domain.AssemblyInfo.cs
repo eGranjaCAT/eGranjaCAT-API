@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("eGranjaCAT.Domain")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ff456d68ce9683231c3a9b7aeee0d61c3b320307")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+eec6b8758dd7837ab62305ae1d5f0908ec21e9f0")]
 [assembly: System.Reflection.AssemblyProductAttribute("eGranjaCAT.Domain")]
 [assembly: System.Reflection.AssemblyTitleAttribute("eGranjaCAT.Domain")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

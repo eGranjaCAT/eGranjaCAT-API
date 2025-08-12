@@ -29,7 +29,6 @@ namespace eGranjaCAT.Infrastructure.Data
                 .HasForeignKey(l => l.FarmId)
                 .OnDelete(DeleteBehavior.Restrict);
 
-
             modelBuilder.Entity<Entrada>()
                 .HasOne(l => l.Farm)
                 .WithMany()

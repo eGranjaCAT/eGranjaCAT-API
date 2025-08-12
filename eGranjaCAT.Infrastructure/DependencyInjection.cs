@@ -41,6 +41,7 @@ namespace eGranjaCAT.Application
             services.AddTransient<IUserService, UserService>();
             services.AddTransient<ILotService, LotService>();
             services.AddTransient<IEntradaService, EntradaService>();
+            services.AddTransient<IVisitaService, VisitaService>();
             services.AddTransient<IEmailService, EmailService>();
             services.AddTransient<IExcelService, ExcelService>();
 
