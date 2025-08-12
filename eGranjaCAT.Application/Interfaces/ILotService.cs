@@ -14,7 +14,7 @@ namespace eGranjaCAT.Infrastructure.Services
         Task<MemoryStream> ExportActiveLotsByFarmAsync(int farmId);
         Task<ServiceResult<PagedResult<GetLotDTO>>> GetActiveLotsByFarmAsync(int farmId, int pageIndex, int pageSize);
         Task<ServiceResult<GetLotDTO>> GetLotByIdAsync(int lotId);
-        Task<ServiceResult<GetLotDTO>> GetLotsByFarmIdAsync(int farmId);
+        Task<ServiceResult<PagedResult<GetLotDTO>>> GetLotsByFarmIdAsync(int farmId, int pageIndex, int pageSize);
         Task<ServiceResult<bool>> UpdateLotAsync(int farmId, int lotId, UpdateLotDTO dto);
     }
 }

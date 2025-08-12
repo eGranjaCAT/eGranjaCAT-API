@@ -42,9 +42,9 @@ namespace eGranjaCAT.Api.Controllers.V1
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetLots(int farmId)
+        public async Task<IActionResult> GetLots(int farmId, [FromQuery] int pageIndex = 1, [FromQuery] int pageSize = 20)
         {
-            var result = await _service.GetLotsByFarmIdAsync(farmId);
+            var result = await _service.GetLotsByFarmIdAsync(farmId, pageIndex, pageSize);
             if (!result.Success) return StatusCode(result.StatusCode, new { result.Errors });
 
             return StatusCode(result.StatusCode, result.Data);

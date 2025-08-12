@@ -27,6 +27,7 @@ namespace eGranjaCAT.Infrastructure.Services
             _excelService = excelService;
         }
 
+
         public async Task<ServiceResult<int?>> CreateLotAsync(int farmId, string userId, CreateLotDTO createLotDTO)
         {
             var farmExists = await _context.Farms.AnyAsync(f => f.Id == farmId);
@@ -95,23 +96,36 @@ namespace eGranjaCAT.Infrastructure.Services
             return ServiceResult<GetLotDTO>.Ok(lotDTO);
         }
 
-        public async Task<ServiceResult<GetLotDTO>> GetLotsByFarmIdAsync(int farmId)
+        public async Task<ServiceResult<PagedResult<GetLotDTO>>> GetLotsByFarmIdAsync(int farmId, int pageIndex, int pageSize)
         {
-            var lot = await _context.Lots.Include(l => l.Farm).FirstOrDefaultAsync(l => l.FarmId == farmId);
-            if (lot == null) return ServiceResult<GetLotDTO>.Fail($"No s'ha trobat cap lot a la granja {farmId}");
+            var farm = await _context.Farms.FirstOrDefaultAsync(f => f.Id == farmId);
+            if (farm == null) return ServiceResult<PagedResult<GetLotDTO>>.Fail($"Farm with ID {farmId} not found");
 
-            var user = await _userManager.FindByIdAsync(lot.UserGuid);
-            var userDTO = user != null ? _mapper.Map<GetUserDTO>(user) : new GetUserDTO
+            var query = _context.Lots.Include(l => l.Farm).Where(l => l.FarmId == farmId);
+            var totalCount = await query.CountAsync();
+
+            var lots = await query.OrderBy(l => l.Id).Skip((pageIndex - 1) * pageSize).Take(pageSize).ToListAsync();
+
+            var userGuids = lots.Select(l => l.UserGuid).Distinct().ToList();
+            var users = await _userManager.Users.Where(u => userGuids.Contains(u.Id)).ToListAsync();
+
+            var userDtos = _mapper.Map<List<GetUserDTO>>(users);
+            var userDict = userDtos.ToDictionary(u => u.Id!, StringComparer.OrdinalIgnoreCase);
+
+            var lotsDTO = _mapper.Map<List<GetLotDTO>>(lots, opt =>
             {
-                Id = lot.UserGuid,
-                Name = "Usuari no trobat",
-                Email = ""
+                opt.Items["UserDict"] = userDict;
+            });
+
+            var pagedResult = new PagedResult<GetLotDTO>
+            {
+                Items = lotsDTO,
+                TotalCount = totalCount,
+                PageIndex = pageIndex,
+                PageSize = pageSize
             };
 
-            var lotDTO = _mapper.Map<GetLotDTO>(lot);
-            lotDTO.User = userDTO;
-
-            return ServiceResult<GetLotDTO>.Ok(lotDTO);
+            return ServiceResult<PagedResult<GetLotDTO>>.Ok(pagedResult);
         }
 
 
