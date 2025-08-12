@@ -3,12 +3,8 @@
   "WorkspaceRootPath": "C:\\Users\\USER1\\source\\repos\\eGranjaCAT\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{FD3E1F1E-4565-45A7-91C3-0FF4C6901635}|eGranjaCAT.Application\\eGranjaCAT.Application.csproj|c:\\users\\user1\\source\\repos\\egranjacat\\egranjacat.application\\mappings\\lotprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{FD3E1F1E-4565-45A7-91C3-0FF4C6901635}|eGranjaCAT.Application\\eGranjaCAT.Application.csproj|solutionrelative:egranjacat.application\\mappings\\lotprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{FD3E1F1E-4565-45A7-91C3-0FF4C6901635}|eGranjaCAT.Application\\eGranjaCAT.Application.csproj|c:\\users\\user1\\source\\repos\\egranjacat\\egranjacat.application\\dtos\\lots\\getlotdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{FD3E1F1E-4565-45A7-91C3-0FF4C6901635}|eGranjaCAT.Application\\eGranjaCAT.Application.csproj|solutionrelative:egranjacat.application\\dtos\\lots\\getlotdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{EC5AC869-3D04-94D3-0E9B-89967D9D5BC2}|eGranjaCAT.Api\\eGranjaCAT.Api.csproj|c:\\users\\user1\\source\\repos\\egranjacat\\egranjacat.api\\controllers\\v1\\lotscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EC5AC869-3D04-94D3-0E9B-89967D9D5BC2}|eGranjaCAT.Api\\eGranjaCAT.Api.csproj|solutionrelative:egranjacat.api\\controllers\\v1\\lotscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{D5E8778F-0F4C-49D7-9106-EDA3445BD4EB}|eGranjaCAT.Infrastructure\\eGranjaCAT.Infrastructure.csproj|c:\\users\\user1\\source\\repos\\egranjacat\\egranjacat.infrastructure\\services\\lotservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -17,10 +13,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{FD3E1F1E-4565-45A7-91C3-0FF4C6901635}|eGranjaCAT.Application\\eGranjaCAT.Application.csproj|c:\\users\\user1\\source\\repos\\egranjacat\\egranjacat.application\\interfaces\\ilotservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{FD3E1F1E-4565-45A7-91C3-0FF4C6901635}|eGranjaCAT.Application\\eGranjaCAT.Application.csproj|solutionrelative:egranjacat.application\\interfaces\\ilotservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{EC5AC869-3D04-94D3-0E9B-89967D9D5BC2}|eGranjaCAT.Api\\eGranjaCAT.Api.csproj|c:\\users\\user1\\source\\repos\\egranjacat\\egranjacat.api\\controllers\\v1\\lotscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{EC5AC869-3D04-94D3-0E9B-89967D9D5BC2}|eGranjaCAT.Api\\eGranjaCAT.Api.csproj|solutionrelative:egranjacat.api\\controllers\\v1\\lotscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -30,69 +22,43 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "GetLotDTO.cs",
-              "DocumentMoniker": "C:\\Users\\USER1\\source\\repos\\eGranjaCAT\\eGranjaCAT.Application\\DTOs\\Lots\\GetLotDTO.cs",
-              "RelativeDocumentMoniker": "eGranjaCAT.Application\\DTOs\\Lots\\GetLotDTO.cs",
-              "ToolTip": "C:\\Users\\USER1\\source\\repos\\eGranjaCAT\\eGranjaCAT.Application\\DTOs\\Lots\\GetLotDTO.cs",
-              "RelativeToolTip": "eGranjaCAT.Application\\DTOs\\Lots\\GetLotDTO.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-12T15:11:27.888Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "LotProfile.cs",
-              "DocumentMoniker": "C:\\Users\\USER1\\source\\repos\\eGranjaCAT\\eGranjaCAT.Application\\Mappings\\LotProfile.cs",
-              "RelativeDocumentMoniker": "eGranjaCAT.Application\\Mappings\\LotProfile.cs",
-              "ToolTip": "C:\\Users\\USER1\\source\\repos\\eGranjaCAT\\eGranjaCAT.Application\\Mappings\\LotProfile.cs",
-              "RelativeToolTip": "eGranjaCAT.Application\\Mappings\\LotProfile.cs",
-              "ViewState": "AgIAABIAAAAAAAAAAAAAACoAAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-12T15:11:35.748Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
               "Title": "LotsController.cs",
               "DocumentMoniker": "C:\\Users\\USER1\\source\\repos\\eGranjaCAT\\eGranjaCAT.Api\\Controllers\\V1\\LotsController.cs",
               "RelativeDocumentMoniker": "eGranjaCAT.Api\\Controllers\\V1\\LotsController.cs",
               "ToolTip": "C:\\Users\\USER1\\source\\repos\\eGranjaCAT\\eGranjaCAT.Api\\Controllers\\V1\\LotsController.cs",
               "RelativeToolTip": "eGranjaCAT.Api\\Controllers\\V1\\LotsController.cs",
-              "ViewState": "AgIAAA8AAAAAAAAAAAAAACEAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAwAAAAAAAAAAAAAACIAAAAbAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-12T14:37:12.268Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "ILotService.cs",
-              "DocumentMoniker": "C:\\Users\\USER1\\source\\repos\\eGranjaCAT\\eGranjaCAT.Application\\Interfaces\\ILotService.cs",
-              "RelativeDocumentMoniker": "eGranjaCAT.Application\\Interfaces\\ILotService.cs",
-              "ToolTip": "C:\\Users\\USER1\\source\\repos\\eGranjaCAT\\eGranjaCAT.Application\\Interfaces\\ILotService.cs",
-              "RelativeToolTip": "eGranjaCAT.Application\\Interfaces\\ILotService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAB1AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-12T14:36:35.014Z",
+              "WhenOpened": "2025-08-12T17:28:02.936Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
+              "Title": "ILotService.cs",
+              "DocumentMoniker": "C:\\Users\\USER1\\source\\repos\\eGranjaCAT\\eGranjaCAT.Application\\Interfaces\\ILotService.cs",
+              "RelativeDocumentMoniker": "eGranjaCAT.Application\\Interfaces\\ILotService.cs",
+              "ToolTip": "C:\\Users\\USER1\\source\\repos\\eGranjaCAT\\eGranjaCAT.Application\\Interfaces\\ILotService.cs",
+              "RelativeToolTip": "eGranjaCAT.Application\\Interfaces\\ILotService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAzAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-12T17:27:32.133Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
               "Title": "LotService.cs",
               "DocumentMoniker": "C:\\Users\\USER1\\source\\repos\\eGranjaCAT\\eGranjaCAT.Infrastructure\\Services\\LotService.cs",
               "RelativeDocumentMoniker": "eGranjaCAT.Infrastructure\\Services\\LotService.cs",
               "ToolTip": "C:\\Users\\USER1\\source\\repos\\eGranjaCAT\\eGranjaCAT.Infrastructure\\Services\\LotService.cs",
               "RelativeToolTip": "eGranjaCAT.Infrastructure\\Services\\LotService.cs",
-              "ViewState": "AgIAACwAAAAAAAAAAAAwwD8AAAA6AAAAAAAAAA==",
+              "ViewState": "AgIAAAUAAAAAAAAAAAAswBoAAAApAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-08-12T12:37:44.832Z",
               "EditorCaption": ""

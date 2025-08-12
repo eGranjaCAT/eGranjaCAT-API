@@ -29,6 +29,7 @@ namespace eGranjaCAT.Infrastructure.Services
             _excelService = excelService;
         }
 
+
         public async Task<ServiceResult<int?>> CreateEntradaAsync(int farmId, string userId, CreateEntradaDTO createEntradaDTO)
         {
             try
@@ -59,22 +60,22 @@ namespace eGranjaCAT.Infrastructure.Services
             }
         }
 
-        public async Task<ServiceResult<List<GetEntradaDTO>>> GetEntradesAsync(int farmId)
+        public async Task<ServiceResult<PagedResult<List<GetEntradaDTO>>>> GetEntradesAsync(int farmId)
         {
             try
             {
                 var farmExists = await _context.Farms.AnyAsync(f => f.Id == farmId);
-                if (!farmExists) return ServiceResult<List<GetEntradaDTO>>.Fail($"La granja {farmId} no existeix");
+                if (!farmExists) return ServiceResult<PagedResult<List<GetEntradaDTO>>>.Fail($"La granja {farmId} no existeix");
 
                 var entrades = await _context.Entrades.Include(l => l.Farm).Include(l => l.Lot).Where(e => e.FarmId == farmId).ToListAsync();
                 var entradesDTOs = _mapper.Map<List<GetEntradaDTO>>(entrades);
 
-                return ServiceResult<List<GetEntradaDTO>>.Ok(entradesDTOs, 200);
+                return ServiceResult<PagedResult<List<GetEntradaDTO>>>.Ok(entradesDTOs, 200);
             }
             catch (Exception ex)
             {
                 _logger.LogError(ex, "Error al obtenir les entrades");
-                return ServiceResult<List<GetEntradaDTO>>.FromException(ex);
+                return ServiceResult<PagedResult<List<GetEntradaDTO>>>.FromException(ex);
             }
         }
 
