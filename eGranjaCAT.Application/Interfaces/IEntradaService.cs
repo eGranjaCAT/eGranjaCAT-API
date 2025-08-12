@@ -11,7 +11,7 @@ namespace eGranjaCAT.Infrastructure.Services
         Task<MemoryStream> ExportEntradesAsync();
         Task<MemoryStream> ExportEntradesByFarmAsync(int farmId);
         Task<ServiceResult<GetEntradaDTO?>> GetEntradaByIdAsync(int entradaId);
-        Task<ServiceResult<List<GetEntradaDTO>>> GetEntradesAsync(int farmId);
+        Task<ServiceResult<PagedResult<GetEntradaDTO>>> GetEntradesAsync(int farmId, int pageIndex, int pageSize);
         Task<ServiceResult<bool>> UpdateEntradaAsync(int farmId, int entradaId, UpdateEntradaDTO updateEntradaDTO);
     }
 }

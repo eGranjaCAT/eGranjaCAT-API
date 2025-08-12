@@ -22,9 +22,9 @@ namespace eGranjaCAT.Api.Controllers.V1
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetEntrades(int farmId)
+        public async Task<IActionResult> GetEntrades(int farmId, [FromQuery] int pageIndex = 1, [FromQuery] int pageSize = 20)
         {
-            var result = await _service.GetEntradesAsync(farmId);
+            var result = await _service.GetEntradesAsync(farmId, pageIndex, pageSize);
             if (!result.Success) return StatusCode(result.StatusCode, new { result.Errors });
 
             return StatusCode(result.StatusCode, result.Data);

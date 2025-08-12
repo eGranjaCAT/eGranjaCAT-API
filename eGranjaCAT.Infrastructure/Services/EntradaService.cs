@@ -1,6 +1,8 @@
 ﻿using AutoMapper;
 using eGranjaCAT.Application.Common;
 using eGranjaCAT.Application.DTOs.Entrada;
+using eGranjaCAT.Application.DTOs.Lot;
+using eGranjaCAT.Application.DTOs.User;
 using eGranjaCAT.Domain.Entities;
 using eGranjaCAT.Infrastructure.Data;
 using eGranjaCAT.Infrastructure.ExportMappings;
@@ -60,22 +62,44 @@ namespace eGranjaCAT.Infrastructure.Services
             }
         }
 
-        public async Task<ServiceResult<PagedResult<List<GetEntradaDTO>>>> GetEntradesAsync(int farmId)
+
+        public async Task<ServiceResult<PagedResult<GetEntradaDTO>>> GetEntradesAsync(int farmId, int pageIndex, int pageSize)
         {
             try
             {
                 var farmExists = await _context.Farms.AnyAsync(f => f.Id == farmId);
-                if (!farmExists) return ServiceResult<PagedResult<List<GetEntradaDTO>>>.Fail($"La granja {farmId} no existeix");
+                if (!farmExists) return ServiceResult<PagedResult<GetEntradaDTO>>.Fail($"La granja {farmId} no existeix");
 
-                var entrades = await _context.Entrades.Include(l => l.Farm).Include(l => l.Lot).Where(e => e.FarmId == farmId).ToListAsync();
-                var entradesDTOs = _mapper.Map<List<GetEntradaDTO>>(entrades);
+                var query = _context.Entrades.Include(e => e.Farm).Where(e => e.FarmId == farmId);
+                var totalCount = await query.CountAsync();
 
-                return ServiceResult<PagedResult<List<GetEntradaDTO>>>.Ok(entradesDTOs, 200);
+                var entrades = await query.OrderBy(e => e.Id).Skip((pageIndex - 1) * pageSize).Take(pageSize).ToListAsync();
+
+                var userGuids = entrades.Select(l => l.UserGuid).Distinct().ToList();
+                var users = await _userManager.Users.Where(u => userGuids.Contains(u.Id)).ToListAsync();
+
+                var userDtos = _mapper.Map<List<GetUserDTO>>(users);
+                var userDict = userDtos.ToDictionary(u => u.Id!, StringComparer.OrdinalIgnoreCase);
+
+                var entradesDTOs = _mapper.Map<List<GetEntradaDTO>>(entrades, opt =>
+                {
+                    opt.Items["UserDict"] = userDict;
+                });
+
+                var pagedResult = new PagedResult<GetEntradaDTO>
+                {
+                    Items = entradesDTOs,
+                    TotalCount = totalCount,
+                    PageIndex = pageIndex,
+                    PageSize = pageSize
+                };
+
+                return ServiceResult<PagedResult<GetEntradaDTO>>.Ok(pagedResult);
             }
             catch (Exception ex)
             {
                 _logger.LogError(ex, "Error al obtenir les entrades");
-                return ServiceResult<PagedResult<List<GetEntradaDTO>>>.FromException(ex);
+                return ServiceResult<PagedResult<GetEntradaDTO>>.FromException(ex);
             }
         }
 
