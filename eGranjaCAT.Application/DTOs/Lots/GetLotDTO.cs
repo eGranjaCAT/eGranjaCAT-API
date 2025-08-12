@@ -13,7 +13,7 @@ namespace eGranjaCAT.Application.DTOs.Lot
         public DateTime CreatedAt { get; set; }
         public DateTime UpdatedAt { get; set; }
 
-        public GetUserDTO User { get; set; }
+        public GetUserDTO? User { get; set; }
         public GetFarmDTO Farm { get; set; }
     }
 }

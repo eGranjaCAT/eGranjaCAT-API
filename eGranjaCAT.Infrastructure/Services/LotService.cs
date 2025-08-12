@@ -47,22 +47,36 @@ namespace eGranjaCAT.Infrastructure.Services
         }
 
 
-        public async Task<ServiceResult<List<GetLotDTO>>> GetActiveLotsByFarmAsync(int farmId)
+        public async Task<ServiceResult<PagedResult<GetLotDTO>>> GetActiveLotsByFarmAsync(int farmId, int pageIndex, int pageSize)
         {
-            var lots = await _context.Lots.Include(l => l.Farm).Where(l => l.FarmId == farmId && l.Active).ToListAsync();
+            var farm = await _context.Farms.FirstOrDefaultAsync(f => f.Id == farmId);
+            if (farm == null) return ServiceResult<PagedResult<GetLotDTO>>.Fail($"Farm with ID {farmId} not found");
+
+            var query = _context.Lots.Include(l => l.Farm).Where(l => l.FarmId == farmId && l.Active);
+            var totalCount = await query.CountAsync();
+
+            var lots = await query.OrderBy(l => l.Id).Skip((pageIndex - 1) * pageSize).Take(pageSize).ToListAsync();
 
             var userGuids = lots.Select(l => l.UserGuid).Distinct().ToList();
             var users = await _userManager.Users.Where(u => userGuids.Contains(u.Id)).ToListAsync();
 
             var userDtos = _mapper.Map<List<GetUserDTO>>(users);
-            var userDict = userDtos.ToDictionary(u => u.Id);
+            var userDict = userDtos.ToDictionary(u => u.Id!, StringComparer.OrdinalIgnoreCase);
 
             var lotsDTO = _mapper.Map<List<GetLotDTO>>(lots, opt =>
             {
                 opt.Items["UserDict"] = userDict;
             });
 
-            return ServiceResult<List<GetLotDTO>>.Ok(lotsDTO);
+            var pagedResult = new PagedResult<GetLotDTO>
+            {
+                Items = lotsDTO,
+                TotalCount = totalCount,
+                PageIndex = pageIndex,
+                PageSize = pageSize
+            };
+
+            return ServiceResult<PagedResult<GetLotDTO>>.Ok(pagedResult);
         }
 
 
