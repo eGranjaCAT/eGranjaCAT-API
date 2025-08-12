@@ -78,12 +78,33 @@ namespace eGranjaCAT.Api.Controllers.V1
             return File(stream, "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", fileName);
         }
 
+        [HttpGet("export-all/active")]
+        public async Task<IActionResult> ExportAllActiveLots()
+        {
+            var stream = await _service.ExportActiveLotsAsync();
+            if (stream == null) return NotFound();
+            var fileName = $"active_lots_{DateTime.Now:yyyyMMdd}.xlsx";
+
+            return File(stream, "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", fileName);
+        }
+
+
         [HttpGet("export")]
         public async Task<IActionResult> ExportLots(int farmId)
         {
             var stream = await _service.ExportLotsByFarmAsync(farmId);
             if (stream == null) return NotFound();
             var fileName = $"lots_granja_{farmId}_{DateTime.Now:yyyyMMdd}.xlsx";
+
+            return File(stream, "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", fileName);
+        }
+
+        [HttpGet("export/active")]
+        public async Task<IActionResult> ExportActiveLots(int farmId)
+        {
+            var stream = await _service.ExportActiveLotsByFarmAsync(farmId);
+            if (stream == null) return NotFound();
+            var fileName = $"active_lots_granja_{farmId}_{DateTime.Now:yyyyMMdd}.xlsx";
 
             return File(stream, "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", fileName);
         }

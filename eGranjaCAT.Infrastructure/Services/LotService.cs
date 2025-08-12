@@ -134,6 +134,20 @@ namespace eGranjaCAT.Infrastructure.Services
             return await _excelService.GenerateExcelAsync(lots, ExcelColumnMappings.LotExcelColumnMappings, $"Lots - {DateTime.Today:yyyyMMdd}");
         }
 
+        public async Task<MemoryStream> ExportActiveLotsAsync()
+        {
+            var lots = await _context.Lots.Include(l => l.Farm).Where(l => l.Active).ToListAsync();
+
+            return await _excelService.GenerateExcelAsync(lots, ExcelColumnMappings.LotExcelColumnMappings, $"Lots - {DateTime.Today:yyyyMMdd}");
+        }
+
+        public async Task<MemoryStream> ExportActiveLotsByFarmAsync(int farmId)
+        {
+            var lots = await _context.Lots.Include(l => l.Farm).Where(l => l.FarmId == farmId && l.Active).ToListAsync();
+
+            return await _excelService.GenerateExcelAsync(lots, ExcelColumnMappings.LotExcelColumnMappings, $"Lots (Granja {farmId}) - {DateTime.Today:yyyyMMdd}");
+        }
+
         public async Task<MemoryStream> ExportLotsByFarmAsync(int farmId)
         {
             var lots = await _context.Lots.Include(l => l.Farm).Where(l => l.FarmId == farmId).ToListAsync();

@@ -9,7 +9,9 @@ namespace eGranjaCAT.Infrastructure.Services
         Task<ServiceResult<bool>> DeleteLotAsync(int lotId);
         Task<MemoryStream> ExportLotByIdAsync(int lotId);
         Task<MemoryStream> ExportLotsAsync();
+        Task<MemoryStream> ExportActiveLotsAsync();
         Task<MemoryStream> ExportLotsByFarmAsync(int farmId);
+        Task<MemoryStream> ExportActiveLotsByFarmAsync(int farmId);
         Task<ServiceResult<List<GetLotDTO>>> GetActiveLotsByFarmAsync(int farmId);
         Task<ServiceResult<GetLotDTO>> GetLotByIdAsync(int lotId);
         Task<ServiceResult<GetLotDTO>> GetLotsByFarmIdAsync(int farmId);
