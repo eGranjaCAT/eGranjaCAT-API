@@ -1,5 +1,7 @@
 ﻿using AutoMapper;
 using eGranjaCAT.Application.Common;
+using eGranjaCAT.Application.DTOs.Entrada;
+using eGranjaCAT.Application.DTOs.User;
 using eGranjaCAT.Application.DTOs.Visites;
 using eGranjaCAT.Domain.Entities;
 using eGranjaCAT.Infrastructure.Data;
@@ -57,22 +59,43 @@ namespace eGranjaCAT.Infrastructure.Services
         }
 
 
-        public async Task<ServiceResult<List<GetVisitaDTO>>> GetVisitesAsync(int farmId)
+        public async Task<ServiceResult<PagedResult<GetVisitaDTO>>> GetVisitesAsync(int farmId, int pageIndex, int pageSize)
         {
             try
             {
                 var farmExists = await _context.Farms.AnyAsync(f => f.Id == farmId);
-                if (!farmExists) return ServiceResult<List<GetVisitaDTO>>.Fail($"La granja {farmId} no existeix");
+                if (!farmExists) return ServiceResult<PagedResult<GetVisitaDTO>>.Fail($"La granja {farmId} no existeix");
 
-                var visites = await _context.Visites.Include(l => l.Farm).Where(v => v.FarmId == farmId).ToListAsync();
-                var visitesDTOs = _mapper.Map<List<GetVisitaDTO>>(visites);
+                var query = _context.Visites.Include(e => e.Farm).Where(e => e.FarmId == farmId);
+                var totalCount = await query.CountAsync();
 
-                return ServiceResult<List<GetVisitaDTO>>.Ok(visitesDTOs, 200);
+                var visites = await query.OrderBy(e => e.Id).Skip((pageIndex - 1) * pageSize).Take(pageSize).ToListAsync();
+
+                var userGuids = visites.Select(l => l.UserGuid).Distinct().ToList();
+                var users = await _userManager.Users.Where(u => userGuids.Contains(u.Id)).ToListAsync();
+
+                var userDtos = _mapper.Map<List<GetUserDTO>>(users);
+                var userDict = userDtos.ToDictionary(u => u.Id!, StringComparer.OrdinalIgnoreCase);
+
+                var visitesDTOs = _mapper.Map<List<GetVisitaDTO>>(visites, opt =>
+                {
+                    opt.Items["UserDict"] = userDict;
+                });
+
+                var pagedResult = new PagedResult<GetVisitaDTO>
+                {
+                    Items = visitesDTOs,
+                    TotalCount = totalCount,
+                    PageIndex = pageIndex,
+                    PageSize = pageSize
+                };
+
+                return ServiceResult<PagedResult<GetVisitaDTO>>.Ok(pagedResult);
             }
             catch (Exception ex)
             {
                 _logger.LogError(ex, "Error al obtenir les visites");
-                return ServiceResult<List<GetVisitaDTO>>.FromException(ex);
+                return ServiceResult<PagedResult<GetVisitaDTO>>.FromException(ex);
             }
         }
 

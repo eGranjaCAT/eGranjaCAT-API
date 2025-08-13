@@ -11,7 +11,7 @@ namespace eGranjaCAT.Infrastructure.Services
         Task<MemoryStream> ExportVisitesByFarmAsync(int farmId);
         Task<MemoryStream> ExportVisitesByIdAsync(int visitaId);
         Task<ServiceResult<GetVisitaDTO?>> GetVisitaByIdAsync(int visitaId);
-        Task<ServiceResult<List<GetVisitaDTO>>> GetVisitesAsync(int farmId);
+        Task<ServiceResult<PagedResult<GetVisitaDTO>>> GetVisitesAsync(int farmId, int pageIndex, int pageSize);
         Task<ServiceResult<bool>> UpdateVisitaAsync(int farmId, int visitaId, UpdateVisitaDTO updateVisitaDTO);
     }
 }
