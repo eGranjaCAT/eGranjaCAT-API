@@ -23,9 +23,9 @@ namespace eGranjaCAT.Api.Controllers.V1
 
 
         [HttpGet]
-        public async Task<IActionResult> GetFarmsAsync()
+        public async Task<IActionResult> GetFarmsAsync([FromQuery] int pageIndex = 1, [FromQuery] int pageSize = 20)
         {
-            var result = await _service.GetFarmsAsync();
+            var result = await _service.GetFarmsAsync(pageIndex, pageSize);
             if (!result.Success) return StatusCode(result.StatusCode, new { result.Errors });
 
             return StatusCode(result.StatusCode, result.Data);

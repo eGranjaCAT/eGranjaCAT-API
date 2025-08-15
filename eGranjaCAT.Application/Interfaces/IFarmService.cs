@@ -8,6 +8,6 @@ namespace eGranjaCAT.Infrastructure.Services
         Task<ServiceResult<int?>> CreateFarmAsync(CreateFarmDTO createFarmDTO, string userId);
         Task<ServiceResult<bool>> DeleteFarmAsync(int id);
         Task<ServiceResult<GetFarmDTO?>> GetFarmByIdAsync(int id);
-        Task<ServiceResult<List<GetFarmDTO>>> GetFarmsAsync();
+        Task<ServiceResult<PagedResult<GetFarmDTO>>> GetFarmsAsync(int pageIndex, int pageSize);
     }
 }

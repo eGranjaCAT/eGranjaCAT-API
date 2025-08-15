@@ -21,52 +21,101 @@ namespace eGranjaCAT.Infrastructure.Services
         {
             _context = context;
             _mapper = mapper;
-            this._userManager = userManager;
+            _userManager = userManager;
         }
 
-        public async Task<ServiceResult<List<GetFarmDTO>>> GetFarmsAsync()
+        public async Task<ServiceResult<PagedResult<GetFarmDTO>>> GetFarmsAsync(int pageIndex, int pageSize)
         {
-            var farms = await _context.Farms.ToListAsync();
-            var farmsDTOs = _mapper.Map<List<GetFarmDTO>>(farms);
+            try
+            {
+                var query = _context.Farms;
+                var totalCount = await query.CountAsync();
 
-            return ServiceResult<List<GetFarmDTO>>.Ok(farmsDTOs);
+                var farms = await query.OrderBy(e => e.Id).Skip((pageIndex - 1) * pageSize).Take(pageSize).ToListAsync();
+
+                var userGuids = farms.Select(l => l.UserGuid).Distinct().ToList();
+                var users = await _userManager.Users.Where(u => userGuids.Contains(u.Id)).ToListAsync();
+
+                var userDtos = _mapper.Map<List<GetUserDTO>>(users);
+                var userDict = userDtos.ToDictionary(u => u.Id!, StringComparer.OrdinalIgnoreCase);
+
+                var farmsDTOs = _mapper.Map<List<GetFarmDTO>>(farms, opt =>
+                {
+                    opt.Items["UserDict"] = userDict;
+                });
+
+                var pagedResult = new PagedResult<GetFarmDTO>
+                {
+                    Items = farmsDTOs,
+                    TotalCount = totalCount,
+                    PageIndex = pageIndex,
+                    PageSize = pageSize
+                };
+
+                return ServiceResult<PagedResult<GetFarmDTO>>.Ok(pagedResult);
+            }
+            catch (Exception ex)
+            {
+                return ServiceResult<PagedResult<GetFarmDTO>>.FromException(ex);
+            }
         }
 
         public async Task<ServiceResult<int?>> CreateFarmAsync(CreateFarmDTO createFarmDTO, string userId)
         {
-            var farm = _mapper.Map<Farm>(createFarmDTO);
-            farm.CreatedAt = DateTime.UtcNow;
-            farm.UserGuid = userId;
+            try
+            {
+                var farm = _mapper.Map<Farm>(createFarmDTO);
+                farm.CreatedAt = DateTime.UtcNow;
+                farm.UserGuid = userId;
 
-            await _context.Farms.AddAsync(farm);
-            await _context.SaveChangesAsync();
+                await _context.Farms.AddAsync(farm);
+                await _context.SaveChangesAsync();
 
-            return ServiceResult<int?>.Ok(farm.Id, 201);
+                return ServiceResult<int?>.Ok(farm.Id, 201);
+            }
+            catch (Exception ex)
+            {
+                return ServiceResult<int?>.FromException(ex);
+            }
         }
 
         public async Task<ServiceResult<GetFarmDTO?>> GetFarmByIdAsync(int id)
         {
-            var farm = await _context.Farms.FindAsync(id);
-            if (farm == null) return ServiceResult<GetFarmDTO?>.Fail($"Granja {id} no trobada");
+            try
+            {
+                var farm = await _context.Farms.FindAsync(id);
+                if (farm == null) return ServiceResult<GetFarmDTO?>.Fail($"Granja {id} no trobada");
 
-            var user = await _userManager.FindByIdAsync(farm.UserGuid);
-            var userDTO = _mapper.Map<GetUserDTO>(user);
+                var user = await _userManager.FindByIdAsync(farm.UserGuid);
+                var userDTO = _mapper.Map<GetUserDTO>(user);
 
-            var farmDto = _mapper.Map<GetFarmDTO>(farm);
-            farmDto.User = userDTO;
+                var farmDto = _mapper.Map<GetFarmDTO>(farm);
+                farmDto.User = userDTO;
 
-            return ServiceResult<GetFarmDTO?>.Ok(farmDto);
+                return ServiceResult<GetFarmDTO?>.Ok(farmDto);
+            }
+            catch (Exception ex)
+            {
+                return ServiceResult<GetFarmDTO?>.FromException(ex);
+            }
         }
 
         public async Task<ServiceResult<bool>> DeleteFarmAsync(int id)
         {
-            var farm = await _context.Farms.FindAsync(id);
-            if (farm == null) return ServiceResult<bool>.Fail($"Granja {id} no trobada", 404);
+            try
+            {
+                var farm = await _context.Farms.FindAsync(id);
+                if (farm == null) return ServiceResult<bool>.Fail($"Granja {id} no trobada", 404);
 
-            _context.Farms.Remove(farm);
-            await _context.SaveChangesAsync();
+                _context.Farms.Remove(farm);
+                await _context.SaveChangesAsync();
 
-            return ServiceResult<bool>.Ok(true, 204);
+                return ServiceResult<bool>.Ok(true, 204);
+            }
+            catch (Exception ex)
+            {
+                return ServiceResult<bool>.FromException(ex);
+            }
         }
     }
 }
