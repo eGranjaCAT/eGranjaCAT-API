@@ -9,7 +9,7 @@ namespace eGranjaCAT.Infrastructure.Identity
     {
         public UserProfile()
         {
-            CreateMap<CreateUserDTO, IUserBase>()
+            CreateMap<CreateUserDTO, UserBaseModel>()
                 .ForMember(d => d.Name, opt => opt.MapFrom(s => s.Name))
                 .ForMember(d => d.Lastname, opt => opt.MapFrom(s => s.Lastname))
                 .ForMember(d => d.Email, opt => opt.MapFrom(s => s.Email))

@@ -42,7 +42,9 @@ namespace eGranjaCAT.Infrastructure.Services
         {
             try
             {
-                var user = _mapper.Map<User>(userDTO);
+                var userBase = _mapper.Map<UserBaseModel>(userDTO);
+                var user = _mapper.Map<User>(userBase);
+
                 var result = await _userManager.CreateAsync(user, userDTO.Password);
 
                 if (!result.Succeeded) return ServiceResult<AuthResponseDTO>.Fail("Error creant l'usuari: " + string.Join(", ", result.Errors.Select(e => e.Description)));
