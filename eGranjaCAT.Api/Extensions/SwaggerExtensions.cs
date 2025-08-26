@@ -13,13 +13,14 @@ namespace eGranjaCAT.Api.Extensions
             {
                 c.SwaggerDoc("v1", new OpenApiInfo
                 {
-                    Title = "eGranjaCAT - API RESTful per a la Gestió d'Explotacions Porcines",
+                    Title = "eGranjaCAT - RESTful API for Pig Farm Management",
                     Version = "v1",
                     Description =
-                    "API oficial desenvolupada per Nastrafarm S.L. amb l'objectiu de millorar i automatitzar la gestió d'explotacions porcines catalanes. " +
-                    "Aquest servei integra funcionalitats avançades com la connexió amb la Gestió Telemàtica Ramadera (GTR), serveis del Ministeri d'Agricultura, " +
-                    "generació de documents PDF i XLSX, gestió d'autenticacions i potencialment la signatura electrònica de prescripcions i registres veterinaris. " +
-                    "L'API facilita la digitalització i eficiència en el maneig de dades, reduint errors i millorant la presa de decisions a les granges.",
+                    "The eGranjaCAT API is developed with .NET 8 and C#, implementing clean architecture and a single-tenant-per-database design on SQL Server to ensure data isolation and client-specific customization. " +
+                    "It features secure JWT authentication with role- and policy-based access control, comprehensive Swagger documentation for API endpoints, scheduled background tasks via cron jobs, and SMTP integration for email notifications. " +
+                    "The API offers native integrations with official systems such as Gestió Telemàtica Ramadera (GTR), Ministerio de Agricultura, Pesca y Alimentación (MAPA), the PresVet antibiotic prescription monitoring system, and other services. " +
+                    "It also includes in-house generation and digital signing of veterinary electronic prescriptions without reliance on third-party software, with some features currently in development. Additionally, it provides automated PDF and XLSX document generation based directly on database content. " +
+                    "This API streamlines pig farm management workflows in Catalonia by automating data exchange and enhancing operational security and efficiency. It is currently being used by the Catalan livestock and agriculture company Nastrafarm SL.",
                     Contact = new OpenApiContact
                     {
                         Name = "Felix Montragull Kruse",
@@ -28,9 +29,10 @@ namespace eGranjaCAT.Api.Extensions
                     },
                     License = new OpenApiLicense
                     {
-                        Name = "© 2025 - Tots els drets reservats a Felix Montragull Kruse"
+                        Name = "© 2025 - All rights reserved by Felix Montragull Kruse"
                     }
                 });
+
 
                 var xmlFile = $"{System.Reflection.Assembly.GetExecutingAssembly().GetName().Name}.xml";
                 var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
@@ -38,7 +40,7 @@ namespace eGranjaCAT.Api.Extensions
 
                 var securityScheme = new OpenApiSecurityScheme()
                 {
-                    Description = "JWT d'autentificació",
+                    Description = "JWT Authorization",
                     Name = "Authorization",
                     In = ParameterLocation.Header,
                     Type = SecuritySchemeType.Http,

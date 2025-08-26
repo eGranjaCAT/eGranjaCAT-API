@@ -31,7 +31,6 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI(c =>
     {
         c.SwaggerEndpoint("/swagger/v1/swagger.json", "eGranjaCAT - RESTful API");
-        c.RoutePrefix = string.Empty;
     });
 }
 
