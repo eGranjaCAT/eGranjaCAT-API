@@ -30,7 +30,7 @@ namespace eGranjaCAT.Api.Controllers.V1
         [HttpGet("recent/{days}")]
         public async Task<IActionResult> GetRecentStatsAsync(int days)
         {
-            if (days <= 0) return BadRequest("El nombre de dies ha de ser positiu");
+            if (days <= 0) return BadRequest();
             var stats = await _service.CountRecentRecordsAsync(days);
             return Ok(stats);
         }
