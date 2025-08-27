@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "/2nhJ2bZRAk=",
+  "dgSpecHash": "FveQ5kMfJto=",
   "success": true,
-  "projectFilePath": "C:\\Users\\USER1\\Source\\Repos\\eGranjaCATNew\\eGranjaCAT.Application\\eGranjaCAT.Application.csproj",
+  "projectFilePath": "C:\\Users\\USER1\\Source\\Repos\\eGranjaCAT-API\\eGranjaCAT.Application\\eGranjaCAT.Application.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\USER1\\.nuget\\packages\\automapper\\14.0.0\\automapper.14.0.0.nupkg.sha512",
     "C:\\Users\\USER1\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\9.0.7\\microsoft.extensions.dependencyinjection.abstractions.9.0.7.nupkg.sha512",

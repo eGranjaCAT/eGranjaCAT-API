@@ -37,6 +37,7 @@ namespace eGranjaCAT.Application
             });
 
             services.AddScoped<IBackupService, BackupService>();
+
             services.AddTransient<IFarmService, FarmService>();
             services.AddTransient<IUserService, UserService>();
             services.AddTransient<ILotService, LotService>();
@@ -44,6 +45,7 @@ namespace eGranjaCAT.Application
             services.AddTransient<IVisitaService, VisitaService>();
             services.AddTransient<IEmailService, EmailService>();
             services.AddTransient<IExcelService, ExcelService>();
+            services.AddTransient<IStatsService, StatsService>();
 
             return services;
         }

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\USER1\\Source\\Repos\\eGranjaCATNew\\eGranjaCAT.Domain\\eGranjaCAT.Domain.csproj": {}
+    "C:\\Users\\USER1\\Source\\Repos\\eGranjaCAT-API\\eGranjaCAT.Domain\\eGranjaCAT.Domain.csproj": {}
   },
   "projects": {
-    "C:\\Users\\USER1\\Source\\Repos\\eGranjaCATNew\\eGranjaCAT.Domain\\eGranjaCAT.Domain.csproj": {
+    "C:\\Users\\USER1\\Source\\Repos\\eGranjaCAT-API\\eGranjaCAT.Domain\\eGranjaCAT.Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\USER1\\Source\\Repos\\eGranjaCATNew\\eGranjaCAT.Domain\\eGranjaCAT.Domain.csproj",
+        "projectUniqueName": "C:\\Users\\USER1\\Source\\Repos\\eGranjaCAT-API\\eGranjaCAT.Domain\\eGranjaCAT.Domain.csproj",
         "projectName": "eGranjaCAT.Domain",
-        "projectPath": "C:\\Users\\USER1\\Source\\Repos\\eGranjaCATNew\\eGranjaCAT.Domain\\eGranjaCAT.Domain.csproj",
+        "projectPath": "C:\\Users\\USER1\\Source\\Repos\\eGranjaCAT-API\\eGranjaCAT.Domain\\eGranjaCAT.Domain.csproj",
         "packagesPath": "C:\\Users\\USER1\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\USER1\\Source\\Repos\\eGranjaCATNew\\eGranjaCAT.Domain\\obj\\",
+        "outputPath": "C:\\Users\\USER1\\Source\\Repos\\eGranjaCAT-API\\eGranjaCAT.Domain\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

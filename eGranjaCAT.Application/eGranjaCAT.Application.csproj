@@ -7,6 +7,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="DTOs\Sortides\**" />
+    <EmbeddedResource Remove="DTOs\Sortides\**" />
+    <None Remove="DTOs\Sortides\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="AutoMapper" Version="14.0.0" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="9.0.7" />
   </ItemGroup>
@@ -18,7 +24,6 @@
 
   <ItemGroup>
     <Folder Include="DTOs\GTR\Pinsos\" />
-    <Folder Include="DTOs\Sortides\" />
   </ItemGroup>
 
 </Project>
