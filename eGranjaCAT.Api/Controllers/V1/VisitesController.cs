@@ -8,9 +8,9 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace eGranjaCAT.Api.Controllers.V1
 {
-    [Authorize(Policy = "Visites")]
     [ApiController]
     [ApiVersion("1.0")]
+    [Authorize(Policy = "Visites")]
     [Route("api/v{version:apiVersion}/visites")]
     public class VisitesController : ControllerBase
     {
@@ -78,9 +78,9 @@ namespace eGranjaCAT.Api.Controllers.V1
         }
 
         [HttpGet("export")]
-        public async Task<IActionResult> ExportAllVisites()
+        public async Task<IActionResult> ExportAllVisites([FromQuery] int? pageIndex, [FromQuery] int? pageSize)
         {
-            var stream = await _service.ExportVisitesAsync();
+            var stream = await _service.ExportVisitesAsync(pageIndex, pageSize);
             if (stream == null) return NotFound();
             var fileName = $"visites_{DateTime.Now:yyyyMMdd}.xlsx";
 
@@ -88,9 +88,9 @@ namespace eGranjaCAT.Api.Controllers.V1
         }
 
         [HttpGet("farm-{farmId:int}/export")]
-        public async Task<IActionResult> ExportVisites(int farmId)
+        public async Task<IActionResult> ExportVisites(int farmId, [FromQuery] int? pageIndex, [FromQuery] int? pageSize)
         {
-            var stream = await _service.ExportVisitesByFarmAsync(farmId);
+            var stream = await _service.ExportVisitesByFarmAsync(farmId, pageIndex, pageSize);
             if (stream == null) return NotFound();
             var fileName = $"visites_granja_{farmId}_{DateTime.Now:yyyyMMdd}.xlsx";
 

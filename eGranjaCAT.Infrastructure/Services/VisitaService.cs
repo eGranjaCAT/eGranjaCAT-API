@@ -5,6 +5,7 @@ using eGranjaCAT.Application.DTOs.User;
 using eGranjaCAT.Application.DTOs.Visites;
 using eGranjaCAT.Domain.Entities;
 using eGranjaCAT.Infrastructure.Data;
+using eGranjaCAT.Infrastructure.ExportMappings;
 using eGranjaCAT.Infrastructure.Identity;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -200,25 +201,40 @@ namespace eGranjaCAT.Infrastructure.Services
         }
 
 
-        public async Task<MemoryStream> ExportVisitesAsync()
+        public async Task<MemoryStream> ExportVisitesAsync(int? pageIndex, int? pageSize)
         {
-            var visites = await _context.Visites.Include(l => l.Farm).ToListAsync();
-            // return await _excelService.GenerateExcelAsync(visites, ExcelColumnMappings.EntradaExcelColumnMappings, $"Entrades - {DateTime.Today:yyyyMMdd}");
-            return null;
+            var visites = new List<Visita>();
+
+            if (pageIndex != null && pageSize != null)
+            {
+                var query = _context.Visites.Include(l => l.Farm);
+                var totalCount = await query.CountAsync();
+                visites = await query.OrderBy(e => e.Id).Skip((pageIndex.Value - 1) * pageSize.Value).Take(pageSize.Value).ToListAsync();
+            }
+            else visites = await _context.Visites.Include(l => l.Farm).ToListAsync();
+
+            return await _excelService.GenerateExcelAsync(visites, ExcelColumnMappings.VisitaExcelColumnMappings, $"Visites - {DateTime.Today:yyyyMMdd}");
         }
 
-        public async Task<MemoryStream> ExportVisitesByFarmAsync(int farmId)
+        public async Task<MemoryStream> ExportVisitesByFarmAsync(int farmId, int? pageIndex, int? pageSize)
         {
-            var visites = await _context.Visites.Include(l => l.Farm).Where(e => e.FarmId == farmId).ToListAsync();
-            // return await _excelService.GenerateExcelAsync(visites, ExcelColumnMappings.EntradaExcelColumnMappings, $"Entrades (Granja {farmId}) - {DateTime.Today:yyyyMMdd}");
-            return null;
+            var visites = new List<Visita>();
+
+            if (pageIndex != null && pageSize != null)
+            {
+                var query = _context.Visites.Include(l => l.Farm).Where(v => v.FarmId == farmId);
+                var totalCount = await query.CountAsync();
+                visites = await query.OrderBy(e => e.Id).Skip((pageIndex.Value - 1) * pageSize.Value).Take(pageSize.Value).ToListAsync();
+            }
+            else visites = await _context.Visites.Include(l => l.Farm).ToListAsync();
+
+            return await _excelService.GenerateExcelAsync(visites, ExcelColumnMappings.VisitaExcelColumnMappings, $"Visites (Granja {farmId}) - {DateTime.Today:yyyyMMdd}");
         }
 
         public async Task<MemoryStream> ExportVisitesByIdAsync(int visitaId)
         {
             var visites = await _context.Visites.Include(l => l.Farm).Where(e => e.Id == visitaId).ToListAsync();
-            // return await _excelService.GenerateExcelAsync(entrades, ExcelColumnMappings.EntradaExcelColumnMappings, $"Entrada {visitaId} - {DateTime.Today:yyyyMMdd}");
-            return null;
+            return await _excelService.GenerateExcelAsync(visites, ExcelColumnMappings.VisitaExcelColumnMappings, $"Visita {visitaId} - {DateTime.Today:yyyyMMdd}");
         }
     }
 }

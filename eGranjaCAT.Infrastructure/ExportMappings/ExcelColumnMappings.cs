@@ -36,5 +36,22 @@ namespace eGranjaCAT.Infrastructure.ExportMappings
                 //new ExcelColumnMap<Lot> { Header = "Creador", ValueSelector = e => e.User?.Email ?? string.Empty },
                 new ExcelColumnMap<Lot> { Header = "Data de creació", ValueSelector = e => e.CreatedAt.ToString("dd/MM/yyyy HH:mm") },
             };
+
+        public static readonly List<ExcelColumnMap<Visita>> VisitaExcelColumnMappings =
+            new()
+            {
+                new ExcelColumnMap<Visita> { Header = "ID", ValueSelector = v => v.Id },
+                new ExcelColumnMap<Visita> { Header = "Explotació", ValueSelector = v => v.Farm?.Name ?? string.Empty },
+                new ExcelColumnMap<Visita> { Header = "Visitant", ValueSelector = v => v.Visitant },
+                new ExcelColumnMap<Visita> { Header = "Data", ValueSelector = v => v.Data.ToString("dd/MM/yyyy") },
+                new ExcelColumnMap<Visita> { Header = "Motiu", ValueSelector = v => v.Motiu },
+                new ExcelColumnMap<Visita> { Header = "Matricula", ValueSelector = v => v.Matricula },
+                new ExcelColumnMap<Visita> { Header = "Empresa", ValueSelector = v => v.Empresa },
+                new ExcelColumnMap<Visita> { Header = "Darrera Explotació", ValueSelector = v => v.DarreraExplotacio },
+                new ExcelColumnMap<Visita> { Header = "Data Darrera Explotació", ValueSelector = v => v.DataDarreraExplotacio?.ToString("dd/MM/yyyy") },
+                //new ExcelColumnMap<Lot> { Header = "Creador", ValueSelector = e => e.User?.Email ?? string.Empty },
+                new ExcelColumnMap<Visita> { Header = "Data de creació", ValueSelector = v => v.CreatedAt.ToString("dd/MM/yyyy HH:mm") },
+                new ExcelColumnMap<Visita> { Header = "Observacions", ValueSelector = v => v.Observacions },
+            };
     }
 }

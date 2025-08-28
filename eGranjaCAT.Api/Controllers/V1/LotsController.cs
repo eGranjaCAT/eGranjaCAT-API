@@ -8,9 +8,9 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace eGranjaCAT.Api.Controllers.V1
 {
-    [Authorize(Policy = "Lots")]
     [ApiController]
     [ApiVersion("1.0")]
+    [Authorize(Policy = "Lots")]
     [Route("api/v{version:apiVersion}/lots")]
     public class LotsController : ControllerBase
     {

@@ -8,9 +8,9 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace eGranjaCAT.Api.Controllers.V1
 {
-    [Authorize(Policy = "Entrades")]
     [ApiController]
     [ApiVersion("1.0")]
+    [Authorize(Policy = "Entrades")]
     [Route("api/v{version:apiVersion}/entrades")]
     public class EntradesController : ControllerBase
     {
