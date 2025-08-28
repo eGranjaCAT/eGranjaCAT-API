@@ -62,7 +62,7 @@ namespace eGranjaCAT.Infrastructure.Services
         }
 
 
-        public async Task<ServiceResult<PagedResult<GetEntradaDTO>>> GetEntradesAsync(int farmId, int pageIndex, int pageSize)
+        public async Task<ServiceResult<PagedResult<GetEntradaDTO>>> GetEntradesByFarmAsync(int farmId, int pageIndex, int pageSize)
         {
             try
             {
@@ -70,6 +70,44 @@ namespace eGranjaCAT.Infrastructure.Services
                 if (!farmExists) return ServiceResult<PagedResult<GetEntradaDTO>>.Fail($"La granja {farmId} no existeix");
 
                 var query = _context.Entrades.Include(e => e.Farm).Include(e => e.Lot).Where(e => e.FarmId == farmId);
+                var totalCount = await query.CountAsync();
+
+                var entrades = await query.OrderBy(e => e.Id).Skip((pageIndex - 1) * pageSize).Take(pageSize).ToListAsync();
+
+                var userGuids = entrades.Select(l => l.UserGuid).Distinct().ToList();
+                var users = await _userManager.Users.Where(u => userGuids.Contains(u.Id)).ToListAsync();
+
+                var userDtos = _mapper.Map<List<GetUserDTO>>(users);
+                var userDict = userDtos.ToDictionary(u => u.Id!, StringComparer.OrdinalIgnoreCase);
+
+                var entradesDTOs = _mapper.Map<List<GetEntradaDTO>>(entrades, opt =>
+                {
+                    opt.Items["UserDict"] = userDict;
+                });
+
+                var pagedResult = new PagedResult<GetEntradaDTO>
+                {
+                    Items = entradesDTOs,
+                    TotalCount = totalCount,
+                    PageIndex = pageIndex,
+                    PageSize = pageSize
+                };
+
+                return ServiceResult<PagedResult<GetEntradaDTO>>.Ok(pagedResult);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error al obtenir les entrades");
+                return ServiceResult<PagedResult<GetEntradaDTO>>.FromException(ex);
+            }
+        }
+
+        public async Task<ServiceResult<PagedResult<GetEntradaDTO>>> GetEntradesAsync(int pageIndex, int pageSize)
+        {
+            try
+            {
+
+                var query = _context.Entrades.Include(e => e.Farm).Include(e => e.Lot);
                 var totalCount = await query.CountAsync();
 
                 var entrades = await query.OrderBy(e => e.Id).Skip((pageIndex - 1) * pageSize).Take(pageSize).ToListAsync();
@@ -120,14 +158,11 @@ namespace eGranjaCAT.Infrastructure.Services
             }
         }
 
-        public async Task<ServiceResult<bool>> UpdateEntradaAsync(int farmId, int entradaId, UpdateEntradaDTO updateEntradaDTO)
+        public async Task<ServiceResult<bool>> UpdateEntradaAsync(int entradaId, UpdateEntradaDTO updateEntradaDTO)
         {
             try
             {
-                var farmExists = await _context.Farms.AnyAsync(f => f.Id == farmId);
-                if (!farmExists) return ServiceResult<bool>.Fail("La granja no existeix");
-
-                var entrada = await _context.Entrades.Where(e => e.FarmId == farmId && e.Id == entradaId).FirstOrDefaultAsync();
+                var entrada = await _context.Entrades.Where(e => e.Id == entradaId).FirstOrDefaultAsync();
                 if (entrada == null) return ServiceResult<bool>.Fail("Entrada no trobada", 404);
 
                 _mapper.Map(updateEntradaDTO, entrada);
@@ -146,14 +181,11 @@ namespace eGranjaCAT.Infrastructure.Services
             }
         }
 
-        public async Task<ServiceResult<bool>> DeleteEntradaAsync(int farmId, int entradaId)
+        public async Task<ServiceResult<bool>> DeleteEntradaAsync(int entradaId)
         {
             try
             {
-                var farmExists = await _context.Farms.AnyAsync(f => f.Id == farmId);
-                if (!farmExists) return ServiceResult<bool>.Fail("La granja no existeix");
-
-                var entrada = await _context.Entrades.Where(e => e.FarmId == farmId && e.Id == entradaId).FirstOrDefaultAsync();
+                var entrada = await _context.Entrades.Where(e => e.Id == entradaId).FirstOrDefaultAsync();
                 if (entrada == null) return ServiceResult<bool>.Fail("Entrada no trobada", 404);
 
                 _context.Entrades.Remove(entrada);

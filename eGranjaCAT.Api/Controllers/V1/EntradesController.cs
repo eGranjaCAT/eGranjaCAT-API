@@ -11,7 +11,7 @@ namespace eGranjaCAT.Api.Controllers.V1
     [Authorize(Policy = "Entrades")]
     [ApiController]
     [ApiVersion("1.0")]
-    [Route("api/v{version:apiVersion}/{farmId:int}/entrades")]
+    [Route("api/v{version:apiVersion}/entrades")]
     public class EntradesController : ControllerBase
     {
         private readonly IEntradaService _service;
@@ -21,10 +21,20 @@ namespace eGranjaCAT.Api.Controllers.V1
             _service = service;
         }
 
+
         [HttpGet]
-        public async Task<IActionResult> GetEntrades(int farmId, [FromQuery] int pageIndex = 1, [FromQuery] int pageSize = 20)
+        public async Task<IActionResult> GetEntrades([FromQuery] int pageIndex = 1, [FromQuery] int pageSize = 20)
         {
-            var result = await _service.GetEntradesAsync(farmId, pageIndex, pageSize);
+            var result = await _service.GetEntradesAsync(pageIndex, pageSize);
+            if (!result.Success) return StatusCode(result.StatusCode, new { result.Errors });
+
+            return StatusCode(result.StatusCode, result.Data);
+        }
+
+        [HttpGet("farm-{farmId:int}")]
+        public async Task<IActionResult> GetEntradesByFarm(int farmId, [FromQuery] int pageIndex = 1, [FromQuery] int pageSize = 20)
+        {
+            var result = await _service.GetEntradesByFarmAsync(farmId, pageIndex, pageSize);
             if (!result.Success) return StatusCode(result.StatusCode, new { result.Errors });
 
             return StatusCode(result.StatusCode, result.Data);
@@ -39,7 +49,7 @@ namespace eGranjaCAT.Api.Controllers.V1
             return StatusCode(result.StatusCode, result.Data);
         }
 
-        [HttpPost]
+        [HttpPost("farm-{farmId:int}")]
         public async Task<IActionResult> CreateEntrada(int farmId, [FromBody] CreateEntradaDTO dto)
         {
             var userGuid = User.GetUserId();
@@ -50,24 +60,24 @@ namespace eGranjaCAT.Api.Controllers.V1
         }
 
         [HttpPut("{id:int}")]
-        public async Task<IActionResult> UpdateEntrada(int farmId, int id, [FromBody] UpdateEntradaDTO dto)
+        public async Task<IActionResult> UpdateEntrada(int id, [FromBody] UpdateEntradaDTO dto)
         {
-            var result = await _service.UpdateEntradaAsync(farmId, id, dto);
+            var result = await _service.UpdateEntradaAsync(id, dto);
             if (!result.Success) return StatusCode(result.StatusCode, new { result.Errors });
 
             return StatusCode(result.StatusCode, result.Data);
         }
 
         [HttpDelete("{id:int}")]
-        public async Task<IActionResult> DeleteEntrada(int farmId, int id)
+        public async Task<IActionResult> DeleteEntrada(int id)
         {
-            var result = await _service.DeleteEntradaAsync(farmId, id);
+            var result = await _service.DeleteEntradaAsync(id);
             if (!result.Success) return StatusCode(result.StatusCode, new { result.Errors });
 
             return StatusCode(result.StatusCode, result.Data);
         }
 
-        [HttpGet("export/all")]
+        [HttpGet("export")]
         public async Task<IActionResult> ExportAllEntrades([FromQuery] int? pageIndex, [FromQuery] int? pageSize)
         {
             var stream = await _service.ExportEntradesAsync(pageIndex, pageSize);
@@ -77,7 +87,7 @@ namespace eGranjaCAT.Api.Controllers.V1
             return File(stream, "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", fileName);
         }
 
-        [HttpGet("export")]
+        [HttpGet("farm-{farmId:int}/export")]
         public async Task<IActionResult> ExportEntrades(int farmId, [FromQuery] int? pageIndex, [FromQuery] int? pageSize)
         {
             var stream = await _service.ExportEntradesByFarmAsync(farmId, pageIndex, pageSize);
