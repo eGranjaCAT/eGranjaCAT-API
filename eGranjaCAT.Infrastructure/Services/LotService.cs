@@ -270,30 +270,62 @@ namespace eGranjaCAT.Infrastructure.Services
             }
         }
 
-        public async Task<MemoryStream> ExportLotsAsync()
+        public async Task<MemoryStream> ExportLotsAsync(int? pageIndex, int? pageSize)
         {
-            var lots = await _context.Lots.Include(l => l.Farm).ToListAsync();
+            var lots = new List<Lot>();
+
+            if (pageIndex != null && pageSize != null)
+            {
+                var query = _context.Lots.Include(l => l.Farm);
+                var totalCount = await query.CountAsync();
+                lots = await query.OrderBy(l => l.Id).Skip((pageIndex.Value - 1) * pageSize.Value).Take(pageSize.Value).ToListAsync();
+            }
+            else lots = await _context.Lots.Include(l => l.Farm).ToListAsync();
 
             return await _excelService.GenerateExcelAsync(lots, ExcelColumnMappings.LotExcelColumnMappings, $"Lots - {DateTime.Today:yyyyMMdd}");
         }
 
-        public async Task<MemoryStream> ExportActiveLotsAsync()
+        public async Task<MemoryStream> ExportActiveLotsAsync(int? pageIndex, int? pageSize)
         {
-            var lots = await _context.Lots.Include(l => l.Farm).Where(l => l.Active).ToListAsync();
+            var lots = new List<Lot>();
+
+            if (pageIndex != null && pageSize != null)
+            {
+                var query = _context.Lots.Include(l => l.Farm).Where(l => l.Active);
+                var totalCount = await query.CountAsync();
+                lots = await query.OrderBy(l => l.Id).Skip((pageIndex.Value - 1) * pageSize.Value).Take(pageSize.Value).ToListAsync();
+            }
+            else lots = await _context.Lots.Include(l => l.Farm).Where(l => l.Active).ToListAsync();
 
             return await _excelService.GenerateExcelAsync(lots, ExcelColumnMappings.LotExcelColumnMappings, $"Lots - {DateTime.Today:yyyyMMdd}");
         }
 
-        public async Task<MemoryStream> ExportActiveLotsByFarmAsync(int farmId)
+        public async Task<MemoryStream> ExportActiveLotsByFarmAsync(int farmId, int? pageIndex, int? pageSize)
         {
-            var lots = await _context.Lots.Include(l => l.Farm).Where(l => l.FarmId == farmId && l.Active).ToListAsync();
+            var lots = new List<Lot>();
+
+            if (pageIndex != null && pageSize != null)
+            {
+                var query = _context.Lots.Include(l => l.Farm).Where(l => l.Active && l.FarmId == farmId);
+                var totalCount = await query.CountAsync();
+                lots = await query.OrderBy(l => l.Id).Skip((pageIndex.Value - 1) * pageSize.Value).Take(pageSize.Value).ToListAsync();
+            }
+            else lots = await _context.Lots.Include(l => l.Farm).Where(l => l.Active && l.FarmId == farmId).ToListAsync();
 
             return await _excelService.GenerateExcelAsync(lots, ExcelColumnMappings.LotExcelColumnMappings, $"Lots (Granja {farmId}) - {DateTime.Today:yyyyMMdd}");
         }
 
-        public async Task<MemoryStream> ExportLotsByFarmAsync(int farmId)
+        public async Task<MemoryStream> ExportLotsByFarmAsync(int farmId, int? pageIndex, int? pageSize)
         {
-            var lots = await _context.Lots.Include(l => l.Farm).Where(l => l.FarmId == farmId).ToListAsync();
+            var lots = new List<Lot>();
+
+            if (pageIndex != null && pageSize != null)
+            {
+                var query = _context.Lots.Include(l => l.Farm).Where(l => l.FarmId == farmId);
+                var totalCount = await query.CountAsync();
+                lots = await query.OrderBy(l => l.Id).Skip((pageIndex.Value - 1) * pageSize.Value).Take(pageSize.Value).ToListAsync();
+            }
+            else lots = await _context.Lots.Include(l => l.Farm).Where(l => l.FarmId == farmId).ToListAsync();
 
             return await _excelService.GenerateExcelAsync(lots, ExcelColumnMappings.LotExcelColumnMappings, $"Lots (Granja {farmId}) - {DateTime.Today:yyyyMMdd}");
         }

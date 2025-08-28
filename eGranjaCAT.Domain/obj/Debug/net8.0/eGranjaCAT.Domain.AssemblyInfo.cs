@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("eGranjaCAT.Domain")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+da3ed5228efe5b07daa8e2a441b2a8303f99b8f6")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+85f3ced7d0342e4224ea73045c413644aaa6d88d")]
 [assembly: System.Reflection.AssemblyProductAttribute("eGranjaCAT.Domain")]
 [assembly: System.Reflection.AssemblyTitleAttribute("eGranjaCAT.Domain")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

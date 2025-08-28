@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("eGranjaCAT.Infrastructure")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+bfdcb2d3cb6f3a52e82d8f7d8037c641a9e8682d")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+85f3ced7d0342e4224ea73045c413644aaa6d88d")]
 [assembly: System.Reflection.AssemblyProductAttribute("eGranjaCAT.Infrastructure")]
 [assembly: System.Reflection.AssemblyTitleAttribute("eGranjaCAT.Infrastructure")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

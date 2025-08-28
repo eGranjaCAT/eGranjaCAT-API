@@ -69,9 +69,9 @@ namespace eGranjaCAT.Api.Controllers.V1
         }
 
         [HttpGet("export")]
-        public async Task<IActionResult> ExportAllLots()
+        public async Task<IActionResult> ExportAllLots([FromQuery] int? pageIndex, [FromQuery] int? pageSize)
         {
-            var stream = await _service.ExportLotsAsync();
+            var stream = await _service.ExportLotsAsync(pageIndex, pageSize);
             if (stream == null) return NotFound();
             var fileName = $"lots_{DateTime.Now:yyyyMMdd}.xlsx";
 
@@ -79,9 +79,9 @@ namespace eGranjaCAT.Api.Controllers.V1
         }
 
         [HttpGet("export/active")]
-        public async Task<IActionResult> ExportAllActiveLots()
+        public async Task<IActionResult> ExportAllActiveLots([FromQuery] int? pageIndex, [FromQuery] int? pageSize)
         {
-            var stream = await _service.ExportActiveLotsAsync();
+            var stream = await _service.ExportActiveLotsAsync(pageIndex, pageSize);
             if (stream == null) return NotFound();
             var fileName = $"active_lots_{DateTime.Now:yyyyMMdd}.xlsx";
 
@@ -90,9 +90,9 @@ namespace eGranjaCAT.Api.Controllers.V1
 
 
         [HttpGet("farm-{farmId:int}/export")]
-        public async Task<IActionResult> ExportLotsByFarm(int farmId)
+        public async Task<IActionResult> ExportLotsByFarm(int farmId, [FromQuery] int? pageIndex, [FromQuery] int? pageSize)
         {
-            var stream = await _service.ExportLotsByFarmAsync(farmId);
+            var stream = await _service.ExportLotsByFarmAsync(farmId, pageIndex, pageSize);
             if (stream == null) return NotFound();
             var fileName = $"lots_granja_{farmId}_{DateTime.Now:yyyyMMdd}.xlsx";
 
@@ -100,9 +100,9 @@ namespace eGranjaCAT.Api.Controllers.V1
         }
 
         [HttpGet("farm-{farmId:int}/export/active")]
-        public async Task<IActionResult> ExportActiveLots(int farmId)
+        public async Task<IActionResult> ExportActiveLots(int farmId, [FromQuery] int? pageIndex, [FromQuery] int? pageSize)
         {
-            var stream = await _service.ExportActiveLotsByFarmAsync(farmId);
+            var stream = await _service.ExportActiveLotsByFarmAsync(farmId, pageIndex, pageSize);
             if (stream == null) return NotFound();
             var fileName = $"active_lots_granja_{farmId}_{DateTime.Now:yyyyMMdd}.xlsx";
 
