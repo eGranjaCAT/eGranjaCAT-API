@@ -11,7 +11,7 @@ namespace eGranjaCAT.Api.Controllers.V1
     [Authorize(Policy = "Visites")]
     [ApiController]
     [ApiVersion("1.0")]
-    [Route("api/v{version:apiVersion}/{farmId:int}/visites")]
+    [Route("api/v{version:apiVersion}/visites")]
     public class VisitesController : ControllerBase
     {
         private readonly IVisitaService _service;
@@ -21,17 +21,27 @@ namespace eGranjaCAT.Api.Controllers.V1
             _service = service;
         }
 
+
         [HttpGet]
-        public async Task<IActionResult> GetVisites(int farmId, [FromQuery] int pageIndex = 1, [FromQuery] int pageSize = 20)
+        public async Task<IActionResult> GetVisites([FromQuery] int pageIndex = 1, [FromQuery] int pageSize = 20)
         {
-            var result = await _service.GetVisitesAsync(farmId, pageIndex, pageSize);
+            var result = await _service.GetVisitesAsync(pageIndex, pageSize);
+            if (!result.Success) return StatusCode(result.StatusCode, new { result.Errors });
+
+            return StatusCode(result.StatusCode, result.Data);
+        }
+
+        [HttpGet("farm-{farmId:int}")]
+        public async Task<IActionResult> GetVisitesByFarm(int farmId, [FromQuery] int pageIndex = 1, [FromQuery] int pageSize = 20)
+        {
+            var result = await _service.GetVisitesByFarmAsync(farmId, pageIndex, pageSize);
             if (!result.Success) return StatusCode(result.StatusCode, new { result.Errors });
 
             return StatusCode(result.StatusCode, result.Data);
         }
 
         [HttpGet("{id:int}", Name = "GetVisitaById")]
-        public async Task<IActionResult> GetEntradaById(int id)
+        public async Task<IActionResult> GetVisitaById(int id)
         {
             var result = await _service.GetVisitaByIdAsync(id);
             if (!result.Success) return StatusCode(result.StatusCode, new { result.Errors });
@@ -39,8 +49,8 @@ namespace eGranjaCAT.Api.Controllers.V1
             return StatusCode(result.StatusCode, result.Data);
         }
 
-        [HttpPost]
-        public async Task<IActionResult> CreateEntrada(int farmId, [FromBody] CreateVisitaDTO dto)
+        [HttpPost("farm-{farmId:int}")]
+        public async Task<IActionResult> CreateVisita(int farmId, [FromBody] CreateVisitaDTO dto)
         {
             var userGuid = User.GetUserId();
             var result = await _service.CreateVisitaAsync(farmId, userGuid, dto);
@@ -50,24 +60,24 @@ namespace eGranjaCAT.Api.Controllers.V1
         }
 
         [HttpPut("{id:int}")]
-        public async Task<IActionResult> UpdateVisita(int farmId, int id, [FromBody] UpdateVisitaDTO dto)
+        public async Task<IActionResult> UpdateVisita(int id, [FromBody] UpdateVisitaDTO dto)
         {
-            var result = await _service.UpdateVisitaAsync(farmId, id, dto);
+            var result = await _service.UpdateVisitaAsync(id, dto);
             if (!result.Success) return StatusCode(result.StatusCode, new { result.Errors });
 
             return StatusCode(result.StatusCode, result.Data);
         }
 
         [HttpDelete("{id:int}")]
-        public async Task<IActionResult> DeleteVisita(int farmId, int id)
+        public async Task<IActionResult> DeleteVisita(int id)
         {
-            var result = await _service.DeleteVisitaAsync(farmId, id);
+            var result = await _service.DeleteVisitaAsync(id);
             if (!result.Success) return StatusCode(result.StatusCode, new { result.Errors });
 
             return StatusCode(result.StatusCode, result.Data);
         }
 
-        [HttpGet("export-all")]
+        [HttpGet("export")]
         public async Task<IActionResult> ExportAllVisites()
         {
             var stream = await _service.ExportVisitesAsync();
@@ -77,7 +87,7 @@ namespace eGranjaCAT.Api.Controllers.V1
             return File(stream, "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", fileName);
         }
 
-        [HttpGet("export")]
+        [HttpGet("farm-{farmId:int}/export")]
         public async Task<IActionResult> ExportVisites(int farmId)
         {
             var stream = await _service.ExportVisitesByFarmAsync(farmId);
@@ -87,7 +97,7 @@ namespace eGranjaCAT.Api.Controllers.V1
             return File(stream, "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", fileName);
         }
 
-        [HttpGet("export/{id:int}")]
+        [HttpGet("{id:int}/export")]
         public async Task<IActionResult> ExportVisitaById(int id)
         {
             var stream = await _service.ExportVisitesByIdAsync(id);

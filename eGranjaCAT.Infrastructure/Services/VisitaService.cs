@@ -59,7 +59,7 @@ namespace eGranjaCAT.Infrastructure.Services
         }
 
 
-        public async Task<ServiceResult<PagedResult<GetVisitaDTO>>> GetVisitesAsync(int farmId, int pageIndex, int pageSize)
+        public async Task<ServiceResult<PagedResult<GetVisitaDTO>>> GetVisitesByFarmAsync(int farmId, int pageIndex, int pageSize)
         {
             try
             {
@@ -67,6 +67,44 @@ namespace eGranjaCAT.Infrastructure.Services
                 if (!farmExists) return ServiceResult<PagedResult<GetVisitaDTO>>.Fail($"La granja {farmId} no existeix");
 
                 var query = _context.Visites.Include(e => e.Farm).Where(e => e.FarmId == farmId);
+                var totalCount = await query.CountAsync();
+
+                var visites = await query.OrderBy(e => e.Id).Skip((pageIndex - 1) * pageSize).Take(pageSize).ToListAsync();
+
+                var userGuids = visites.Select(l => l.UserGuid).Distinct().ToList();
+                var users = await _userManager.Users.Where(u => userGuids.Contains(u.Id)).ToListAsync();
+
+                var userDtos = _mapper.Map<List<GetUserDTO>>(users);
+                var userDict = userDtos.ToDictionary(u => u.Id!, StringComparer.OrdinalIgnoreCase);
+
+                var visitesDTOs = _mapper.Map<List<GetVisitaDTO>>(visites, opt =>
+                {
+                    opt.Items["UserDict"] = userDict;
+                });
+
+                var pagedResult = new PagedResult<GetVisitaDTO>
+                {
+                    Items = visitesDTOs,
+                    TotalCount = totalCount,
+                    PageIndex = pageIndex,
+                    PageSize = pageSize
+                };
+
+                return ServiceResult<PagedResult<GetVisitaDTO>>.Ok(pagedResult);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error al obtenir les visites");
+                return ServiceResult<PagedResult<GetVisitaDTO>>.FromException(ex);
+            }
+        }
+
+
+        public async Task<ServiceResult<PagedResult<GetVisitaDTO>>> GetVisitesAsync(int pageIndex, int pageSize)
+        {
+            try
+            {
+                var query = _context.Visites.Include(e => e.Farm);
                 var totalCount = await query.CountAsync();
 
                 var visites = await query.OrderBy(e => e.Id).Skip((pageIndex - 1) * pageSize).Take(pageSize).ToListAsync();
@@ -118,14 +156,11 @@ namespace eGranjaCAT.Infrastructure.Services
         }
 
 
-        public async Task<ServiceResult<bool>> UpdateVisitaAsync(int farmId, int visitaId, UpdateVisitaDTO updateVisitaDTO)
+        public async Task<ServiceResult<bool>> UpdateVisitaAsync(int visitaId, UpdateVisitaDTO updateVisitaDTO)
         {
             try
             {
-                var farmExists = await _context.Farms.AnyAsync(f => f.Id == farmId);
-                if (!farmExists) return ServiceResult<bool>.Fail("La granja no existeix");
-
-                var visita = await _context.Visites.Where(e => e.FarmId == farmId && e.Id == visitaId).FirstOrDefaultAsync();
+                var visita = await _context.Visites.Where(e => e.Id == visitaId).FirstOrDefaultAsync();
                 if (visita == null) return ServiceResult<bool>.Fail("Visita no trobada", 404);
 
                 _mapper.Map(updateVisitaDTO, visita);
@@ -145,14 +180,11 @@ namespace eGranjaCAT.Infrastructure.Services
         }
 
 
-        public async Task<ServiceResult<bool>> DeleteVisitaAsync(int farmId, int visitaId)
+        public async Task<ServiceResult<bool>> DeleteVisitaAsync(int visitaId)
         {
             try
             {
-                var farmExists = await _context.Farms.AnyAsync(f => f.Id == farmId);
-                if (!farmExists) return ServiceResult<bool>.Fail("La granja no existeix");
-
-                var visita = await _context.Visites.Where(e => e.FarmId == farmId && e.Id == visitaId).FirstOrDefaultAsync();
+                var visita = await _context.Visites.Where(e => e.Id == visitaId).FirstOrDefaultAsync();
                 if (visita == null) return ServiceResult<bool>.Fail("Visita no trobada", 404);
 
                 _context.Visites.Remove(visita);

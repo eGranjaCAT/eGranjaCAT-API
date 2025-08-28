@@ -109,7 +109,7 @@ namespace eGranjaCAT.Api.Controllers.V1
             return File(stream, "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", fileName);
         }
 
-        [HttpGet("export/{id:int}")]
+        [HttpGet("{id:int}/export")]
         public async Task<IActionResult> ExportLotById(int id)
         {
             var stream = await _service.ExportLotByIdAsync(id);
