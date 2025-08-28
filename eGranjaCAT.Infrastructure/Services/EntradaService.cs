@@ -1,7 +1,6 @@
 ﻿using AutoMapper;
 using eGranjaCAT.Application.Common;
 using eGranjaCAT.Application.DTOs.Entrada;
-using eGranjaCAT.Application.DTOs.Lot;
 using eGranjaCAT.Application.DTOs.User;
 using eGranjaCAT.Domain.Entities;
 using eGranjaCAT.Infrastructure.Data;
@@ -170,15 +169,34 @@ namespace eGranjaCAT.Infrastructure.Services
         }
 
 
-        public async Task<MemoryStream> ExportEntradesAsync()
+        public async Task<MemoryStream> ExportEntradesAsync(int? pageIndex, int? pageSize)
         {
-            var entrades = await _context.Entrades.Include(l => l.Farm).Include(l => l.Lot).ToListAsync();
+            var entrades = new List<Entrada>();
+
+            if (pageIndex != null && pageSize != null)
+            {
+                var query = _context.Entrades.Include(l => l.Farm).Include(l => l.Lot);
+                var totalCount = await query.CountAsync();
+
+                entrades = await query.OrderBy(e => e.Id).Skip((pageIndex.Value - 1) * pageSize.Value).Take(pageSize.Value).ToListAsync();
+            }
+            else entrades = await _context.Entrades.Include(l => l.Farm).Include(l => l.Lot).ToListAsync();
+
             return await _excelService.GenerateExcelAsync(entrades, ExcelColumnMappings.EntradaExcelColumnMappings, $"Entrades - {DateTime.Today:yyyyMMdd}");
         }
 
-        public async Task<MemoryStream> ExportEntradesByFarmAsync(int farmId)
+        public async Task<MemoryStream> ExportEntradesByFarmAsync(int farmId, int? pageIndex, int? pageSize)
         {
-            var entrades = await _context.Entrades.Include(l => l.Farm).Include(l => l.Lot).Where(e => e.FarmId == farmId).ToListAsync();
+            var entrades = new List<Entrada>();
+
+            if (pageIndex != null && pageSize != null)
+            {
+                var query = _context.Entrades.Include(l => l.Farm).Include(l => l.Lot);
+                var totalCount = await query.CountAsync();
+                entrades = await query.OrderBy(e => e.Id).Skip((pageSize.Value - 1) * pageSize.Value).Take(pageSize.Value).ToListAsync();
+            }
+            else entrades = await _context.Entrades.Include(l => l.Farm).Include(l => l.Lot).Where(e => e.FarmId == farmId).ToListAsync();
+
             return await _excelService.GenerateExcelAsync(entrades, ExcelColumnMappings.EntradaExcelColumnMappings, $"Entrades (Granja {farmId}) - {DateTime.Today:yyyyMMdd}");
         }
 

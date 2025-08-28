@@ -14,7 +14,7 @@ namespace eGranjaCAT.Infrastructure.Services
             int totalColumns = maps.Count;
 
             var titleCell = worksheet.Range(1, 1, 1, totalColumns).Merge();
-            titleCell.Value = "Nastrafarm";
+            titleCell.Value = "eGranjaCAT";
             titleCell.Style.Font.Bold = true;
             titleCell.Style.Font.FontSize = 20;
             titleCell.Style.Font.FontColor = XLColor.White;

@@ -67,10 +67,10 @@ namespace eGranjaCAT.Api.Controllers.V1
             return StatusCode(result.StatusCode, result.Data);
         }
 
-        [HttpGet("export-all")]
-        public async Task<IActionResult> ExportAllEntrades()
+        [HttpGet("export/all")]
+        public async Task<IActionResult> ExportAllEntrades([FromQuery] int? pageIndex, [FromQuery] int? pageSize)
         {
-            var stream = await _service.ExportEntradesAsync();
+            var stream = await _service.ExportEntradesAsync(pageIndex, pageSize);
             if (stream == null) return NotFound();
             var fileName = $"entrades_{DateTime.Now:yyyyMMdd}.xlsx";
 
@@ -78,9 +78,9 @@ namespace eGranjaCAT.Api.Controllers.V1
         }
 
         [HttpGet("export")]
-        public async Task<IActionResult> ExportEntrades(int farmId)
+        public async Task<IActionResult> ExportEntrades(int farmId, [FromQuery] int? pageIndex, [FromQuery] int? pageSize)
         {
-            var stream = await _service.ExportEntradesByFarmAsync(farmId);
+            var stream = await _service.ExportEntradesByFarmAsync(farmId, pageIndex, pageSize);
             if (stream == null) return NotFound();
             var fileName = $"entrades_granja_{farmId}_{DateTime.Now:yyyyMMdd}.xlsx";
 
