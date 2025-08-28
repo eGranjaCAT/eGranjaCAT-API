@@ -11,7 +11,7 @@ namespace eGranjaCAT.Api.Controllers.V1
     [Authorize(Policy = "Lots")]
     [ApiController]
     [ApiVersion("1.0")]
-    [Route("api/v{version:apiVersion}/{farmId:int}/lots")]
+    [Route("api/v{version:apiVersion}/lots")]
     public class LotsController : ControllerBase
     {
         private readonly ILotService _service;
@@ -22,7 +22,7 @@ namespace eGranjaCAT.Api.Controllers.V1
         }
 
 
-        [HttpPost]
+        [HttpPost("farm-{farmId:int}")]
         public async Task<IActionResult> CreateLot(int farmId, [FromBody] CreateLotDTO dto)
         {
             var userGuid = User.GetUserId();
@@ -32,8 +32,8 @@ namespace eGranjaCAT.Api.Controllers.V1
             return CreatedAtAction("GetLotById", new { farmId, id = result.Data }, result.Data);
         }
 
-        [HttpGet("active")]
-        public async Task<IActionResult> GetActiveLots(int farmId, [FromQuery] int pageIndex = 1, [FromQuery] int pageSize = 20)
+        [HttpGet("farm-{farmId:int}/active")]
+        public async Task<IActionResult> GetActiveLotsByFarm(int farmId, [FromQuery] int pageIndex = 1, [FromQuery] int pageSize = 20)
         {
             var result = await _service.GetActiveLotsByFarmAsync(farmId, pageIndex, pageSize);
             if (!result.Success) return StatusCode(result.StatusCode, new { result.Errors });
@@ -41,8 +41,8 @@ namespace eGranjaCAT.Api.Controllers.V1
             return StatusCode(result.StatusCode, result.Data);
         }
 
-        [HttpGet]
-        public async Task<IActionResult> GetLots(int farmId, [FromQuery] int pageIndex = 1, [FromQuery] int pageSize = 20)
+        [HttpGet("farm-{farmId:int}")]
+        public async Task<IActionResult> GetLotsByFarm(int farmId, [FromQuery] int pageIndex = 1, [FromQuery] int pageSize = 20)
         {
             var result = await _service.GetLotsByFarmIdAsync(farmId, pageIndex, pageSize);
             if (!result.Success) return StatusCode(result.StatusCode, new { result.Errors });
@@ -60,15 +60,15 @@ namespace eGranjaCAT.Api.Controllers.V1
         }
 
         [HttpPut("{id:int}")]
-        public async Task<IActionResult> UpdateLot(int farmId, int id, [FromBody] UpdateLotDTO dto)
+        public async Task<IActionResult> UpdateLot(int id, [FromBody] UpdateLotDTO dto)
         {
-            var result = await _service.UpdateLotAsync(farmId, id, dto);
+            var result = await _service.UpdateLotAsync(id, dto);
             if (!result.Success) return StatusCode(result.StatusCode, new { result.Errors });
 
-            return CreatedAtAction("GetLotById", new { farmId, id }, result.Data);
+            return CreatedAtAction("GetLotById", new { id }, result.Data);
         }
 
-        [HttpGet("export-all")]
+        [HttpGet("export")]
         public async Task<IActionResult> ExportAllLots()
         {
             var stream = await _service.ExportLotsAsync();
@@ -78,7 +78,7 @@ namespace eGranjaCAT.Api.Controllers.V1
             return File(stream, "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", fileName);
         }
 
-        [HttpGet("export-all/active")]
+        [HttpGet("export/active")]
         public async Task<IActionResult> ExportAllActiveLots()
         {
             var stream = await _service.ExportActiveLotsAsync();
@@ -89,8 +89,8 @@ namespace eGranjaCAT.Api.Controllers.V1
         }
 
 
-        [HttpGet("export")]
-        public async Task<IActionResult> ExportLots(int farmId)
+        [HttpGet("farm-{farmId:int}/export")]
+        public async Task<IActionResult> ExportLotsByFarm(int farmId)
         {
             var stream = await _service.ExportLotsByFarmAsync(farmId);
             if (stream == null) return NotFound();
@@ -99,7 +99,7 @@ namespace eGranjaCAT.Api.Controllers.V1
             return File(stream, "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", fileName);
         }
 
-        [HttpGet("export/active")]
+        [HttpGet("farm-{farmId:int}/export/active")]
         public async Task<IActionResult> ExportActiveLots(int farmId)
         {
             var stream = await _service.ExportActiveLotsByFarmAsync(farmId);

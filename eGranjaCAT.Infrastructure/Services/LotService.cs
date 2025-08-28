@@ -94,6 +94,42 @@ namespace eGranjaCAT.Infrastructure.Services
             }
         }
 
+        public async Task<ServiceResult<PagedResult<GetLotDTO>>> GetActiveLotsAsync(int pageIndex, int pageSize)
+        {
+            try
+            {
+                var query = _context.Lots.Include(l => l.Farm).Where(l => l.Active);
+                var totalCount = await query.CountAsync();
+
+                var lots = await query.OrderBy(l => l.Id).Skip((pageIndex - 1) * pageSize).Take(pageSize).ToListAsync();
+
+                var userGuids = lots.Select(l => l.UserGuid).Distinct().ToList();
+                var users = await _userManager.Users.Where(u => userGuids.Contains(u.Id)).ToListAsync();
+
+                var userDtos = _mapper.Map<List<GetUserDTO>>(users);
+                var userDict = userDtos.ToDictionary(u => u.Id!, StringComparer.OrdinalIgnoreCase);
+
+                var lotsDTO = _mapper.Map<List<GetLotDTO>>(lots, opt =>
+                {
+                    opt.Items["UserDict"] = userDict;
+                });
+
+                var pagedResult = new PagedResult<GetLotDTO>
+                {
+                    Items = lotsDTO,
+                    TotalCount = totalCount,
+                    PageIndex = pageIndex,
+                    PageSize = pageSize
+                };
+
+                return ServiceResult<PagedResult<GetLotDTO>>.Ok(pagedResult);
+            }
+            catch (Exception ex)
+            {
+                return ServiceResult<PagedResult<GetLotDTO>>.FromException(ex);
+            }
+        }
+
 
         public async Task<ServiceResult<GetLotDTO>> GetLotByIdAsync(int lotId)
         {
@@ -157,13 +193,50 @@ namespace eGranjaCAT.Infrastructure.Services
         }
 
 
-        public async Task<ServiceResult<bool>> UpdateLotAsync(int farmId, int lotId, UpdateLotDTO dto)
+        public async Task<ServiceResult<PagedResult<GetLotDTO>>> GetLotsAsync(int pageIndex, int pageSize)
+        {
+            try
+            {
+                var query = _context.Lots.Include(l => l.Farm);
+                var totalCount = await query.CountAsync();
+
+                var lots = await query.OrderBy(l => l.Id).Skip((pageIndex - 1) * pageSize).Take(pageSize).ToListAsync();
+
+                var userGuids = lots.Select(l => l.UserGuid).Distinct().ToList();
+                var users = await _userManager.Users.Where(u => userGuids.Contains(u.Id)).ToListAsync();
+
+                var userDtos = _mapper.Map<List<GetUserDTO>>(users);
+                var userDict = userDtos.ToDictionary(u => u.Id!, StringComparer.OrdinalIgnoreCase);
+
+                var lotsDTO = _mapper.Map<List<GetLotDTO>>(lots, opt =>
+                {
+                    opt.Items["UserDict"] = userDict;
+                });
+
+                var pagedResult = new PagedResult<GetLotDTO>
+                {
+                    Items = lotsDTO,
+                    TotalCount = totalCount,
+                    PageIndex = pageIndex,
+                    PageSize = pageSize
+                };
+
+                return ServiceResult<PagedResult<GetLotDTO>>.Ok(pagedResult);
+            }
+            catch (Exception ex)
+            {
+                return ServiceResult<PagedResult<GetLotDTO>>.FromException(ex);
+            }
+        }
+
+
+        public async Task<ServiceResult<bool>> UpdateLotAsync(int lotId, UpdateLotDTO dto)
         {
             try
             {
                 var result = new ServiceResult<bool>();
-                var lot = await _context.Lots.FirstOrDefaultAsync(l => l.Id == lotId && l.FarmId == farmId);
-                if (lot == null) return ServiceResult<bool>.Fail($"Lot {lotId} no trobat a la granja {farmId}");
+                var lot = await _context.Lots.FirstOrDefaultAsync(l => l.Id == lotId);
+                if (lot == null) return ServiceResult<bool>.Fail($"Lot {lotId} no trobat");
 
                 _mapper.Map(dto, lot);
                 lot.UpdatedAt = DateTime.UtcNow;
