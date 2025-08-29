@@ -16,7 +16,7 @@ namespace eGranjaCAT.Application
         public static IServiceCollection AddInfrastructureDI(this IServiceCollection services, IConfiguration configuration)
         {
 
-            services.AddDbContext<ApplicationDbContext>(options => options.UseNpgsql(configuration.GetConnectionString("PostgresConnection")));
+            services.AddDbContext<ApplicationDbContext>(options => options.UseNpgsql(configuration["PostgresConnection"]));
 
             services.AddIdentityCore<User>(options =>
             {
@@ -51,7 +51,7 @@ namespace eGranjaCAT.Application
             using (var scope = serviceProvider.CreateScope())
             {
                 var db = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
-                db.Database.Migrate(); 
+                db.Database.Migrate();
             }
 
             return services;
