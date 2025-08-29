@@ -16,7 +16,7 @@ namespace eGranjaCAT.Application
         public static IServiceCollection AddInfrastructureDI(this IServiceCollection services, IConfiguration configuration)
         {
 
-            services.AddDbContext<ApplicationDbContext>(options => options.UseNpgsql(configuration["PostgresConnection"]));
+            services.AddDbContext<ApplicationDbContext>(options => options.UseNpgsql(configuration.GetConnectionString("PostgresConnection")));
 
             services.AddIdentityCore<User>(options =>
             {
@@ -46,6 +46,13 @@ namespace eGranjaCAT.Application
             services.AddTransient<IEmailService, EmailService>();
             services.AddTransient<IExcelService, ExcelService>();
             services.AddTransient<IStatsService, StatsService>();
+
+            var serviceProvider = services.BuildServiceProvider();
+            using (var scope = serviceProvider.CreateScope())
+            {
+                var db = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
+                db.Database.Migrate(); 
+            }
 
             return services;
         }
