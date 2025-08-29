@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "c617DWaKf8Q=",
+  "dgSpecHash": "9wIGBsJ4D0E=",
   "success": true,
-  "projectFilePath": "C:\\Users\\felix.montragull\\Source\\Repos\\eGranjaCAT-API\\eGranjaCAT.Domain\\eGranjaCAT.Domain.csproj",
+  "projectFilePath": "C:\\Users\\felix.montragull\\Source\\Repos\\eGranjaCAT-APIDocker\\eGranjaCAT.Domain\\eGranjaCAT.Domain.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\felix.montragull\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\9.0.7\\microsoft.extensions.dependencyinjection.abstractions.9.0.7.nupkg.sha512"
   ],
