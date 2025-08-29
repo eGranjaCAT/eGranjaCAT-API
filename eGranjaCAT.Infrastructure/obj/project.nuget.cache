@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "NkEr52AgjFU=",
+  "dgSpecHash": "Pd3nGz+YI3M=",
   "success": true,
-  "projectFilePath": "C:\\Users\\felix.montragull\\Source\\Repos\\eGranjaCAT-APIDocker\\eGranjaCAT.Infrastructure\\eGranjaCAT.Infrastructure.csproj",
+  "projectFilePath": "C:\\Users\\felix.montragull\\Source\\Repos\\eGranjaCAT-APIasdds\\eGranjaCAT.Infrastructure\\eGranjaCAT.Infrastructure.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\felix.montragull\\.nuget\\packages\\automapper\\14.0.0\\automapper.14.0.0.nupkg.sha512",
     "C:\\Users\\felix.montragull\\.nuget\\packages\\azure.core\\1.38.0\\azure.core.1.38.0.nupkg.sha512",
