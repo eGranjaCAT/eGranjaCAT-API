@@ -16,7 +16,7 @@ namespace eGranjaCAT.Application
         public static IServiceCollection AddInfrastructureDI(this IServiceCollection services, IConfiguration configuration)
         {
 
-            services.AddDbContext<ApplicationDbContext>(options => options.UseNpgsql(configuration.GetConnectionString("PostgresConnection")));
+            services.AddDbContext<ApplicationDbContext>(options => options.UseNpgsql(configuration["PostgresConnection"]));
 
             services.AddIdentityCore<User>(options =>
             {
