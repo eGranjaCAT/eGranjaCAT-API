@@ -13,13 +13,15 @@
 		<PackageReference Include="Microsoft.AspNetCore.Identity" Version="2.3.1" />
 		<PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="8.0.18" />
 		<PackageReference Include="Microsoft.EntityFrameworkCore" Version="9.0.7" />
-		<PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="9.0.7" />
 		<PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="9.0.7">
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>
 		<PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="9.0.7" />
 		<PackageReference Include="Microsoft.Extensions.Identity.Core" Version="9.0.7" />
+		<PackageReference Include="Microsoft.IdentityModel.Tokens" Version="7.1.2" />
+		<PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="9.0.4" />
+		<PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="7.1.2" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -28,10 +30,6 @@
 
 	<ItemGroup>
 		<FrameworkReference Include="Microsoft.AspNetCore.App" />
-	</ItemGroup>
-
-	<ItemGroup>
-	  <Folder Include="Persistence\Migrations\" />
 	</ItemGroup>
 
 </Project>
