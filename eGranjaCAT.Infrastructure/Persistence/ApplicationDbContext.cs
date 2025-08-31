@@ -18,6 +18,7 @@ namespace eGranjaCAT.Infrastructure.Data
         public DbSet<Lot> Lots { get; set; }
         public DbSet<Entrada> Entrades { get; set; }
         public DbSet<Visita> Visites { get; set; }
+        public DbSet<Notification> Notifications { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

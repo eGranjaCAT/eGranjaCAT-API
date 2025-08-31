@@ -4861,23 +4861,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\felix.montragull\\.nuget\\packages\\": {},
+    "C:\\Users\\USER1\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\felix.montragull\\Source\\Repos\\eGranjaCAT-APIasdds\\eGranjaCAT.Infrastructure\\eGranjaCAT.Infrastructure.csproj",
+      "projectUniqueName": "C:\\Users\\USER1\\Source\\Repos\\eGranjaCAT-APIgdfgdf\\eGranjaCAT.Infrastructure\\eGranjaCAT.Infrastructure.csproj",
       "projectName": "eGranjaCAT.Infrastructure",
-      "projectPath": "C:\\Users\\felix.montragull\\Source\\Repos\\eGranjaCAT-APIasdds\\eGranjaCAT.Infrastructure\\eGranjaCAT.Infrastructure.csproj",
-      "packagesPath": "C:\\Users\\felix.montragull\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\felix.montragull\\Source\\Repos\\eGranjaCAT-APIasdds\\eGranjaCAT.Infrastructure\\obj\\",
+      "projectPath": "C:\\Users\\USER1\\Source\\Repos\\eGranjaCAT-APIgdfgdf\\eGranjaCAT.Infrastructure\\eGranjaCAT.Infrastructure.csproj",
+      "packagesPath": "C:\\Users\\USER1\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\USER1\\Source\\Repos\\eGranjaCAT-APIgdfgdf\\eGranjaCAT.Infrastructure\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\felix.montragull\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\USER1\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -4886,14 +4886,15 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "C:\\Users\\felix.montragull\\Source\\Repos\\eGranjaCAT-APIasdds\\eGranjaCAT.Application\\eGranjaCAT.Application.csproj": {
-              "projectPath": "C:\\Users\\felix.montragull\\Source\\Repos\\eGranjaCAT-APIasdds\\eGranjaCAT.Application\\eGranjaCAT.Application.csproj"
+            "C:\\Users\\USER1\\Source\\Repos\\eGranjaCAT-APIgdfgdf\\eGranjaCAT.Application\\eGranjaCAT.Application.csproj": {
+              "projectPath": "C:\\Users\\USER1\\Source\\Repos\\eGranjaCAT-APIgdfgdf\\eGranjaCAT.Application\\eGranjaCAT.Application.csproj"
             }
           }
         }

@@ -15,7 +15,8 @@ namespace eGranjaCAT.Api.Extensions
                 Assembly.GetAssembly(typeof(EntradaProfile)),
                 Assembly.GetAssembly(typeof(VisitaProfile)),
                 Assembly.GetAssembly(typeof(UserProfile)),
-                Assembly.GetAssembly(typeof(IdentityUserProfile))
+                Assembly.GetAssembly(typeof(IdentityUserProfile)),
+                Assembly.GetAssembly(typeof(NotificationProfile))
             );
 
             return services;

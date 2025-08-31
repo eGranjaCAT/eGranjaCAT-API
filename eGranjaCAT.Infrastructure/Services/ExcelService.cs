@@ -24,19 +24,12 @@ namespace eGranjaCAT.Infrastructure.Services
 
 
             var exportDate = DateTime.Now.ToString("dd/MM/yyyy HH:mm");
-            var leftCell = worksheet.Range(2, 1, 2, totalColumns / 2).Merge();
+            var leftCell = worksheet.Range(2, 1, 2, totalColumns).Merge();
             leftCell.Value = $"Exportació: {exportDate}";
             leftCell.Style.Font.Italic = true;
             leftCell.Style.Font.FontSize = 11;
             leftCell.Style.Alignment.Horizontal = XLAlignmentHorizontalValues.Left;
             leftCell.Style.Alignment.Vertical = XLAlignmentVerticalValues.Center;
-
-            var rightCell = worksheet.Range(2, (totalColumns / 2) + 1, 2, totalColumns).Merge();
-            rightCell.Value = "SIGE Porcí propi";
-            rightCell.Style.Font.Italic = true;
-            rightCell.Style.Font.FontSize = 11;
-            rightCell.Style.Alignment.Horizontal = XLAlignmentHorizontalValues.Right;
-            rightCell.Style.Alignment.Vertical = XLAlignmentVerticalValues.Center;
 
             int tableStartRow = 4;
 
