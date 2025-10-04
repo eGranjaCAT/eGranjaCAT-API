@@ -50,7 +50,7 @@ namespace eGranjaCAT.Application
             using (var scope = serviceProvider.CreateScope())
             {
                 var db = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
-                //db.Database.Migrate();
+                db.Database.Migrate();
             }
 
             return services;
