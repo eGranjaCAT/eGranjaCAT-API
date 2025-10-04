@@ -14,6 +14,7 @@ namespace eGranjaCAT.Infrastructure.Data
         {
         }
 
+
         public DbSet<Farm> Farms { get; set; }
         public DbSet<Lot> Lots { get; set; }
         public DbSet<Entrada> Entrades { get; set; }

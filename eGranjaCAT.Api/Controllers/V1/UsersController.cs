@@ -64,7 +64,7 @@ namespace eGranjaCAT.Api.Controllers.V1
         }
 
 
-        [HttpDelete("{id:int}")]
+        [HttpDelete("{id:guid}")]
         [Authorize(Roles = "Admin")]
         public async Task<IActionResult> DeleteUserById(Guid id)
         {
