@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("eGranjaCAT.Application")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e1f137434b8995c7c8b1bb03b2837a72f482ce5c")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+9bf1d59122d66fdf63ed6fce1be7b310d26bc158")]
 [assembly: System.Reflection.AssemblyProductAttribute("eGranjaCAT.Application")]
 [assembly: System.Reflection.AssemblyTitleAttribute("eGranjaCAT.Application")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

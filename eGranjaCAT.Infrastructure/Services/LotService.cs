@@ -142,7 +142,7 @@ namespace eGranjaCAT.Infrastructure.Services
 
                 if (lot == null) return ServiceResult<GetLotDTO>.Fail($"Lot {lotId} no trobat");
 
-                var lotDTO = _mapper.Map<GetLotDTO>(lot);
+                var lotDTO = _mapper.Map<GetLotDTO>(lot, opt => opt.Items["UserDict"] = new Dictionary<string, GetUserDTO> { { user!.Id, userDTO } });
                 lotDTO.User = userDTO;
 
                 return ServiceResult<GetLotDTO>.Ok(lotDTO);

@@ -10,9 +10,6 @@ namespace eGranjaCAT.Application.DTOs.Lot
         public string Name { get; set; }
         public bool Active { get; set; }
 
-        public DateTime CreatedAt { get; set; }
-        public DateTime UpdatedAt { get; set; }
-
         public GetUserDTO? User { get; set; }
         public GetFarmDTO Farm { get; set; }
     }

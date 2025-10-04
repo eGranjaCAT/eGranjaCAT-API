@@ -12,6 +12,7 @@ namespace eGranjaCAT.Application.Mappings
         {
             CreateMap<CreateFarmDTO, Farm>();
 
+
             CreateMap<Farm, GetFarmDTO>()
                 .ForMember(dest => dest.User, opt => opt.MapFrom((src, dest, destMember, context) =>
                 {

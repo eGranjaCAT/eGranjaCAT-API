@@ -65,7 +65,7 @@ namespace eGranjaCAT.Api.Controllers.V1
             var result = await _service.UpdateLotAsync(id, dto);
             if (!result.Success) return StatusCode(result.StatusCode, new { result.Errors });
 
-            return CreatedAtAction("GetLotById", new { id }, result.Data);
+            return CreatedAtAction("GetLotById", new { id }, null);
         }
 
         [HttpGet("export")]
