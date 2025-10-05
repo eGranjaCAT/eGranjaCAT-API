@@ -14,7 +14,7 @@ namespace eGranjaCAT.Domain.Entities
 
         public required string UserGuid { get; set; }
 
-        public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
+        public DateTime CreatedAt { get; set; }
         public DateTime? UpdatedAt { get; set; }
         public bool Updated { get; set; } = false;
     }

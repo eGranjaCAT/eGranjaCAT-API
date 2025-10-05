@@ -48,6 +48,7 @@ namespace eGranjaCAT.Infrastructure.Services
                 entrada.FarmId = farmId;
                 entrada.CreatedAt = DateTime.UtcNow;
                 entrada.UserGuid = userId;
+                entrada.Data = entrada.Data.ToUniversalTime();
 
                 await _context.Entrades.AddAsync(entrada);
                 await _context.SaveChangesAsync();

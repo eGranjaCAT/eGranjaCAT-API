@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using eGranjaCAT.Application.Common;
 using eGranjaCAT.Application.DTOs.Auth;
+using eGranjaCAT.Application.DTOs.Entrada;
 using eGranjaCAT.Application.DTOs.User;
 using eGranjaCAT.Domain.Enums;
 using eGranjaCAT.Infrastructure.Data;
@@ -150,20 +151,29 @@ namespace eGranjaCAT.Infrastructure.Services
         }
 
 
-        public async Task<ServiceResult<List<GetUserDTO>>> GetUsersAsync()
+        public async Task<ServiceResult<PagedResult<GetUserDTO>>> GetUsersAsync(int pageIndex, int pageSize)
         {
             try
             {
                 var users = await _userManager.Users.ToListAsync();
-                var userDTOs = _mapper.Map<List<GetUserDTO>>(users);
+                var totalCount = users.Count();
 
-                return ServiceResult<List<GetUserDTO>>.Ok(userDTOs, 200);
+                var userDTOs = _mapper.Map<List<GetUserDTO>>(users);
+                var pagedResult = new PagedResult<GetUserDTO>
+                {
+                    Items = userDTOs,
+                    TotalCount = totalCount,
+                    PageIndex = pageIndex,
+                    PageSize = pageSize
+                };
+
+                return ServiceResult<PagedResult<GetUserDTO>>.Ok(pagedResult, 200);
             }
             catch (Exception ex)
             {
                 _logger.LogError(ex, "Error inesperat en obtenir la llista d'usuaris.");
 
-                return ServiceResult<List<GetUserDTO>>.FromException(ex);
+                return ServiceResult<PagedResult<GetUserDTO>>.FromException(ex);
             }
         }
 

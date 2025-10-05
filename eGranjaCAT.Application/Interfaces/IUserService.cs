@@ -9,7 +9,7 @@ namespace eGranjaCAT.Infrastructure.Services
         Task<ServiceResult<AuthResponseDTO>> CreateUserAsync(CreateUserDTO userDTO);
         Task<ServiceResult<bool>> DeleteUserById(Guid id);
         Task<ServiceResult<GetUserDTO?>> GetUserByIdAsync(Guid id);
-        Task<ServiceResult<List<GetUserDTO>>> GetUsersAsync();
+        Task<ServiceResult<PagedResult<GetUserDTO>>> GetUsersAsync(int pageIndex, int pageSize);
         Task<ServiceResult<AuthResponseDTO>> LoginUserAsync(LoginUserDTO loginDTO);
     }
 }

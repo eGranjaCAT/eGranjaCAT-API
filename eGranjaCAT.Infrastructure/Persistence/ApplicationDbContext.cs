@@ -3,6 +3,7 @@ using eGranjaCAT.Domain.Entities;
 using eGranjaCAT.Infrastructure.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Infrastructure.Internal;
 
 
 namespace eGranjaCAT.Infrastructure.Data

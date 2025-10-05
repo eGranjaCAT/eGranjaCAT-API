@@ -29,7 +29,7 @@ namespace eGranjaCAT.Api.Controllers.V1
             var result = await _service.CreateLotAsync(farmId, userGuid, dto);
             if (!result.Success) return StatusCode(result.StatusCode, new { result.Errors });
 
-            return CreatedAtAction("GetLotById", new { farmId, id = result.Data }, result.Data);
+            return CreatedAtAction("GetLotById", new { farmId, id = result.Data }, null);
         }
 
         [HttpGet("farm-{farmId:int}/active")]

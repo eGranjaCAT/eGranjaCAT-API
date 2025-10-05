@@ -1,4 +1,5 @@
 ﻿using Asp.Versioning;
+using DocumentFormat.OpenXml.Math;
 using eGranjaCAT.Api.Extensions;
 using eGranjaCAT.Application.DTOs.User;
 using eGranjaCAT.Infrastructure.Services;
@@ -40,9 +41,9 @@ namespace eGranjaCAT.Api.Controllers.V1
 
         [HttpGet]
         [Authorize(Roles = "Admin")]
-        public async Task<IActionResult> GetUsersAsync()
+        public async Task<IActionResult> GetUsersAsync([FromQuery] int pageSize = 1, [FromQuery] int pageIndex = 20)
         {
-            var result = await _service.GetUsersAsync();
+            var result = await _service.GetUsersAsync(pageSize, pageIndex);
             if (!result.Success) return StatusCode(result.StatusCode, new { result.Errors });
 
             return StatusCode(result.StatusCode, result.Data);

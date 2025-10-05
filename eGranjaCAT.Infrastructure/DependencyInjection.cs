@@ -36,7 +36,6 @@ namespace eGranjaCAT.Application
             });
 
             services.AddScoped<IBackupService, BackupService>();
-
             services.AddTransient<IFarmService, FarmService>();
             services.AddTransient<IUserService, UserService>();
             services.AddTransient<ILotService, LotService>();
@@ -45,12 +44,13 @@ namespace eGranjaCAT.Application
             services.AddTransient<IEmailService, EmailService>();
             services.AddTransient<IExcelService, ExcelService>();
             services.AddTransient<IStatsService, StatsService>();
+            services.AddTransient<INotificationService, NotificationService>();
 
             var serviceProvider = services.BuildServiceProvider();
             using (var scope = serviceProvider.CreateScope())
             {
                 var db = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
-                db.Database.Migrate();
+                //db.Database.Migrate();
             }
 
             return services;

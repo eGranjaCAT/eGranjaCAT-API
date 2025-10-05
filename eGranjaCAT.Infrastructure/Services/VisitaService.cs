@@ -46,6 +46,9 @@ namespace eGranjaCAT.Infrastructure.Services
                 visita.FarmId = farmId;
                 visita.CreatedAt = DateTime.UtcNow;
                 visita.UserGuid = userId;
+                visita.Data = visita.Data.ToUniversalTime();
+
+                if (visita.DataDarreraExplotacio != null) visita.DataDarreraExplotacio = visita.DataDarreraExplotacio.Value.ToUniversalTime();
 
                 await _context.Visites.AddAsync(visita);
                 await _context.SaveChangesAsync();

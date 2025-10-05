@@ -31,7 +31,7 @@ namespace eGranjaCAT.Domain.Entities
         public int FarmId { get; set; }
         public Farm Farm { get; set; } = null!;
 
-        public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
+        public DateTime CreatedAt { get; set; }
 
         public bool Updated { get; set; } = false;
         public DateTime? UpdatedAt { get; set; }

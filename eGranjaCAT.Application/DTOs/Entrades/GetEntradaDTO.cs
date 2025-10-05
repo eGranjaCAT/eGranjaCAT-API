@@ -33,8 +33,12 @@ namespace eGranjaCAT.Application.DTOs.Entrada
 
         public string? Observacions { get; set; }
 
+        public GetUserDTO User { get; set; }
         public GetLotNoRelationsDTO Lot { get; set; }
         public GetFarmDTO Farm { get; set; }
-        public GetUserDTO User { get; set; }
+
+        public DateTime CreatedAt { get; set; }
+        public DateTime UpdatedAt { get; set; }
+        public bool Updated { get; set; }
     }
 }

@@ -20,8 +20,8 @@ namespace eGranjaCAT.Application.DTOs.Visites
         public GetUserDTO User { get; set; } = null!;
         public GetFarmDTO Farm { get; set; } = null!;
 
-        public bool Updated { get; set; } = false;
-        public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
+        public DateTime CreatedAt { get; set; }
         public DateTime UpdatedAt { get; set; }
+        public bool Updated { get; set; } = false;
     }
 }
